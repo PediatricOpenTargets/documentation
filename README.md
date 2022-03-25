@@ -4,10 +4,10 @@
 
 
 #### Table of Contents
-1. [Datasets](#datasets)
-2. [Histology and Molecular Subtyping](#example2)
-3. [RNA-seq](#third-example)
-4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+- [Datasets](#datasets)
+- [Histology and Molecular Subtyping](#Histology)
+- [RNA-seq](#RNA-seq)
+- [Somatic Variants](#Somatic)
 
 ## Datasets
 
@@ -21,8 +21,30 @@
 
 **The Cancer Genome Atlas Program (TCGA):** TCGA is a landmark cancer genomics program that molecularly characterized over 20,000 primary cancer and matched normal samples spanning 33 cancer types. It is a joint effort between NCI and the National Human Genome Research Institute. OpenPedCan project includes 10414 TCGA RNA-Seq samples (716 normal and 9698 tumor) from 33 cancer types in the v10 release.
 
+---
+
 ## Histology and Molecular Subtyping
 
+---
+
 ## RNA-seq
+
+This document describes the data processing steps. For a description of the data see LINK TO ABOUT MOLECULAR TARGETS and to browse the Pediatric Cancer Data see [https://ppdc-otp-dev.bento-tools.org/pediatric-cancer-data-navigation](https://ppdc-otp-dev.bento-tools.org/pediatric-cancer-data-navigation)
+
+### RNA-seq Data Processing
+
+The RNA-seq Alignment Workflow begins by trimming adapters, only if adapters are provided, using Cutadapt. Trimmed reads were then aligned using STAR in two-pass mode to reference genome GRCh38. Transcripts are quantified using both RSEM and by pseudoalignment using Kallisto using the Gencode v27 annotation. Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. QC metrics for the alignment are summarized using RNA-seQC. If you would like to view the code in more detail, please see the GitHub repository at [https://github.com/kids-first/kf-rnaseq-workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the CAVATICA App at [https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6) (for more documentation on CAVATICA, please click READ MORE).
+
+### RNA-seq Data Table Generation
+
+#### Fusions
+
+Fusions are filtered using custom R scripts. Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single broad_histology/disease. Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. Summary frequencies are calculated using R. See [https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details.
+
+#### Transcript Expression
+
+TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. See CAVATICA public app for more details on RSEM.
+
+---
 
 ## Somatic Variants
