@@ -166,8 +166,6 @@ The gene expression levels in each boxplot are also summarized in a table that c
 | Column name | Column description |
 | --- | --- |
 | xLabel | X-axis label. |
-| specimenDescriptorFill | Biospecimen descriptor of the box fill color. |
-| boxSampleCount | Number of samples. |
 | geneEnsemblId | Ensembl ID of the plotted gene. |
 | geneSymbol | Symbol of the plotted gene. |
 | pmtl | US Food & Drug Administration Pediatric Molecular Target Lists designation of the plotted gene. |
@@ -184,3 +182,5 @@ The gene expression levels in each boxplot are also summarized in a table that c
 | tpmMedian | Median of TPM values. |
 | tpm75thPercentile | 75th percentile of TPM values. |
 | tpmMax | Maximum TPM value. |
+| specimenDescriptorFill | Biospecimen descriptor of the box fill color. |
+| boxSampleCount | Number of samples. |
