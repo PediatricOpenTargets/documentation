@@ -6,7 +6,7 @@
 - [Datasets](#datasets)
 - [Histology](#Histology)
 - [Somatic Alterations](#Somatic_Alterations)
-- [Gene Expression](#RNA-seq)
+- [Gene Expression](#Gene_Expression)
 
 ## Datasets
 
