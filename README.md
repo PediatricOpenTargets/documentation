@@ -57,10 +57,7 @@ A unique variant id consisting of the hg38 coordinates and the reference and alt
 | Variant ID hg38 | Specific name for the variant in human genome hg38 coordinates; for example chr12_94581668_T_C means that base 94581668 on chromosome 12 is not the reference thymine (T) but mutated to a cytosine (C) |  |
 | Protein change | Amino acid change if mutation causes one; for example p.R317G means that the 317th amino acid is changed from arginine (R) to glycine (G) |  |
 | PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an R for relevant target or NR for non-relevant target and  left blank if no data |
-| Dataset | See Pediatric Cancer Data Sources at https://ppdc-otp-dev.bento-tools.org/about | All Cohorts = all data sets combined, 
-TARGET (Therapeutically Applicable Research to Generate Effective Treatments),
- PBTA (Pediatric Brain Tumor Atlas), 
-GMFK (Gabriella Miller Kids First Neuroblastoma)  |
+| Dataset | See Pediatric Cancer Data Sources at https://ppdc-otp-dev.bento-tools.org/about | **All Cohorts** = all data sets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** Gabriella Miller Kids First Neuroblastoma |
 | Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
 | dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ | dbSNP id if it exists, novel if not in dbSNP, missing if why are there NAs? |
 | VEP impact | Predicted mutation impact from Ensembl Variant Effect Predictor; only mutations predicted to have some impact are reported | high = predicted to cause complete or nearly complete loss of function, 
