@@ -1,0 +1,143 @@
+disease	dataset	data_type	number_patients
+Acute Lymphoblastic Leukemia	TARGET	RNA-Seq	564
+Acute Lymphoblastic Leukemia	TARGET	WXS	712
+Acute Myeloid Leukemia	TARGET	RNA-Seq	179
+Acute Myeloid Leukemia	TARGET	WXS	16
+Adenoma	PBTA	RNA-Seq	3
+Adenoma	PBTA	WGS	4
+Arteriovenous malformation	PBTA	RNA-Seq	1
+Arteriovenous malformation	PBTA	WGS	1
+Atypical choroid plexus papilloma	PBTA	RNA-Seq	2
+Atypical choroid plexus papilloma	PBTA	WGS	2
+Atypical Teratoid Rhabdoid Tumor	PBTA	RNA-Seq	26
+Atypical Teratoid Rhabdoid Tumor	PBTA	WGS	27
+Cavernoma	PBTA	RNA-Seq	1
+Cavernoma	PBTA	WGS	2
+Chordoma	PBTA	RNA-Seq	3
+Chordoma	PBTA	WGS	3
+Choroid plexus carcinoma	PBTA	RNA-Seq	4
+Choroid plexus carcinoma	PBTA	WGS	3
+Choroid plexus cyst	PBTA	RNA-Seq	1
+Choroid plexus cyst	PBTA	WGS	1
+Choroid plexus papilloma	PBTA	RNA-Seq	14
+Choroid plexus papilloma	PBTA	WGS	12
+Clear cell sarcoma of the kidney	TARGET	RNA-Seq	13
+CNS Burkitt's lymphoma	PBTA	RNA-Seq	1
+CNS Burkitt's lymphoma	PBTA	WGS	1
+CNS Embryonal tumor	PBTA	RNA-Seq	12
+CNS Embryonal tumor	PBTA	WGS	9
+CNS neuroblastoma	PBTA	RNA-Seq	2
+CNS neuroblastoma	PBTA	WGS	1
+Craniopharyngioma	PBTA	RNA-Seq	35
+Craniopharyngioma	PBTA	WGS	38
+Desmoplastic infantile astrocytoma and ganglioglioma	PBTA	RNA-Seq	2
+Desmoplastic infantile astrocytoma and ganglioglioma	PBTA	WGS	2
+Diffuse fibrillary astrocytoma	PBTA	WGS	1
+Diffuse intrinsic pontine glioma	PBTA	RNA-Seq	9
+Diffuse leptomeningeal glioneuronal tumor	PBTA	RNA-Seq	1
+Diffuse leptomeningeal glioneuronal tumor	PBTA	WGS	1
+Diffuse midline glioma	PBTA	RNA-Seq	65
+Diffuse midline glioma	PBTA	Targeted Sequencing	1
+Diffuse midline glioma	PBTA	WGS	56
+Diffuse midline glioma	PBTA	WXS	38
+Dysembryoplastic neuroepithelial tumor	PBTA	RNA-Seq	24
+Dysembryoplastic neuroepithelial tumor	PBTA	WGS	25
+Dysplasia/Gliosis;Glial-neuronal tumor NOS	PBTA	RNA-Seq	1
+Dysplasia/Gliosis;Glial-neuronal tumor NOS	PBTA	WGS	1
+Embryonal tumor with multilayer rosettes	PBTA	RNA-Seq	6
+Embryonal tumor with multilayer rosettes	PBTA	WGS	3
+Ependymoma	PBTA	RNA-Seq	82
+Ependymoma	PBTA	WGS	71
+Epilepsy	PBTA	RNA-Seq	1
+Epilepsy	PBTA	WGS	1
+Ewing sarcoma	PBTA	RNA-Seq	9
+Ewing sarcoma	PBTA	WGS	8
+Fibromyxoid lesion	PBTA	RNA-Seq	1
+Fibromyxoid lesion	PBTA	WGS	1
+Ganglioglioma	PBTA	RNA-Seq	43
+Ganglioglioma	PBTA	WGS	44
+Ganglioneuroblastoma	PBTA	RNA-Seq	2
+Ganglioneuroblastoma	PBTA	WGS	2
+Ganglioneuroma	PBTA	RNA-Seq	1
+Ganglioneuroma	PBTA	WGS	1
+Germinoma	PBTA	RNA-Seq	4
+Germinoma	PBTA	WGS	4
+Germinoma;Teratoma	PBTA	RNA-Seq	1
+Germinoma;Teratoma	PBTA	WGS	1
+Glial-neuronal tumor NOS	PBTA	RNA-Seq	9
+Glial-neuronal tumor NOS	PBTA	WGS	7
+Hemangioblastoma	PBTA	RNA-Seq	2
+Hemangioblastoma	PBTA	WGS	2
+High-grade glioma/astrocytoma	PBTA	RNA-Seq	110
+High-grade glioma/astrocytoma	PBTA	WGS	51
+High-grade glioma/astrocytoma	PBTA	WXS	31
+Juvenile xanthogranuloma	PBTA	RNA-Seq	2
+Juvenile xanthogranuloma	PBTA	WGS	2
+Langerhans Cell histiocytosis	PBTA	RNA-Seq	4
+Langerhans Cell histiocytosis	PBTA	WGS	4
+Low-grade glioma/astrocytoma	PBTA	RNA-Seq	226
+Low-grade glioma/astrocytoma	PBTA	WGS	215
+Malignant peripheral nerve sheath tumor	PBTA	RNA-Seq	4
+Malignant peripheral nerve sheath tumor	PBTA	WGS	3
+Medulloblastoma	PBTA	RNA-Seq	112
+Medulloblastoma	PBTA	WGS	97
+Melanocytic tumor	PBTA	RNA-Seq	1
+Melanocytic tumor	PBTA	WGS	1
+Meningioma	PBTA	RNA-Seq	24
+Meningioma	PBTA	WGS	25
+Metastatic secondary tumors	PBTA	RNA-Seq	3
+Metastatic secondary tumors	PBTA	WGS	3
+Metastatic secondary tumors;Neuroblastoma	PBTA	RNA-Seq	3
+Metastatic secondary tumors;Neuroblastoma	PBTA	WGS	3
+Myofibroblastoma	PBTA	RNA-Seq	1
+Myofibroblastoma	PBTA	WGS	1
+Myxoid spindle cell tumor	PBTA	RNA-Seq	1
+Myxoid spindle cell tumor	PBTA	WGS	1
+Neuroblastoma	GMKF	RNA-Seq	209
+Neuroblastoma	GMKF	WGS	336
+Neuroblastoma	PBTA	RNA-Seq	2
+Neuroblastoma	TARGET	RNA-Seq	151
+Neuroblastoma	TARGET	Targeted Sequencing	499
+Neuroblastoma	TARGET	WXS	222
+Neurocytoma	PBTA	RNA-Seq	3
+Neurocytoma	PBTA	WGS	3
+Neurofibroma/Plexiform	PBTA	RNA-Seq	17
+Neurofibroma/Plexiform	PBTA	WGS	14
+Oligodendroglioma	PBTA	RNA-Seq	2
+Oligodendroglioma	PBTA	WGS	2
+Osteosarcoma	TARGET	RNA-Seq	87
+Osteosarcoma	TARGET	WXS	73
+Pilocytic astrocytoma	PBTA	RNA-Seq	1
+Pilocytic astrocytoma	PBTA	WGS	2
+Pineoblastoma	PBTA	RNA-Seq	4
+Pineoblastoma	PBTA	WGS	4
+Pleomorphic xanthoastrocytoma	PBTA	RNA-Seq	2
+Pleomorphic xanthoastrocytoma	PBTA	WGS	1
+Reactive connective tissue	PBTA	RNA-Seq	1
+Reactive connective tissue	PBTA	WGS	1
+Rhabdoid tumor	TARGET	RNA-Seq	64
+Rhabdomyosarcoma	PBTA	RNA-Seq	2
+Rhabdomyosarcoma	PBTA	WGS	2
+Rosai-Dorfman disease	PBTA	RNA-Seq	1
+Rosai-Dorfman disease	PBTA	WGS	1
+Rosette-forming glioneuronal tumor	PBTA	RNA-Seq	1
+Rosette-forming glioneuronal tumor	PBTA	WGS	1
+Sarcoma	PBTA	RNA-Seq	6
+Sarcoma	PBTA	WGS	5
+Schwannoma	PBTA	RNA-Seq	15
+Schwannoma	PBTA	WGS	14
+Subependymal Giant Cell Astrocytoma	PBTA	RNA-Seq	4
+Subependymal Giant Cell Astrocytoma	PBTA	WGS	3
+Teratoma	PBTA	RNA-Seq	7
+Teratoma	PBTA	WGS	8
+Wilms tumor	TARGET	RNA-Seq	125
+Wilms tumor	TARGET	WXS	36
+Undetermined	GMKF	WGS	336
+Undetermined	PBTA	RNA-Seq	27
+Undetermined	PBTA	Targeted Sequencing	1
+Undetermined	PBTA	WGS	798
+Undetermined	PBTA	WXS	69
+Undetermined	TARGET	RNA-Seq	12
+Undetermined	TARGET	Targeted Sequencing	499
+Undetermined	TARGET	WXS	1059
+Adult healthy controls	GTEx	RNA-Seq	948

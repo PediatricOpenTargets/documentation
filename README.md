@@ -10,13 +10,20 @@
 
 ## Datasets
 
-**Open Pediatric Brain Tumor Atlas (OpenPBTA):** In September of 2018, the Children's Brain Tumor Network (CBTN) released the Pediatric Brain Tumor Atlas (PBTA), a genomic dataset (whole genome sequencing, whole exome sequencing, RNA sequencing, proteomic, and clinical data) for nearly 1,000 tumors, available from the Gabriella Miller Kids First Portal. The Open Pediatric Brain Tumor Atlas (OpenPBTA) Project is a global open science initiative to comprehensively define the molecular landscape of tumors of 943 patients from the CBTN and the PNOC003 DIPG clinical trial from the Pediatric Pacific Neuro-oncology Consortium through real-time, collaborative analyses and collaborative manuscript writing on GitHub.
+**Open Pediatric Brain Tumor Atlas (PBTA):** In September of 2018, the Children's Brain Tumor Network (CBTN) released the Pediatric Brain Tumor Atlas (PBTA), a genomic dataset (whole genome sequencing, whole exome sequencing, RNA sequencing, proteomic, and clinical data) for nearly 1,000 tumors, available from the Gabriella Miller Kids First Portal. The Open Pediatric Brain Tumor Atlas (OpenPBTA) Project is a global open science initiative to comprehensively define the molecular landscape of tumors of 943 patients from the CBTN and the PNOC003 DIPG clinical trial from the Pediatric Pacific Neuro-oncology Consortium through real-time, collaborative analyses and collaborative manuscript writing on GitHub.
 
 **Therapeutically Applicable Research to Generate Effective Treatments (TARGET):** The Therapeutically Applicable Research to Generate Effective Treatments (TARGET) Initiative is an NCI-funded collection of disease-specific projects that seeks to identify the genomic changes of pediatric cancers. 'The overall goal is to collect genomic data to accelerate the development of more effective therapies. OpenPedCan analyses include the seven diseases present in the TARGET dataset: Acute Lymphoblastic Leukemia (ALL), Acute Myeloid Leukemia (AML), Clear cell sarcoma of the kidney, Neuroblastoma, Osteosarcoma, Rhabdoid tumor, and Wilm’s Tumor.
 
-**Gabriella Miller Kids First Neuroblastoma (Kids First) The Gabriella Miller Kids First Pediatric Research Program (Kids First):** is a large-scale effort to accelerate research and gene discovery in pediatric cancers and structural birth defects. The program includes whole genome sequencing (WGS) from patients with pediatric cancers and structural birth defects and their families. OpenPedCan analyses include Neuroblastoma data from the Kids First project.
+**Gabriella Miller Kids First Neuroblastoma (GMKF) The Gabriella Miller Kids First Pediatric Research Program (Kids First):** is a large-scale effort to accelerate research and gene discovery in pediatric cancers and structural birth defects. The program includes whole genome sequencing (WGS) from patients with pediatric cancers and structural birth defects and their families. OpenPedCan analyses include Neuroblastoma data from the Kids First project.
 
 **The Genotype-Tissue Expression (GTEx):** GTEx project is an ongoing effort to build a comprehensive public data resource and tissue bank to study tissue-specific gene expression, regulation and their relationship with genetic variants. Samples were collected from 54 non-diseased tissue sites across nearly 1000 individuals, primarily for molecular assays including WGS, WES, and RNA-Seq. OpenPedCan project includes 17382 GTEx RNA-Seq samples from GTEx v8 release, which span across 31 GTEx groups in the v10 release.
+
+| Dataset | Number of Samples |
+| --- | --- |
+| PBTA | 2,984 |
+| TARGET | 4,489 |
+| GMKF | 884 |
+| GTEx | 17,382 |
 
 ---
 
@@ -24,10 +31,7 @@
 
 Pediatric cancers are rare and heterogeneous, and have a different biology even from adult cancers of the same name. Due to the complexity and rarity, there was no international standard of classification until the end of 2021 when WHO updated their standards to include a distinct section for pediatric tumors. Considering the challenges and historical lack of standards, disease assignment and molecular subtyping is a challenging process. For Open Targets, classifying pediatric tumors starts with the pathologist’s report from original diagnosis followed by confirmation of the molecular features of the disease using the repository data. The specific molecular features examined for each disease were determined by the literature with expert review and curation from both bioinformaticians and clinicians. A final disease label is assigned based on the combination of the clinical pathology report and the molecular features in the data. If there is a discrepancy between clinical and molecular labels, samples are reviewed by a pathologist and final disease assignment is made in consultation with pathology, bioinformatics, and clinicians. For each disease, a non-exhaustive list of synonyms as well as the specific Experimental Factor Ontology (EFO) label used can be found on the individual page for each disease. For more details on disease assignment see [OpenPedCan Molecular Subtyping and Pathology Documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/molecular-subtyping-pathology)
 
-| Disease | Cohort | Number of Samples |
-| --- | --- | --- |
-|  |  |  |
-|  |  |  |
+For a summary table of the number of subjects included, [a table is available for viewing and download](disease_subject_counts.tsv).
 
 ---
 
@@ -56,36 +60,17 @@ A unique variant id consisting of the hg38 coordinates and the reference and alt
 | Gene symbol | HGNC symbol for the given gene |  |
 | Variant ID hg38 | Specific name for the variant in human genome hg38 coordinates; for example chr12_94581668_T_C means that base 94581668 on chromosome 12 is not the reference thymine (T) but mutated to a cytosine (C) |  |
 | Protein change | Amino acid change if mutation causes one; for example p.R317G means that the 317th amino acid is changed from arginine (R) to glycine (G) |  |
-| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an R for relevant target or NR for non-relevant target and  left blank if no data |
-| Dataset | See Pediatric Cancer Data Sources at https://ppdc-otp-dev.bento-tools.org/about | **All Cohorts** = all data sets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** Gabriella Miller Kids First Neuroblastoma |
+| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
+| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma |
 | Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
-| dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ | dbSNP id if it exists, novel if not in dbSNP, missing if why are there NAs? |
-| VEP impact | Predicted mutation impact from Ensembl Variant Effect Predictor; only mutations predicted to have some impact are reported | high = predicted to cause complete or nearly complete loss of function, 
-moderate = predicted to reduce protein effectiveness, 
-modifier = affects a non-coding region where predictions are difficult or there is no evidence of impact |
-| SIFT impact | Predicted mutation impact from SIFT, with the score in parentheses. The closer the score is to 0, the more deleterious the mutation is predicted to be. If there is sufficient reference material available at that position, SIFT will warn that there’s low confidence in the predicted impact. | deleterious, deleterious_low_confidence = SIFT score between 0 to 0.05 where mutation is predicted to decrease protein function, |
-tolerated, tolerated_low_confidence = SIFT score 0.05 to 1 where the mutation probably doesn’t affect protein function and the closer to 1 the more true that is, missing?? |
-| PolyPhen impact | Predicted mutation impact from PolyPhen, with the score in parentheses. The closer the score is to 1, the more deleterious the impact is predicted to be. | probably_damaging = mutation predicted to reduce or eliminate protein function with a score between 0.909 and 1, 
-possibly_damaging = mutation may effect protein function with a score between 0.446 and 0.908, 
-benign = no effect on protein function with a score between 0.001 and 0.445, 
-unknown = score of 0, missing?? |
-| Variant classification | Variant effect on protein, whether frame is maintained, whether it’s a mutation or insertion/deletion and whether it effects specific translation regions | Frame_Shift_Del, 
-Frame_Shift_Ins, 
-In_Frame_Del, 
-In_Frame_Ins, 
-Missense_Mutation, 
-Nonsense_Mutation, 
-Nonstop_Mutation, 
-Splice_Site, 
-Translation_Start_Site |
-| Variant type | The type of small variant; how many bases are affected or whether there was a small insertion or deletion | DEL = deletion, 
-DNP = double nucleotide polymorphism, 
-INS = insertion, 
-ONP = oligo-nucleotide polymorphism, 
-SNP = single nucleotide polymorphism, 
-TNP = triple nucleotide polymorphism |
-| Gene full name | Full name of gene from HGNC |  |
-| Gene type |  |  |
+| dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ if one exists |  |
+| VEP impact | Predicted mutation impact from Ensembl Variant Effect Predictor; only mutations predicted to have some impact are reported | **high** = predicted to cause complete or nearly complete loss of function, **moderate** = predicted to reduce protein effectiveness, **modifier** = affects a non-coding region where predictions are difficult or there is no evidence of impact |
+| SIFT impact | Predicted mutation impact from SIFT, with the score in parentheses. The closer the score is to 0, the more deleterious the mutation is predicted to be. If there is sufficient reference material available at that position, SIFT will warn that there’s low confidence in the predicted impact. | **deleterious**, **deleterious\_low\_confidence** = SIFT score between 0 to 0.05 where mutation is predicted to decrease protein function, **tolerated**, **tolerated\_low\_confidence** = SIFT score 0.05 to 1 where the mutation probably doesn’t affect protein function and the closer to 1 the more true that is |
+| PolyPhen impact | Predicted mutation impact from PolyPhen, with the score in parentheses. The closer the score is to 1, the more deleterious the impact is predicted to be. If there isn’t sufficient data to make a prediction it’s reported as “unknown.” | **probably\_damaging** = mutation predicted to reduce or eliminate protein function with a score between 0.909 and 1, **possibly\_damaging** = mutation may effect protein function with a score between 0.446 and 0.908, **benign** = no effect on protein function with a score between 0.001 and 0.445, **unknown** = no prediction due to lack of data and assigned a score of 0 |
+| Variant classification | Variant effect on protein, whether frame is maintained, whether it’s a mutation or insertion/deletion and whether it effects specific translation regions | **Frame\_Shift\_Del** = deletion that changes reading frame, **Frame\_Shift\_Ins** = insertion that changes reading frame, **In\_Frame\_Del** = deletion but reading frame is unchanged, **In\_Frame\_Ins** = insertion but reading frame is unchanged, **Missense\_Mutation** = small variant that changes the amino acid coded for, **Nonsense\_Mutation** = small variant that adds a stop codon, **Nonstop\_Mutation** = mutation in the stop codon so that it no longer functions as a stop codon, **Splice\_Site** = mutation at an exon-intron boundary at a splice site, **Translation\_Start\_Site** = mutation at the translation start site |
+| Variant type | The type of small variant; how many bases are affected or whether there was a small insertion or deletion | **DEL** = deletion, **DNP** = double nucleotide polymorphism, **INS** = insertion, **ONP** = oligo-nucleotide polymorphism, **SNP** = single nucleotide polymorphism, **TNP** = triple nucleotide polymorphism |
+| Gene full name | Full name of the gene from HGNC |  |
+| Gene type | A limited set of simplified annotations on what type of gene it is, especially whether it’s a known cancer gene | **CosmicCensus** = gene is in COSMIC, **Kinase** = gene is a kinase, **Oncogene** = gene is an known oncogene, **TranscriptionFactor** = gene is a transcription factor, **TumorSuppressorGene** = gene is a known tumor suppressor, left **blank** if no annotations apply |
 | Protein RefSeq ID | Refseq ID for the protein (not the gene) |  |
 | Gene Ensembl ID | Ensembl ID for gene |  |
 | Protein Ensembl ID | Ensembl ID for protein |  |
@@ -96,11 +81,8 @@ TNP = triple nucleotide polymorphism |
 | Total relapse tumors mutated / Relapse tumors in dataset | Same as Total mutations, but for relapse tumors only |  |
 | Frequency in relapse tumors | Same as Frequency in overall, but for relapse tumors only |  |
 | HotSpot | Yes or no is this a known recurrently occuring (hotspot) cancer mutation | binary: Y, N |
-| OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB https://www.oncokb.org/ | binary: Y, N |
-| OncoKB Oncogene | TSB | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB https://www.oncokb.org/ | oncogene = contributes to cancer development, 
-TSG = tumor suppressor gene that suppresses cancer development, 
-oncogene,TSG = if gene can be both, 
-blank if neither |
+| OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary: Y, N |
+| OncoKB Oncogene \| TSB | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, left **blank** if neither |
 | PedcBio PedOT oncoprint plot | Link to oncoprint plot at Pediatric cBioPortal |  |
 | PedcBio PedOT mutation plot | Link to mutation plot at Pediatric cBioPortal |  |
 
