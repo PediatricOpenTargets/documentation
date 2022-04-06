@@ -82,7 +82,7 @@ A unique variant id consisting of the hg38 coordinates and the reference and alt
 | Frequency in relapse tumors | Same as Frequency in overall, but for relapse tumors only |  |
 | HotSpot | Yes or no is this a known recurrently occuring (hotspot) cancer mutation | binary: Y, N |
 | OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary: Y, N |
-| OncoKB Oncogene \| TSB | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, left **blank** if neither |
+| OncoKB Oncogene\|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, left **blank** if neither |
 | PedcBio PedOT oncoprint plot | Link to oncoprint plot at Pediatric cBioPortal |  |
 | PedcBio PedOT mutation plot | Link to mutation plot at Pediatric cBioPortal |  |
 
@@ -96,27 +96,20 @@ Then several variant frequencies were calculated for each of those genes within 
 | --- | --- | --- |
 | Gene symbol | HGNC symbol for the given gene |  |
 | Gene Ensembl ID | Ensembl ID for gene |  |
-| Variant type | Categorical description of the variant type | deep deletion = 0 copies, 
-loss = fewer copies than ploidy, 
-neutral = same as ploidy, 
-gain = up to 2 times ploidy, 
-amplification = more than 2 times ploidy |
-| Variant category |  | Left blank if nothing |
-| Dataset | See Pediatric Cancer Data Sources at https://ppdc-otp-dev.bento-tools.org/about | All Cohorts = all data sets combined, 
-TARGET (Therapeutically Applicable Research to Generate Effective Treatments),
- PBTA (Pediatric Brain Tumor Atlas), 
-GMFK (Gabriella Miller Kids First Neuroblastoma)  |
+| Variant type | Categorical description of the variant type; cancer genomes may have a ploidy other than diploid which is why the categories are described in terms of the ploidy of the sample | **deep deletion** = 0 copies, **loss** = fewer copies than ploidy, **neutral** = same as ploidy, **gain** = up to 2 times ploidy, **amplification** = more than 2 times ploidy |
+| Variant category |  |  |
+| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma  |
 | Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
 | Total alterations / Subjects in dataset | Total number of samples with the CNV over the total number of disease samples in the given dataset |  |
-| Frequency in overall dataset | Fraction of the samples for the given disease in the given dataset that have the SNV |  |
+| Frequency in overall dataset | Fraction of the samples for the given disease in the given dataset that have the CNV |  |
 | Total primary tumors altered / Primary tumors in dataset | Same as Total alterations, but for primary tumors only |  |
 | Frequency in primary tumors | Same as Frequency in overall, but for primary tumors only |  |
 | Total relapse tumors altered / Relapse tumors in dataset | Same as Total alterations, but for relapse tumors only |  |
 | Frequency in relapse tumors | Same as Frequency in overall, but for relapse tumors only |  |
 | Gene full name | Full name of gene from HGNC |  |
-| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an R for relevant target or NR for non-relevant target and  left blank if no data |
-| OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB https://www.oncokb.org/ | binary; Y, N |
-| OncoKB Oncogene|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB https://www.oncokb.org/ | oncogene, TSG = tumor suppressor gene, blank if neither |
+| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
+| OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
+| OncoKB Oncogene\|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
 ---
 
@@ -135,72 +128,35 @@ Fusions are filtered using custom R scripts. Fusion calls are retained if they a
 | Annotation | Description | Values |
 | --- | --- | --- |
 | Fusion Name | Genes fused with the name of the genes fused separated by “--”. Gene order is the order they fused in 5’ to 3’ with the dashes representing the breakpoint. If the fusion is intergenic, the location will be represented by the two closest genes separated by a slash, /. For example "AACSP1--GABRP/RANBP17" means that AACSP1 fused with an intergenic DNA between GABRP and RNABP17. |  |
-| Fusion Type | Whether the genes have fused in-frame or not. | frameshift = reading frame is shifted by 1 or 2 bp, 
-in-frame = reading frame remains the same,
-other |
-| Gene Position | Whether the gene is to the 5’ or 3’ of the breakpoint | Gene1A = gene to left of breakpoint, 
-Gene1B = gene to right of breakpoint,
-Gene2A, Gene2B = same as others, but for the second gene given in an intergenic fusion |
-| Fusion Annotation | Whether the fusion is found in other data sources | TCGAfusion = found in TCGA data,
-left blank if not |
-| Breakpoint Location | Qualitative description of where the breakpoint is located related to the annotated gene | genic = breakpoint is in exon,
-intragenic = breakpoint is in gene but not the exon,
-intergeneic = breakpoint is between genes |
-| Annotations | Other information on the fusion from callers Arriba and STAR-Fusion that includes if the fusion was previously seen in cancer, more details about the fusion construction and more description about the type of fusion;
-See the Arriba docs at https://arriba.readthedocs.io/en/latest/output-files/ and the STAR-Fusion docs at https://github.com/STAR-Fusion/STAR-Fusion/wiki#Outputs |  |
-| Kinase Domain Retained Gene1A | Whether the kinase domain is retained in the 5’ gene | Yes = kinase domain retained,
-Partial = some but not all of the kinase domain is present,
-No = none of the kinase domain is present,
-left blank if no kinase domain in protein |
-| Kinase Domain Retained Gene1B | Whether the kinase domain is retained in the 3’ gene | Yes = kinase domain retained,
-Partial = some but not all of the kinase domain is present,
-No = none of the kinase domain is present,
-left blank if no kinase domain in protein |
+| Fusion Type | Whether the genes have fused in-frame or not. | **frameshift** = reading frame is shifted by 1 or 2 bp, **in-frame** = reading frame remains the same, **other** if neither applies |
+| Gene Position | Whether the gene is to the 5’ or 3’ of the breakpoint | **Gene1A** = gene to left of breakpoint, **Gene1B** = gene to right of breakpoint, **Gene2A**, **Gene2B** = same side of breakpoint as others, but for the second gene given in an intergenic fusion |
+| Fusion Annotation | Whether the fusion is found in other data sources | **TCGAfusion** = found in TCGA data, left **blank** if not |
+| Breakpoint Location | Qualitative description of where the breakpoint is located related to the annotated gene | **genic** = breakpoint is in exon, **intragenic** = breakpoint is in gene but not the exon, **intergenic** = breakpoint is between genes |
+| Annotations | Other information on the fusion from callers Arriba and STAR-Fusion that includes if the fusion was previously seen in cancer, more details about the fusion construction and more description about the type of fusion. | See the Arriba docs at <https://arriba.readthedocs.io/en/latest/output-files/> and the STAR-Fusion docs at <https://github.com/STAR-Fusion/STAR-Fusion/wiki#Outputs> for detailed descriptions of the annotations |
+| Kinase Domain Retained Gene1A | Whether the kinase domain is retained in the 5’ gene | **Yes** = kinase domain retained, **Partial** = some but not all of the kinase domain is present, **No** = none of the kinase domain is present, left **blank** if no kinase domain in protein |
+| Kinase Domain Retained Gene1B | Whether the kinase domain is retained in the 3’ gene |  **Yes** = kinase domain retained, **Partial** = some but not all of the kinase domain is present, **No** = none of the kinase domain is present, left **blank** if no kinase domain in protein |
 | Reciprocal exists either gene kinase | Whether or not the reciprocal fusion with the gene order around the breakpoint swapped exists | Binary; TRUE, FALSE |
-| Gene1A Annotation | A limited set of simplified annotations for the most 5’ gene in the fusion | CosmicCensus = fusion is in COSMIC,
-Kinase = one of the fusion genes is a kinase,
-Oncogene = one gene is an known oncogene,
-TranscriptionFactor = one of the fusion genes is a transcription factor,
-TumorSuppressorGene = one gene is a known tumor suppressor,
-left blank if no annotations apply |
-| Gene1B Annotation | A limited set of simplified annotations for the most 3’ gene in the fusion | CosmicCensus = fusion is in COSMIC,
-Kinase = one of the fusion genes is a kinase,
-Oncogene = one gene is an known oncogene,
-TranscriptionFactor = one of the fusion genes is a transcription factor,
-TumorSuppressorGene = one gene is a known tumor suppressor,
-left blank if no annotations apply |
-| Gene2A Annotation | A limited set of simplified annotations for the second gene on the 5’ side of an intergenic fusion | CosmicCensus = fusion is in COSMIC,
-Kinase = one of the fusion genes is a kinase,
-Oncogene = one gene is an known oncogene,
-TranscriptionFactor = one of the fusion genes is a transcription factor,
-TumorSuppressorGene = one gene is a known tumor suppressor,
-left blank if no annotations apply |
-| Gene2B Annotation | A limited set of simplified annotations for the second gene on the 3’ side of an intergenic fusion | CosmicCensus = fusion is in COSMIC,
-Kinase = one of the fusion genes is a kinase,
-Oncogene = one gene is an known oncogene,
-TranscriptionFactor = one of the fusion genes is a transcription factor,
-TumorSuppressorGene = one gene is a known tumor suppressor,
-left blank if no annotations apply |
+| Gene1A Annotation | A limited set of simplified annotations for the most 5’ gene in the fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
+| Gene1B Annotation | A limited set of simplified annotations for the most 3’ gene in the fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
+| Gene2A Annotation | A limited set of simplified annotations for the second gene on the 5’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations applyy |
+| Gene2B Annotation | A limited set of simplified annotations for the second gene on the 3’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
 | Gene Ensembl ID | Official gene ID from Ensembl  |  |
-| Dataset | See Pediatric Cancer Data Sources at https://ppdc-otp-dev.bento-tools.org/about | All Cohorts = all data sets combined, TARGET (Therapeutically Applicable Research to Generate Effective Treatments), GMFK (Gabriella Miller Kids First Neuroblastoma)  |
-| Disease | See Histology sections. |  |
+| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma |
+| Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
 | Total alterations / Subjects in Dataset | Total number of samples with the given fusions over the total number of disease samples in the given Dataset |  |
 | Frequency in overall dataset | Fraction of the samples for the given disease in the given dataset that have the fusion |  |
 | Total primary tumors altered / Primary tumors in dataset | Same as Total alterations, but for primary tumors only |  |
 | Frequency in primary tumors | Same as overall frequency, but for primary tumors only |  |
 | Total relapse tumors altered / Relapse tumors in dataset | Same as Total alterations, but for relapse tumors only |  |
 | Frequency in relapse tumors | Same as Total alterations, but for relapse tumors only |  |
-| Gene full name | HGNC gene name |  |
-| PMTL | A limited set of simplified annotations for the second gene on the 3’ side of an intergenic fusion | Binary; either an R for relevant target or NR for non-relevant target and  left blank if no data |
-| OncoKB Cancer Gene | Whether the gene is a annotated cancer gene listed in OncoKB https://www.oncokb.org/ | binary; Y, N |
-| OncoKB Oncogene | TSB | Whether the gene is an oncogene or tumor suppressor (TSG) | oncogene = contributes to cancer development, 
-TSG = tumor suppressor gene that suppresses cancer development, 
-oncogene,TSG = if gene can be both, 
-blank if neither |
+| Gene full name | Full name of the gene from HGNC |  |
+| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left blank if no data |
+| OncoKB Cancer Gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
+| OncoKB Oncogene\|TSB | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
 ### Transcript Expression
 
-TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. See CAVATICA public app for more details on RSEM.
+TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. Please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6) for more details. Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
 ### OpenPedCan Gene Expression Boxplot
 
