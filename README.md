@@ -1,6 +1,6 @@
-# MTP Documentation (DRAFT)
+# Molecular Targets Platform v10 Documentation
 
-
+The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform LINK TO SITE HOME in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see LINK TO ABOUT PAGE.
 
 #### Contents
 - [Datasets](#datasets)
@@ -10,13 +10,7 @@
 
 ## Datasets
 
-**Open Pediatric Brain Tumor Atlas (PBTA):** In September of 2018, the Children's Brain Tumor Network (CBTN) released the Pediatric Brain Tumor Atlas (PBTA), a genomic dataset (whole genome sequencing, whole exome sequencing, RNA sequencing, proteomic, and clinical data) for nearly 1,000 tumors, available from the Gabriella Miller Kids First Portal. The Open Pediatric Brain Tumor Atlas (OpenPBTA) Project is a global open science initiative to comprehensively define the molecular landscape of tumors of 943 patients from the CBTN and the PNOC003 DIPG clinical trial from the Pediatric Pacific Neuro-oncology Consortium through real-time, collaborative analyses and collaborative manuscript writing on GitHub.
-
-**Therapeutically Applicable Research to Generate Effective Treatments (TARGET):** The Therapeutically Applicable Research to Generate Effective Treatments (TARGET) Initiative is an NCI-funded collection of disease-specific projects that seeks to identify the genomic changes of pediatric cancers. 'The overall goal is to collect genomic data to accelerate the development of more effective therapies. OpenPedCan analyses include the seven diseases present in the TARGET dataset: Acute Lymphoblastic Leukemia (ALL), Acute Myeloid Leukemia (AML), Clear cell sarcoma of the kidney, Neuroblastoma, Osteosarcoma, Rhabdoid tumor, and Wilm’s Tumor.
-
-**Gabriella Miller Kids First Neuroblastoma (GMKF) The Gabriella Miller Kids First Pediatric Research Program (Kids First):** is a large-scale effort to accelerate research and gene discovery in pediatric cancers and structural birth defects. The program includes whole genome sequencing (WGS) from patients with pediatric cancers and structural birth defects and their families. OpenPedCan analyses include Neuroblastoma data from the Kids First project.
-
-**The Genotype-Tissue Expression (GTEx):** GTEx project is an ongoing effort to build a comprehensive public data resource and tissue bank to study tissue-specific gene expression, regulation and their relationship with genetic variants. Samples were collected from 54 non-diseased tissue sites across nearly 1000 individuals, primarily for molecular assays including WGS, WES, and RNA-Seq. OpenPedCan project includes 17382 GTEx RNA-Seq samples from GTEx v8 release, which span across 31 GTEx groups in the v10 release.
+While adult pan-cancer repositories have existed and accelerated cancer research for a decade, pediatrics cancers have been excluded, despite having different genetic and molecular etiologies than adult cancers. Over the past few years larger pediatric consortia, both disease-specific and pan-cancer, have tried to address this disparity. The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. As the project is ongoing, more data will continue to be added, but this current release includes 3 pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
 
 | Dataset | Number of Samples |
 | --- | --- |
@@ -24,6 +18,8 @@
 | TARGET | 4,489 |
 | GMKF | 884 |
 | GTEx | 17,382 |
+
+For expanded descriptions of the datasets, please see the About page on the Molecular Targets Platform LINK TO ABOUT DATA SECTION ON SITE.
 
 ---
 
@@ -191,3 +187,5 @@ The gene expression levels in each boxplot are also summarized in a table that c
 | tpmMedian | Median of TPM values. |
 | tpm75thPercentile | 75th percentile of TPM values. |
 | tpmMax | Maximum TPM value. |
+
+<br><br>
