@@ -28,6 +28,7 @@ While adult pan-cancer repositories have existed and accelerated cancer research
 | TARGET | 4,489 |
 | GMKF | 884 |
 | GTEx | 17,382 |
+| TCGA | |
 
 For expanded descriptions of the datasets, please see the About page on the Molecular Targets Platform LINK TO ABOUT DATA SECTION ON SITE.
 
