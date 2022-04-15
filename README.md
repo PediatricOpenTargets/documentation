@@ -6,11 +6,17 @@
 
 The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform LINK TO SITE HOME in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see LINK TO ABOUT PAGE.
 
+---
+
+For documentation on previous versions of the Molecular Targets Platform, please see [v10](past_versions/v10.md).
+
+---
+
 #### Contents
 - [Datasets](#datasets)
-- [Disease](#Disease)
 - [Somatic Alterations](#Somatic_Alterations)
 - [Gene Expression](#Gene_Expression)
+- [Data Availability](#Data_Availability)
 
 ## Datasets
 
@@ -24,14 +30,6 @@ While adult pan-cancer repositories have existed and accelerated cancer research
 | GTEx | 17,382 |
 
 For expanded descriptions of the datasets, please see the About page on the Molecular Targets Platform LINK TO ABOUT DATA SECTION ON SITE.
-
----
-
-## Disease
-
-Pediatric cancers are rare and heterogeneous, and have a different biology even from adult cancers of the same name. Due to the complexity and rarity, there was no international standard of classification until the end of 2021 when WHO updated their standards to include a distinct section for pediatric tumors. Considering the challenges and historical lack of standards, disease assignment and molecular subtyping is a challenging process. For Open Targets, classifying pediatric tumors starts with the pathologist’s report from original diagnosis followed by confirmation of the molecular features of the disease using the repository data. The specific molecular features examined for each disease were determined by the literature with expert review and curation from both bioinformaticians and clinicians. A final disease label is assigned based on the combination of the clinical pathology report and the molecular features in the data. If there is a discrepancy between clinical and molecular labels, samples are reviewed by a pathologist and final disease assignment is made in consultation with pathology, bioinformatics, and clinicians. For each disease, a non-exhaustive list of synonyms as well as the specific Experimental Factor Ontology (EFO) label used can be found on the individual page for each disease. For more details on disease assignment see [OpenPedCan Molecular Subtyping and Pathology Documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/molecular-subtyping-pathology)
-
-For a summary table of the number of subjects included, [a table is available for viewing and download](disease_subject_counts.tsv).
 
 ---
 
@@ -62,7 +60,7 @@ A unique variant id consisting of the hg38 coordinates and the reference and alt
 | Protein change | Amino acid change if mutation causes one; for example p.R317G means that the 317th amino acid is changed from arginine (R) to glycine (G) |  |
 | PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
 | Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma |
-| Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
+| Disease | Cancer type | See [disease table](disease_subject_counts.tsv) |
 | dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ if one exists | dbSNP ID starting with “**rs**” if it exists, **blank** if the variant is not in dbSNP but is in other variant databases, and **novel** if the variant is not in any database used |
 | VEP impact | Predicted mutation impact from Ensembl Variant Effect Predictor; only mutations predicted to have some impact are reported | **high** = predicted to cause complete or nearly complete loss of function, **moderate** = predicted to reduce protein effectiveness, **modifier** = affects a non-coding region where predictions are difficult or there is no evidence of impact |
 | SIFT impact | Predicted mutation impact from SIFT, with the score in parentheses. The closer the score is to 0, the more deleterious the mutation is predicted to be. If there is sufficient reference material available at that position, SIFT will warn that there’s low confidence in the predicted impact. SIFT only makes predictions for missense variants. | **deleterious**, **deleterious\_low\_confidence** = SIFT score between 0 to 0.05 where mutation is predicted to decrease protein function, **tolerated**, **tolerated\_low\_confidence** = SIFT score 0.05 to 1 where the mutation probably doesn’t affect protein function and the closer to 1 the more true that is, left **blank** if SIFT is not able to be applied to the variant |
@@ -99,7 +97,7 @@ Then several variant frequencies were calculated for each of those genes within 
 | Variant type | Categorical description of the variant type; cancer genomes may have a ploidy other than diploid which is why the categories are described in terms of the ploidy of the sample | **deep deletion** = 0 copies, **loss** = fewer copies than ploidy, **neutral** = same as ploidy, **gain** = up to 2 times ploidy, **amplification** = more than 2 times ploidy |
 | Variant category |  |  |
 | Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma  |
-| Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
+| Disease | Cancer type | See [disease table](disease_subject_counts.tsv) |
 | Total alterations / Subjects in dataset | Total number of samples with the CNV over the total number of disease samples in the given dataset |  |
 | Frequency in overall dataset | Fraction of the samples for the given disease in the given dataset that have the CNV |  |
 | Total primary tumors altered / Primary tumors in dataset | Same as Total alterations, but for primary tumors only |  |
@@ -142,7 +140,7 @@ Fusions are filtered using custom R scripts. Fusion calls are retained if they a
 | Gene2B Annotation | A limited set of simplified annotations for the second gene on the 3’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
 | Gene Ensembl ID | Official gene ID from Ensembl  |  |
 | Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma |
-| Disease | Cancer type; see histology section of this document for more detail on how groups are determined | See table in the histology section of this document for a list of the diseases |
+| Disease | Cancer type | See [disease table](disease_subject_counts.tsv) |
 | Total alterations / Subjects in Dataset | Total number of samples with the given fusions over the total number of disease samples in the given Dataset |  |
 | Frequency in overall dataset | Fraction of the samples for the given disease in the given dataset that have the fusion |  |
 | Total primary tumors altered / Primary tumors in dataset | Same as Total alterations, but for primary tumors only |  |
@@ -191,5 +189,15 @@ The gene expression levels in each boxplot are also summarized in a table that c
 | tpmMedian | Median of TPM values. |
 | tpm75thPercentile | 75th percentile of TPM values. |
 | tpmMax | Maximum TPM value. |
+
+### Data_Availability
+
+#### Harmonized Data Download
+
+For completely publically available harmonized data, please see the instructions for data download at the OpenPedCan-analysis repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data>
+
+#### Raw Data Access
+
+Have to apply for access through GDC?
 
 <br><br>
