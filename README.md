@@ -22,7 +22,7 @@ For expanded descriptions of the datasets, please see the About page on the Mole
 
 ---
 
-## Somatic_Alterations
+## DNA_Sequencing
 
 ### Data Processing
 
