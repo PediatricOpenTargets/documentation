@@ -7,7 +7,7 @@ Under Development:
 - Methylation
 - Tumor Mutation Burden in DNA Sequencing/Small Variants
 - Incorporating RNA isoform level data in addition to gene-level data
-- DGD panel data both SNVs and fusions
+- CHOP DGD panel data for SNVs and fusions
 - TCGA RNA-seq
 
 ---
