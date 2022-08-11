@@ -1,6 +1,6 @@
-# Molecular Targets Platform v10 Documentation
+# Molecular Targets Platform Documentation
 
-The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see <https://moleculartargets.ccdi.cancer.gov/about>.
+The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself, see <https://moleculartargets.ccdi.cancer.gov/about>. Please note that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents.
 
 #### Contents
 - [Datasets](#datasets)
