@@ -7,7 +7,7 @@ To see the documentation for the most current public release, please see <https:
 Under Development:
 
 - Methylation
-- Tumor Mutation Burden located in the DNA Sequencing > Small Variants section
+- Tumor Mutation Burden located in the [DNA Sequencing](#DNA_Sequencing)
 - Incorporating RNA isoform level data in addition to gene-level data
 - CHOP DGD/P30 panel data for SNVs and fusions
 - TCGA RNA-seq
@@ -15,7 +15,7 @@ Under Development:
 ---
 
 The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. 
-This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see <https://moleculartargets.ccdi.cancer.gov/>.
+This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see <https://moleculartargets.ccdi.cancer.gov/about>.
 
 ---
 
@@ -42,11 +42,11 @@ As the project is ongoing, more data will continue to be added, but this current
 | PBTA | 4,164 |
 | TARGET | 5,252 |
 | GMKF | 881 |
-| CHOP P30 | 1,799 |
+| DGD | 1,799 |
 | GTEx | 17,382 |
 | TCGA | 10,414 |
 
-For expanded descriptions of the datasets, please see the About page on the Molecular Targets Platform **LINK TO ABOUT DATA SECTION ON SITE**.
+For expanded descriptions of the datasets, please see the About page on the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/about>.
 
 ---
 
