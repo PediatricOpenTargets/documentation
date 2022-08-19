@@ -12,7 +12,8 @@ Under Development:
 
 ---
 
-The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform **LINK TO SITE HOME** in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see **LINK TO ABOUT PAGE**.
+The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. 
+This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see <https://moleculartargets.ccdi.cancer.gov/>.
 
 ---
 
@@ -29,7 +30,10 @@ For documentation on previous versions of the Molecular Targets Platform, please
 
 ## Datasets
 
-While adult pan-cancer repositories have existed and accelerated cancer research for a decade, pediatrics cancers have been excluded, despite having different genetic and molecular etiologies than adult cancers. Over the past few years larger pediatric consortia, both disease-specific and pan-cancer, have tried to address this disparity. The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. As the project is ongoing, more data will continue to be added, but this current release includes **XXX** pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
+While adult pan-cancer repositories have existed and accelerated cancer research for a decade, pediatrics cancers have been excluded, despite having different genetic and molecular etiologies than adult cancers. 
+Over the past few years larger pediatric consortia, both disease-specific and pan-cancer, have tried to address this disparity. 
+The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. 
+As the project is ongoing, more data will continue to be added, but this current release includes **XXX** pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
 
 | Dataset | Number of Samples |
 | --- | --- |
@@ -50,11 +54,25 @@ For expanded descriptions of the datasets, please see the About page on the Mole
 
 #### DNA-seq Alignment and Haplotype Calling Workflow
 
-For both whole genome, whole exome, and targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). Variants are called using GATK4 HaplotypeCaller. For more details on the alignment or to run the CAVATICA app yourself, see the GitHub release at [Kid's First Alignment and Haplotype Calling Workflow](https://github.com/kids-first/kf-alignment-workflow) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
+For both whole genome, whole exome, and targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
+The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. 
+Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. 
+For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). 
+Variants are called using GATK4 HaplotypeCaller. 
+For more details on the alignment or to run the CAVATICA app yourself, see the GitHub release at [Kid's First Alignment and Haplotype Calling Workflow](https://github.com/kids-first/kf-alignment-workflow) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
+Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
 #### Somatic Variant Calling
 
-Small variants are called using multiple tools: Strelka2 for single nucleotide variants (SNVs) and small insertions/deletions (INDELs), GATK Mutect2 for SNVs, multinucleotide variants greater than 1bp in length (MNVs) and INDELs, Lancet for SNVs, MNVs, and INDELs, and VarDict Java which calls SNVs, MNVs, INDELs and more. Larger copy number variants are also called using multiple tools as well: ControlFreeC, CNVkit and GATK CNV. CNVkit calls are adjusted for purity estimations using THeTa2. Manta is also used to determine structural variants (SVs) and INDELs. All calls are made using GRCh38 references and variants are then annotated using gnomAD and for cancer hot spots. Publicly available files are further subjected to “germline masking,” which removes low frequency variants that could be used to identify the sample donor. For more details see the GitHub release at [Kid's First Somatic Variant Workflow](https://github.com/kids-first/kf-somatic-workflow) or to run the pipeline see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-somatic-variant-workflow). Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. **Panel data (DGD) was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.**
+Small variants are called using multiple tools: Strelka2 for single nucleotide variants (SNVs) and small insertions/deletions (INDELs), GATK Mutect2 for SNVs, multinucleotide variants greater than 1bp in length (MNVs) and INDELs, Lancet for SNVs, MNVs, and INDELs, and VarDict Java which calls SNVs, MNVs, INDELs and more. 
+Larger copy number variants are also called using multiple tools as well: ControlFreeC, CNVkit and GATK CNV. 
+CNVkit calls are adjusted for purity estimations using THeTa2. 
+Manta is also used to determine structural variants (SVs) and INDELs. 
+All calls are made using GRCh38 references and variants are then annotated using gnomAD and for cancer hot spots. 
+Publicly available files are further subjected to “germline masking,” which removes low frequency variants that could be used to identify the sample donor. 
+For more details see the GitHub release at [Kid's First Somatic Variant Workflow](https://github.com/kids-first/kf-somatic-workflow) or to run the pipeline see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-somatic-variant-workflow). 
+Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
+**Panel data (DGD) was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.**
 
 ### Somatic Alteration Data
 
@@ -62,7 +80,18 @@ Small variants are called using multiple tools: Strelka2 for single nucleotide v
 
 Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. Using custom R scripts, a consensus SNV file was constructed, consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java. See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details. **Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
 
-A unique variant id consisting of the hg38 coordinates and the reference and alternative alleles was created for consistency. Then several variant frequencies were calculated for each of those IDs within each cancer group and cohort. The frequency in the overall dataset, for each unique variant and gene, is the percentage of patients that have that variant or gene in the given cohort out of all patients in that cohort. The frequency in primary or relapse tumors, for each unique variant and gene, is the percentage of samples that have that variant or gene in the given cohort out of all samples in that cohort. Note that the frequencies and counts may not tally as expected for several reasons. First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. **Third, DGD panel sample data is not included in the all cohorts calculation.** Last, some patients or samples are included in multiple cohorts and may be counted multiple times. See [SNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts and see [see the hotspot detection documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/hotspots-detection) for how SNV hotspots were called. Summarized tables are returned in response to queries on the Molecular Targets Platform (as described below). If you follow the links to Pediatric cBioPortal, sample-level data is available to view in the OncoPrint and Mutation tabs there as well as to download.
+A unique variant id consisting of the hg38 coordinates and the reference and alternative alleles was created for consistency. 
+Then several variant frequencies were calculated for each of those IDs within each cancer group and cohort. 
+The frequency in the overall dataset, for each unique variant and gene, is the percentage of patients that have that variant or gene in the given cohort out of all patients in that cohort. 
+The frequency in primary or relapse tumors, for each unique variant and gene, is the percentage of samples that have that variant or gene in the given cohort out of all samples in that cohort. 
+Note that the frequencies and counts may not tally as expected for several reasons. 
+First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. 
+Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. 
+**Third, panel sample data is not included in the all cohorts calculation.** 
+Last, some patients or samples are included in multiple cohorts and may be counted multiple times. 
+See [SNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts and see [see the hotspot detection documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/hotspots-detection) for how SNV hotspots were called. 
+Summarized tables are returned in response to queries on the Molecular Targets Platform (as described below). 
+If you follow the links to Pediatric cBioPortal, sample-level data is available to view in the OncoPrint and Mutation tabs there as well as to download.
 
 <br>
 
@@ -148,13 +177,28 @@ Description of table available for download with figure. See RNA-seq expression 
 
 ### Data Processing
 
-The RNA-seq Alignment Workflow begins by trimming adapters, only if adapters are provided, using Cutadapt. Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). Reads were then aligned using STAR in two-pass mode to reference genome GRCh38. While all MTP data is paired-end, methods are provided for single-end alignment if you are interested in processing your data in the same manner. Transcripts are quantified using RSEM **at both the gene and isoform level WILL NEED TO ADD TINY BIT OF QUALIFYING DETAIL IN DATA SECTION IF WE START RETURNING ISOFORMS ON THE WEBSITE** with the GENCODE v27 annotation, except for the GTEx samples which were not re-processed and are annotated using GENCODE v26. Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. QC metrics for the alignment are summarized using RNA-seQC. If you would like to view the code in more detail, please see the GitHub release [Kids First RNA-seq Workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. **Data from the Cancer Genome Atlas (TCGA) was imported from the platform and not reprocessed.**
+The RNA-seq Alignment Workflow begins by trimming adapters, only if adapters are provided, using Cutadapt. 
+Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. 
+For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). 
+Reads were then aligned using STAR in two-pass mode to reference genome GRCh38. While all MTP data is paired-end, methods are provided for single-end alignment if you are interested in processing your data in the same manner. 
+Transcripts are quantified using RSEM **at both the gene and isoform level WILL NEED TO ADD TINY BIT OF QUALIFYING DETAIL IN DATA SECTION IF WE START RETURNING ISOFORMS ON THE WEBSITE** with the GENCODE v27 annotation, except for the GTEx samples which were not re-processed and are annotated using GENCODE v26. 
+Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. 
+QC metrics for the alignment are summarized using RNA-seQC. 
+If you would like to view the code in more detail, please see the GitHub release [Kids First RNA-seq Workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
+Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
+**Data from The Cancer Genome Atlas (TCGA) was imported from the platform and not reprocessed.**
 
 ### RNA Sequencing Data
 
 #### Fusions
 
-Gene fusions are called solely from RNA sequencing using the programs above. Fusions are filtered using custom R scripts. Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. **Fusions panels (DGD) were not reprocessed and were merged with our harmonized fusion calls.** Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. Summary frequencies are calculated using R. See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
+Gene fusions are called solely from RNA sequencing using the programs above. 
+Fusions are filtered using custom R scripts. 
+Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. 
+**Fusions panels were not reprocessed and were merged with our harmonized fusion calls.** 
+Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. 
+Summary frequencies are calculated using R. 
+See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
 
 <br>
 
@@ -191,7 +235,10 @@ The following table gives the a description of the fields and corresponding valu
 
 ### Gene Expression
 
-TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. Please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6) for more details. Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. **TPMs from the Cancer Genome Atlas (TCGA) were pulled directly from that platform and were not recalculated.**
+TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. 
+Please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6) for more details. 
+Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
+**TPMs from The Cancer Genome Atlas (TCGA) were pulled directly from that platform and were not recalculated.**
 
 #### OpenPedCan Gene Expression Boxplot
 
@@ -235,7 +282,10 @@ The gene expression levels in each boxplot are also summarized in a table that c
 
 #### Methylation Arrays
 
-Methylation arrays are aggregated from multiple independent projects, so samples have been measured using either 27K, 450K, or 850K Illumina Infinium HumanMethylation BeadChips or Roche Nimblegen HELP microarrays. All Illumina arrays were reprocessed by cancer group from signal intensities to methylation values in R using the minfi Bioconductor package with default arguments. Only probes with gene annotations from Illumina were retained. The TARGET Acute Lymphoblastic Leukemia (ALL) samples were measured using a different platform, the Roche Nimblegen HELP array, so they were not reprocessed. Please see the [OpenPedCan-analysis methylation preprocessing documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-preprocessing) for more details.
+Methylation arrays are aggregated from multiple independent projects, so samples have been measured using either 27K, 450K, or 850K Illumina Infinium HumanMethylation BeadChips or Roche Nimblegen HELP microarrays. 
+All Illumina arrays were reprocessed by cancer group from signal intensities to methylation values in R using the minfi Bioconductor package with default arguments. Only probes with gene annotations from Illumina were retained. 
+The TARGET Acute Lymphoblastic Leukemia (ALL) samples were measured using a different platform, the Roche Nimblegen HELP array, so they were not reprocessed. 
+Please see the [OpenPedCan-analysis methylation preprocessing documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-preprocessing) for more details.
 
 ### Methylation Data
 
