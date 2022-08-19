@@ -42,7 +42,7 @@ As the project is ongoing, more data will continue to be added, but this current
 | PBTA | 4,164 |
 | TARGET | 5,252 |
 | GMKF | 881 |
-| DGD | 1,799 |
+| DGD (CHOP P30 panel) | 1,799 |
 | GTEx | 17,382 |
 | TCGA | 10,414 |
 
