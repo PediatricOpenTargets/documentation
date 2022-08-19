@@ -1,13 +1,15 @@
 # Molecular Targets Platform Dev Documentation 
 
-**WARNING:** This is the documentation for the **development** version of the Open Pediatric Cancer and Molecular Target Projects. Not everything discussed in this document may be currently or ever available to the public and there is no guarantee of release for anything under development. To see the documentation for the most current public release, please see <https://github.com/PediatricOpenTargets/documentation>.
+**WARNING:** This is the documentation for the **development** version of the Open Pediatric Cancer and Molecular Target Projects. 
+Not everything discussed in this document may be currently or ever available to the public and there is no guarantee of release for anything under development. 
+To see the documentation for the most current public release, please see <https://github.com/PediatricOpenTargets/documentation>.
 
 Under Development:
 
 - Methylation
-- Tumor Mutation Burden in DNA Sequencing/Small Variants
+- Tumor Mutation Burden located in the DNA Sequencing > Small Variants section
 - Incorporating RNA isoform level data in addition to gene-level data
-- CHOP DGD panel data for SNVs and fusions
+- CHOP DGD/P30 panel data for SNVs and fusions
 - TCGA RNA-seq
 
 ---
@@ -40,7 +42,7 @@ As the project is ongoing, more data will continue to be added, but this current
 | PBTA | 4,164 |
 | TARGET | 5,252 |
 | GMKF | 881 |
-| DGD | 1,799 |
+| CHOP P30 | 1,799 |
 | GTEx | 17,382 |
 | TCGA | 10,414 |
 
@@ -78,7 +80,10 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 #### Small Variants
 
-Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. Using custom R scripts, a consensus SNV file was constructed, consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java. See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details. **Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
+Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. Using custom R scripts, a consensus SNV file was constructed, consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java. 
+See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. 
+Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details. 
+**Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
 
 A unique variant id consisting of the hg38 coordinates and the reference and alternative alleles was created for consistency. 
 Then several variant frequencies were calculated for each of those IDs within each cancer group and cohort. 
@@ -130,9 +135,20 @@ The following table gives the a description of the fields and corresponding valu
 
 #### Copy Number Variants (CNVs)
 
-Multiple callers were used to determine copy number variants (CNVs). A consensus CNV file was constructed, consisting of CNVs that were called by 2 or more copy number callers: ControlFreeC, CNVkit, and GATK CNV. See https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md for more detail on how the calls were combined. The various nomenclatures used by the different callers are harmonized to standard descriptions of CNVs: deep deletion for when copy number equals zero, loss for when copy number is less than ploidy, neutral if copy number is the same as the genome copy number (cancer genomes may have a ploidy other than two), gain for up to two times ploidy, and amplification for a gain of more than two times ploidy. Copy number variants were retained only if they overlapped by at least 1 base pair with a gene’s exon. Further annotations, including alternative gene and protein IDs and cancer references, were also added.
+Multiple callers were used to determine copy number variants (CNVs). 
+A consensus CNV file was constructed, consisting of CNVs that were called by 2 or more copy number callers: ControlFreeC, CNVkit, and GATK CNV. 
+See https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md for more detail on how the calls were combined. 
+The various nomenclatures used by the different callers are harmonized to standard descriptions of CNVs: deep deletion for when copy number equals zero, loss for when copy number is less than ploidy, neutral if copy number is the same as the genome copy number (cancer genomes may have a ploidy other than two), gain for up to two times ploidy, and amplification for a gain of more than two times ploidy. 
+Copy number variants were retained only if they overlapped by at least 1 base pair with a gene’s exon. 
+Further annotations, including alternative gene and protein IDs and cancer references, were also added.
 
-Then several variant frequencies were calculated for each of those genes within each cancer group and cohort. The frequency in the overall dataset is the percentage of patients that have that a CNV affecting that gene in the given cohort out of all patients in that cohort. The frequency in primary or relapse tumors is the percentage of samples that that have that a CNV affecting that gene in the given cohort out of all samples in that cohort. Note that the frequencies and counts may not tally as expected for several reasons. First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. Last, some patients or samples are included in multiple cohorts and may be counted multiple times. See [the CNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/cnv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts.
+Then several variant frequencies were calculated for each of those genes within each cancer group and cohort. 
+The frequency in the overall dataset is the percentage of patients that have that a CNV affecting that gene in the given cohort out of all patients in that cohort. 
+The frequency in primary or relapse tumors is the percentage of samples that that have that a CNV affecting that gene in the given cohort out of all samples in that cohort. 
+Note that the frequencies and counts may not tally as expected for several reasons. 
+First, the total
+ columns use unique patients, while the primary/relapse tumor columns use unique samples. Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. 
+Last, some patients or samples are included in multiple cohorts and may be counted multiple times. See [the CNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/cnv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts.
 
 <br>
 
@@ -242,7 +258,12 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 #### OpenPedCan Gene Expression Boxplot
 
-OpenPedCan gene expression boxplot (**Figure 1**) summarizes the expression levels of a gene in multiple cancer and normal tissue types. The plotted gene expression levels are obtained from the bulk-tissue RNA-seq data in OpenPedCan-analysis release. In an OpenPedCan gene expression boxplot, each box summarizes the expression levels of a cancer or normal tissue type. The x-axis label of each box lists the corresponding cancer or normal tissue type, dataset, biospecimen type, and total number of samples. The y-axis value corresponds to gene expression level in the unit of transcript per million (TPM). The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the "Linear" (default) or "Log10" tab on the top left side of the boxplot.
+OpenPedCan gene expression boxplot (**Figure 1**) summarizes the expression levels of a gene in multiple cancer and normal tissue types. 
+The plotted gene expression levels are obtained from the bulk-tissue RNA-seq data in OpenPedCan-analysis release. 
+In an OpenPedCan gene expression boxplot, each box summarizes the expression levels of a cancer or normal tissue type. 
+The x-axis label of each box lists the corresponding cancer or normal tissue type, dataset, biospecimen type, and total number of samples. 
+The y-axis value corresponds to gene expression level in the unit of transcript per million (TPM). 
+The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the "Linear" (default) or "Log10" tab on the top left side of the boxplot.
 
 ![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](gene_expression_boxplot.png)
 
@@ -250,7 +271,8 @@ OpenPedCan gene expression boxplot (**Figure 1**) summarizes the expression leve
 
 The OpenPedCan gene expression boxplot widget on Molecular Targets Platform (MTP) “Evidence” and “Gene symbol” pages plots different sets of cancer and normal tissue types. On an MTP “Evidence” page, the widget plots all cancer types that have the same Experimental Factor Ontology (EFO) ID as the page and all normal tissue types. On an MTP “Gene symbol” page, the widget plots all cancer types.
 
-The gene expression levels in each boxplot are also summarized in a table that can be downloaded in different formats for further analysis, by clicking the "JSON", "CSV", or "TSV" button on the top right side of the boxplot. In the summary table, each box in the boxplot is summarized in a row with the following columns:
+The gene expression levels in each boxplot are also summarized in a table that can be downloaded in different formats for further analysis, by clicking the "JSON", "CSV", or "TSV" button on the top right side of the boxplot. 
+In the summary table, each box in the boxplot is summarized in a row with the following columns:
 
 | Column name | Column description |
 | --- | --- |
