@@ -1,0 +1,3 @@
+[submodule "OpenPedCan-analysis"]
+	path = OpenPedCan-analysis
+	url = https://github.com/PediatricOpenTargets/OpenPedCan-analysis.git
