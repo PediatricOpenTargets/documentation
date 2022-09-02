@@ -1,2 +1,6 @@
 ### files to ignore
 .DS_Store
+
+### ignore submodule, want to update its commit only when
+### there's a new MTP website release
+OpenPedCan-analysis/

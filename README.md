@@ -8,14 +8,14 @@ The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Datasets](#datasets)
-- [DNA_Sequencing](#dna_sequencing)
+- [DNA Sequencing](#dna-sequencing)
   - [Data Processing](#data-processing)
     - [DNA-seq Alignment and Haplotype Calling Workflow](#dna-seq-alignment-and-haplotype-calling-workflow)
     - [Somatic Variant Calling](#somatic-variant-calling)
   - [Somatic Alteration Data](#somatic-alteration-data)
     - [Small Variants](#small-variants)
     - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
-- [RNA_Sequencing](#rna_sequencing)
+- [RNA Sequencing](#rna-sequencing)
   - [Data Processing](#data-processing-1)
   - [RNA Sequencing Data](#rna-sequencing-data)
     - [Fusions](#fusions)
@@ -34,7 +34,7 @@ For expanded descriptions of the datasets, please see the Pediatric Cancer Data 
 
 ---
 
-## DNA_Sequencing
+## DNA Sequencing
 
 ### Data Processing
 
@@ -120,7 +120,7 @@ The following table gives the a description of the fields and corresponding valu
 
 ---
 
-## RNA_Sequencing
+## RNA Sequencing
 
 ### Data Processing
 
