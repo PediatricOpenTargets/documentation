@@ -1,34 +1,28 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Molecular Targets Platform Documentation](#molecular-targets-platform-documentation)
-      - [Contents](#contents)
-  - [Datasets](#datasets)
-  - [DNA_Sequencing](#dna_sequencing)
-    - [Data Processing](#data-processing)
-      - [DNA-seq Alignment and Haplotype Calling Workflow](#dna-seq-alignment-and-haplotype-calling-workflow)
-      - [Somatic Variant Calling](#somatic-variant-calling)
-    - [Somatic Alteration Data](#somatic-alteration-data)
-      - [Small Variants](#small-variants)
-      - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
-  - [RNA_Sequencing](#rna_sequencing)
-    - [Data Processing](#data-processing-1)
-    - [RNA Sequencing Data](#rna-sequencing-data)
-      - [Fusions](#fusions)
-      - [Gene Expression](#gene-expression)
-      - [OpenPedCan Gene Expression Boxplot](#openpedcan-gene-expression-boxplot)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Molecular Targets Platform Documentation
 
 The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself, see <https://moleculartargets.ccdi.cancer.gov/about>. Please note that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents.
 
 #### Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [Datasets](#datasets)
-- [DNA Sequencing](#DNA_Sequencing)
-- [RNA Sequencing](#RNA_Sequencing)
+- [DNA_Sequencing](#dna_sequencing)
+  - [Data Processing](#data-processing)
+    - [DNA-seq Alignment and Haplotype Calling Workflow](#dna-seq-alignment-and-haplotype-calling-workflow)
+    - [Somatic Variant Calling](#somatic-variant-calling)
+  - [Somatic Alteration Data](#somatic-alteration-data)
+    - [Small Variants](#small-variants)
+    - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
+- [RNA_Sequencing](#rna_sequencing)
+  - [Data Processing](#data-processing-1)
+  - [RNA Sequencing Data](#rna-sequencing-data)
+    - [Fusions](#fusions)
+    - [Gene Expression](#gene-expression)
+    - [OpenPedCan Gene Expression Boxplot](#openpedcan-gene-expression-boxplot)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Datasets
 
