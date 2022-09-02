@@ -1,0 +1,73 @@
+---
+title: ""
+output: html_document
+date: '2022-03-25'
+---
+
+```{r setup, include=FALSE}
+### essential libraries
+`%$%` <- magrittr::`%$%`
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Make Tables For MTP Documentation
+
+In the Pediatric Molecular Open Targets high-level documentation <https://github.com/PediatricOpenTargets/documentation>, we have a table with the number of samples per cohort for the Datasets section.
+
+**Data Retrieval:** In order to get the most up-to-date versions of the data tables, you need to clone the OpenPedCan-analysis GitHub repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis> and run the script `download-data.bash` to retrieve the latest data tables. There are more detailed instructions in the repository's README. The code in this document assumes that the OpenPedCan-analysis repository is downloaded locally and you would replace my local path `../../OpenPedCan-analysis` with your path to the repository.
+
+<br><br>
+
+### Cohort Sample Counts
+
+We want to have a downloadable table with the number of subjects with each type of data in each cohort in each disease. Very simple counting and then cleanup of missing data.
+
+---
+
+Read in table. 
+
+```{r}
+vroom::vroom('../../OpenPedCan-analysis_FORK/data/v11/histologies.tsv') -> histologies
+```
+
+Count the number of subjects/participants per diease per sequencing type (aka experimental strategy) per cohort
+
+```{r}
+histologies %>%
+# get unique combinations of patients, cohorts, types of data (experimental_strategy), 
+# and diseases (cancer_group)
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+           cohort, experimental_strategy, cancer_group) %>% 
+  count(cancer_group, cohort, experimental_strategy) %>% 
+# sort for nice viewing on GitHub if people just want to look at the table
+  arrange(cancer_group, cohort, experimental_strategy) %>%
+# Clean up missing diseases; if the cohort is a disease cohort and cancer_group is NA
+# that means the histology/disease hasn't been assigned and if it's GTEx or other
+# healthy controls, there's no disease given in cancer_group because they're healthy
+  mutate(cancer_group = case_when(cohort != 'GTEx' & is.na(cancer_group) ~ 'Undetermined',
+                                  cohort == 'GTEx' & is.na(cancer_group) ~ 'Adult healthy controls',
+                                  TRUE ~ cancer_group),
+         cohort = ifelse(is.na(cohort) & experimental_strategy == 'Targeted Sequencing', 
+                         'DGD', cohort)) %>%
+# rename columns to be in line with the language used in the general MTP documentation
+  select(disease = cancer_group, cohort, experimental_strategy,
+         number_samples = n ) -> disease_subject_counts
+```
+
+Save one folder up since the `disease_subject_counts` table will be made available for download.
+
+```{r}
+# write_tsv(disease_subject_counts, '../disease_subject_counts.tsv')
+```
+
+Finally make a little table with the number of samples in each cohort/dataset for the dataset section. This was entered into Notion and then copy/pasted into the README
+
+```{r}
+histologies %>% 
+  count(cohort)
+```
+
+<br><br>
+
