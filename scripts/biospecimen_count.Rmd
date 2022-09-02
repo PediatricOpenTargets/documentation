@@ -1,72 +1,193 @@
 ---
 title: ""
 output: html_document
+author: Kelsey Keith
 date: '2022-03-25'
 ---
 
 ```{r setup, include=FALSE}
 ### essential libraries
-`%$%` <- magrittr::`%$%`
-library(tidyverse)
+library(magrittr)
+library(dplyr)
+library(readr)
+library(gt)
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Make Tables For MTP Documentation
+## Count Biospecimens 
 
-In the Pediatric Molecular Open Targets high-level documentation <https://github.com/PediatricOpenTargets/documentation>, we have a table with the number of samples per cohort for the Datasets section.
+In the Pediatric Molecular Open Targets high-level documentation <https://github.com/PediatricOpenTargets/documentation>, we have a table with the number of samples per cohort for the Datasets section so that people are aware of the general number of samples they can access. Data can be accessed through the `OpenPedCan-analysis` repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis>, although for privacy reasons not all data, especially raw data is accessible publically. This script calculates and outputs the table.
 
-**Data Retrieval:** In order to get the most up-to-date versions of the data tables, you need to clone the OpenPedCan-analysis GitHub repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis> and run the script `download-data.bash` to retrieve the latest data tables. There are more detailed instructions in the repository's README. The code in this document assumes that the OpenPedCan-analysis repository is downloaded locally and you would replace my local path `../../OpenPedCan-analysis` with your path to the repository.
+<br>
+
+#### Install Required Packages
+
+If you don't have all the packages listed below, please uncomment `install.packages()` in the chunk below and install them.
+
+```{r}
+# install.packages(c('magrittr', 'dplyr', 'readr', 'gt', 'webshot2'))
+```
+
+<br>
+
+#### Data Retrieval 
+
+The `OpenPedCan-analysis` repository is a submodule of this repository; git submodules allow you to reference other git projects while still keeping them separate. In order to run this script, you first need to make sure the submodule is set up and the data is downloaded within it. 
+
+1. First, clone this repository
+
+```{bash, eval = F}
+git clone https://github.com/PediatricOpenTargets/documentation
+```
+
+2. When a repository with a submodule is cloned, the information inside the submodule does not come with it. Each user must initialize and update the submodule individually.
+
+```{bash, eval = F}
+cd documentation
+git submodule init
+git submodule update
+```
+
+3. Finally, the `OpenPedCan-analysis` repository does not contain all the data within it, as it is too large to be stored on GitHub. However, it provides a script with which to download the data, which you can read more about [here](https://github.com/PediatricOpenTargets/OpenPedCan-analysis#data-access-via-download-script). Run the `download-data.sh` script to download the data needed to run this script.
+
+```{bash, eval = F}
+cd OpenPedCan-analysis
+bash download-data.sh
+```
 
 <br><br>
 
-### Cohort Sample Counts
+### Calculate Biospecimen Count Table
 
-We want to have a downloadable table with the number of subjects with each type of data in each cohort in each disease. Very simple counting and then cleanup of missing data.
+We want to have a table to display in the README with the number of biospecimens used on the Pediatric Molecular Targets site and that may potentially be available for researchers for further use.
 
 ---
 
-Read in table. 
+#### Read In Data
+
+Read in tables. The file `histologies.tsv` contains the cancer assignment for each biospecimen in the `cancer_group` column. Some participants have more than one biospecimen, but since many analyses require that all samples be independent, for participants with multiple samples, a single sample has been selected. The `independent-specimen` lists specify the selected sample for all participants. You can read more about the logica and selection process behind the `independent-specimen` lists [here](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/independent-samples).
 
 ```{r}
-vroom::vroom('../../OpenPedCan-analysis_FORK/data/v11/histologies.tsv') -> histologies
+### sample metadata file, including the cancer_group
+read_tsv('../OpenPedCan-analysis/data/histologies.tsv') -> histologies
+
+### independent specimen lists
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseq.primary.eachcohort.tsv') -> rna_primary
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseq.relapse.eachcohort.tsv') -> rna_relapse
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.primary.eachcohort.prefer.wxs.tsv') -> dna_primary
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wxs.tsv') -> dna_relapse
 ```
 
-Count the number of subjects/participants per diease per sequencing type (aka experimental strategy) per cohort
+<br>
+
+#### Count DNA Biospecimens
+
+Count the number of biospecimens per diease per sequencing type (aka experimental strategy) per cohort
 
 ```{r}
-histologies %>%
-# get unique combinations of patients, cohorts, types of data (experimental_strategy), 
-# and diseases (cancer_group)
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
-           cohort, experimental_strategy, cancer_group) %>% 
-  count(cancer_group, cohort, experimental_strategy) %>% 
-# sort for nice viewing on GitHub if people just want to look at the table
-  arrange(cancer_group, cohort, experimental_strategy) %>%
-# Clean up missing diseases; if the cohort is a disease cohort and cancer_group is NA
-# that means the histology/disease hasn't been assigned and if it's GTEx or other
-# healthy controls, there's no disease given in cancer_group because they're healthy
-  mutate(cancer_group = case_when(cohort != 'GTEx' & is.na(cancer_group) ~ 'Undetermined',
-                                  cohort == 'GTEx' & is.na(cancer_group) ~ 'Adult healthy controls',
-                                  TRUE ~ cancer_group),
-         cohort = ifelse(is.na(cohort) & experimental_strategy == 'Targeted Sequencing', 
-                         'DGD', cohort)) %>%
-# rename columns to be in line with the language used in the general MTP documentation
-  select(disease = cancer_group, cohort, experimental_strategy,
-         number_samples = n ) -> disease_subject_counts
-```
-
-Save one folder up since the `disease_subject_counts` table will be made available for download.
-
-```{r}
-# write_tsv(disease_subject_counts, '../disease_subject_counts.tsv')
-```
-
-Finally make a little table with the number of samples in each cohort/dataset for the dataset section. This was entered into Notion and then copy/pasted into the README
-
-```{r}
+### Count DNA samples
 histologies %>% 
-  count(cohort)
+# get unique combinations of patients, cohorts, diseases (cancer_group), 
+# types of data (experimental_strategy), and tumor descriptions
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
+  inner_join(rbind(dna_primary, dna_relapse)) %>%
+# add stage column to specify whether the tumor is primary or relapse in keeping
+# with the language on the Pediatric Molecular Targets site
+  mutate(stage = case_when(tumor_descriptor %in% 
+                             unique(dna_primary$tumor_descriptor) ~ 'primary',
+                           tumor_descriptor %in% 
+                             unique(dna_relapse$tumor_descriptor) ~ 'relapse',
+                           TRUE ~ NA_character_),
+# Don't distinguish different sequencing methods on the Pediatric Molecular 
+# Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
+# samples as DNA
+         sequencing_type = 'DNA') %>% 
+  count(cohort, stage, sequencing_type) -> dna_counts
+```
+
+Check that there is no missing information (`NA`) in the DNA count table.
+
+```{r}
+if ( any(is.na(dna_counts$stage)) ) {
+  warning('Missing stage information, is.na(dna_counts$stage) is true.')
+} else if ( any(is.na(dna_counts$sequencing_type)) ) {
+  warning('Missing sequencing type information, is.na(dna_counts$sequencing_type) is true.')
+} else if ( any(is.na(dna_counts$n)) ) {
+  warning('Missing biospecimen count information, is.na(dna_counts$n) is true.')
+} 
+```
+
+<br>
+
+#### Count RNA Biospecimens
+
+Count the number of biospecimens per diease per sequencing type (aka experimental strategy) per cohort
+
+```{r}
+### Count DNA samples
+histologies %>% 
+# get unique combinations of patients, cohorts, diseases (cancer_group), 
+# types of data (experimental_strategy), and tumor descriptions
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
+  inner_join(rbind(rna_primary, rna_relapse)) %>% 
+# add stage column to specify whether the tumor is primary or relapse in keeping
+# with the language on the Pediatric Molecular Targets site
+  mutate(stage = case_when(tumor_descriptor %in% 
+                             unique(dna_primary$tumor_descriptor) ~ 'primary',
+                           tumor_descriptor %in% 
+                             unique(dna_relapse$tumor_descriptor) ~ 'relapse',
+                           TRUE ~ NA_character_),
+# Don't distinguish different sequencing methods on the Pediatric Molecular 
+# Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
+# samples as DNA
+         sequencing_type = 'RNA') %>% 
+  count(cohort, stage, sequencing_type) -> rna_counts
+```
+
+Check that there is no missing information (`NA`) in the RNA count table.
+
+```{r}
+if ( any(is.na(rna_counts$stage)) ) {
+  warning('Missing stage information, is.na(rna_counts$stage) is true.')
+} else if ( any(is.na(rna_counts$sequencing_type)) ) {
+  warning('Missing sequencing type information, is.na(rna_counts$sequencing_type) is true.')
+} else if ( any(is.na(rna_counts$n)) ) {
+  warning('Missing biospecimen count information, is.na(rna_counts$n) is true.')
+} 
+```
+
+<br>
+
+#### Combine Count Tables
+
+Combine the count tables, organize them for display, and save.
+
+---
+
+Troubleshooting: If you get a Google Chrome timeout error, please knit the document again and it should be resolved.
+
+```{r}
+rbind(dna_counts, rna_counts)  %>%
+# change names to be in line with the language on the Pediatric Molecular Targets
+# website
+  select(Dataset = cohort, `Sequencing Type` = sequencing_type,
+        `Tumor Stage` = stage, `Number of Biospecimens` = n) %>%
+  arrange(Dataset, `Sequencing Type`, `Tumor Stage`) %>%
+# TCGA relapse biospecimens are not currently being used, so filter out
+  filter(!(Dataset == 'TCGA' & `Tumor Stage` == 'relapse'))-> counts
+
+# save as a plain text table
+write_csv(counts, 'biospecimen_counts.csv')
+
+# save a pretty formatted table as an image so it can be automatically plugged 
+# into the main repository README
+counts %>%
+  gt(rowname_col = F) %>% 
+  opt_row_striping() %>%
+  gtsave('../figures/biospecimen_counts.png')
 ```
 
 <br><br>
