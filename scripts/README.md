@@ -14,7 +14,21 @@ Author: Kelsey Keith ([@kelseykeith]())
 
 In the Pediatric Molecular Open Targets high-level documentation, the main README of this repository, we have a table with the number of samples per cohort for the Datasets section so that people are aware of the general number of samples they can access. The script `biospecimen_count.Rmd` calculates and outputs the table.
 
-Data can be accessed through the `OpenPedCan-analysis` repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis>, although for privacy reasons not all data, especially raw data is accessible publically. 
+Data can be accessed through the `OpenPedCan-analysis` repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis>, although for privacy reasons not all data, especially raw data is accessible publically.
+
+### Using the `OpenPedCan-analysis` Submodule
+
+In order to get the data in the `OpenPedCan-analysis` submodule you have to first initialize the submodule, then use the `data-download.sh` script within the submodule to fetch the data using the following commands:
+
+```
+# set up the submodule
+git submodule init
+git submodule update
+
+# change directory into the submodule and download the data
+cd OpenPedCan-analysis
+bash download-data.sh
+``` 
 
 ### Usage
 
