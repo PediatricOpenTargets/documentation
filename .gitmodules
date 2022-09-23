@@ -1,4 +1,0 @@
-[submodule "OpenPedCan-analysis"]
-	path = OpenPedCan-analysis
-	url = https://github.com/PediatricOpenTargets/OpenPedCan-analysis.git
-	branch = c0e5692e2949ad30b8e087ff0ec4e9385bde4b13
