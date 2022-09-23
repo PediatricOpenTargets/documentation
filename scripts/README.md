@@ -30,6 +30,14 @@ cd OpenPedCan-analysis
 bash download-data.sh
 ``` 
 
+#### Troubleshooting
+
+After initialization you should see the following message:
+
+```bash
+Submodule 'OpenPedCan-analysis' (https://github.com/PediatricOpenTargets/OpenPedCan-analysis.git) registered for path 'OpenPedCan-analysis'
+```
+
 ### Usage
 
 You can either open `biospecimen_count.Rmd` in Rstudio and knit it or execute it on the command line with the following command:
