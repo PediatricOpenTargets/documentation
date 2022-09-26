@@ -3,26 +3,38 @@
 The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself, see <https://moleculartargets.ccdi.cancer.gov/about>. Please note that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents.
 
 #### Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [Datasets](#datasets)
-- [DNA Sequencing](#DNA_Sequencing)
-- [RNA Sequencing](#RNA_Sequencing)
+- [DNA Sequencing](#dna-sequencing)
+  - [Data Processing](#data-processing)
+    - [DNA-seq Alignment and Haplotype Calling Workflow](#dna-seq-alignment-and-haplotype-calling-workflow)
+    - [Somatic Variant Calling](#somatic-variant-calling)
+  - [Somatic Alteration Data](#somatic-alteration-data)
+    - [Small Variants](#small-variants)
+    - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
+- [RNA Sequencing](#rna-sequencing)
+  - [Data Processing](#data-processing-1)
+  - [RNA Sequencing Data](#rna-sequencing-data)
+    - [Fusions](#fusions)
+    - [Gene Expression](#gene-expression)
+    - [OpenPedCan Gene Expression Boxplot](#openpedcan-gene-expression-boxplot)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Datasets
 
 While adult pan-cancer repositories have existed and accelerated cancer research for a decade, pediatrics cancers have been excluded, despite having different genetic and molecular etiologies than adult cancers. Over the past few years larger pediatric consortia, both disease-specific and pan-cancer, have tried to address this disparity. The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. As the project is ongoing, more data will continue to be added, but this current release includes 3 pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
 
-| Dataset | Number of Samples |
-| --- | --- |
-| PBTA | 2,984 |
-| TARGET | 4,489 |
-| GMKF | 884 |
-| GTEx | 17,382 |
+![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_counts.png)
 
 For expanded descriptions of the datasets, please see the Pediatric Cancer Data Sources on the About page on the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/about>.
 
 ---
 
-## DNA_Sequencing
+## DNA Sequencing
 
 ### Data Processing
 
@@ -108,7 +120,7 @@ The following table gives the a description of the fields and corresponding valu
 
 ---
 
-## RNA_Sequencing
+## RNA Sequencing
 
 ### Data Processing
 
@@ -161,7 +173,7 @@ TPMs (transcripts per million reads) were calculated using RSEM and plotted usin
 
 OpenPedCan gene expression boxplot (**Figure 1**) summarizes the expression levels of a gene in multiple cancer and normal tissue types. The plotted gene expression levels are obtained from the bulk-tissue RNA-seq data in OpenPedCan-analysis release. In an OpenPedCan gene expression boxplot, each box summarizes the expression levels of a cancer or normal tissue type. The x-axis label of each box lists the corresponding cancer or normal tissue type, dataset, biospecimen type, and total number of samples. The y-axis value corresponds to gene expression level in the unit of transcript per million (TPM). The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the "Linear" (default) or "Log10" tab on the top left side of the boxplot.
 
-![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](gene_expression_boxplot.png)
+![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](figures/gene_expression_boxplot.png)
 
 **Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.
 
