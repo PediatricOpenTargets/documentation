@@ -433,33 +433,33 @@ all participants. You can read more about the logica and selection
 process behind the <code>independent-specimen</code> lists <a href="https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/independent-samples">here</a>.</p>
 <pre class="r"><code>### sample metadata file, including the cancer_group
 read_tsv(&#39;../OpenPedCan-analysis/data/histologies.tsv&#39;) -&gt; histologies</code></pre>
-<pre><code>## Rows: 36150 Columns: 46
+<pre><code>## Rows: 39892 Columns: 46
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;\t&quot;
-## chr (41): Kids_First_Biospecimen_ID, sample_id, aliquot_id, Kids_First_Parti...
-## dbl  (5): OS_days, age_last_update_days, normal_fraction, tumor_fraction, tu...
+## chr (36): Kids_First_Biospecimen_ID, sample_id, aliquot_id, Kids_First_Parti...
+## dbl (10): OS_days, age_last_update_days, cns_methylation_class_score, cns_me...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>### independent specimen lists
-read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.rnaseq.primary.eachcohort.tsv&#39;) -&gt; rna_primary</code></pre>
-<pre><code>## Rows: 11036 Columns: 2
+read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.primary.eachcohort.tsv&#39;) -&gt; rna_primary</code></pre>
+<pre><code>## Rows: 11901 Columns: 6
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;\t&quot;
-## chr (2): Kids_First_Participant_ID, Kids_First_Biospecimen_ID
+## chr (6): Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, cance...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.rnaseq.relapse.eachcohort.tsv&#39;) -&gt; rna_relapse</code></pre>
-<pre><code>## Rows: 369 Columns: 2
+<pre class="r"><code>read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.relapse.eachcohort.tsv&#39;) -&gt; rna_relapse</code></pre>
+<pre><code>## Rows: 606 Columns: 6
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;\t&quot;
-## chr (2): Kids_First_Participant_ID, Kids_First_Biospecimen_ID
+## chr (6): Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, cance...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.primary.eachcohort.prefer.wxs.tsv&#39;) -&gt; dna_primary</code></pre>
-<pre><code>## Rows: 2564 Columns: 6
+<pre><code>## Rows: 3244 Columns: 6
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;\t&quot;
 ## chr (6): Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, cance...
@@ -467,7 +467,7 @@ read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.rnaseq.primary.e
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>read_tsv(&#39;../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wxs.tsv&#39;) -&gt; dna_relapse</code></pre>
-<pre><code>## Rows: 203 Columns: 6
+<pre><code>## Rows: 438 Columns: 6
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;\t&quot;
 ## chr (6): Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, cance...
@@ -486,7 +486,7 @@ histologies %&gt;%
 # types of data (experimental_strategy), and tumor descriptions
   distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %&gt;%
-  inner_join(rbind(dna_primary, dna_relapse)) %&gt;%
+  inner_join(bind_rows(dna_primary, dna_relapse)) %&gt;%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
   mutate(stage = case_when(tumor_descriptor %in% 
@@ -497,8 +497,12 @@ histologies %&gt;%
 # Don&#39;t distinguish different sequencing methods on the Pediatric Molecular 
 # Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
 # samples as DNA
-         sequencing_type = &#39;DNA&#39;) %&gt;% 
-  count(cohort, stage, sequencing_type) -&gt; dna_counts</code></pre>
+         sequencing_type = &#39;DNA&#39;,
+         experimental_strategy = ifelse(experimental_strategy %in% c(&#39;WGS&#39;, &#39;WXS&#39;),
+                                        &#39;WGS/WXS&#39;, experimental_strategy)) %&gt;% 
+  count(cohort, stage, sequencing_type, 
+        experimental_strategy, cancer_group) %&gt;%
+  filter(n &gt;= 3) -&gt; dna_counts</code></pre>
 <pre><code>## Joining, by = c(&quot;Kids_First_Biospecimen_ID&quot;, &quot;Kids_First_Participant_ID&quot;,
 ## &quot;experimental_strategy&quot;, &quot;tumor_descriptor&quot;, &quot;cohort&quot;, &quot;cancer_group&quot;)</code></pre>
 <p>Check that there is no missing information (<code>NA</code>) in the
@@ -534,8 +538,11 @@ histologies %&gt;%
 # Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
 # samples as DNA
          sequencing_type = &#39;RNA&#39;) %&gt;% 
-  count(cohort, stage, sequencing_type) -&gt; rna_counts</code></pre>
-<pre><code>## Joining, by = c(&quot;Kids_First_Biospecimen_ID&quot;, &quot;Kids_First_Participant_ID&quot;)</code></pre>
+  count(cohort, stage, sequencing_type, 
+        experimental_strategy, cancer_group) %&gt;%
+  filter(n &gt;= 3) -&gt; rna_counts</code></pre>
+<pre><code>## Joining, by = c(&quot;Kids_First_Biospecimen_ID&quot;, &quot;Kids_First_Participant_ID&quot;,
+## &quot;experimental_strategy&quot;, &quot;tumor_descriptor&quot;, &quot;cohort&quot;, &quot;cancer_group&quot;)</code></pre>
 <p>Check that there is no missing information (<code>NA</code>) in the
 RNA count table.</p>
 <pre class="r"><code>if ( any(is.na(rna_counts$stage)) ) {
@@ -547,30 +554,63 @@ RNA count table.</p>
 } </code></pre>
 <p><br></p>
 </div>
-<div id="combine-count-tables" class="section level4">
-<h4>Combine Count Tables</h4>
+</div>
+<div id="combine-count-tables" class="section level3">
+<h3>Combine Count Tables</h3>
 <p>Combine the count tables, organize them for display, and save.</p>
-<hr />
-<p>Troubleshooting: If you get a Google Chrome timeout error, please
-knit the document again and it should be resolved.</p>
-<pre class="r"><code>rbind(dna_counts, rna_counts)  %&gt;%
-# change names to be in line with the language on the Pediatric Molecular Targets
-# website
+<pre class="r"><code>rbind(dna_counts, rna_counts) %&gt;%
+# change cohort names to be in line with the language on the Pediatric 
+# Molecular Targets website
+  mutate(cohort = case_when(cohort == &#39;DGD&#39; ~ &#39;CHOP P30 Panel&#39;,
+                            cohort == &#39;TARGET&#39; &amp; 
+                              experimental_strategy == &#39;Targeted Sequencing&#39; ~ 
+                              &#39;TARGET Panel&#39;,
+                            TRUE ~ cohort)) -&gt; dataset_disease_counts</code></pre>
+<div id="per-dataset-and-disease-counts" class="section level4">
+<h4>Per Dataset and Disease Counts</h4>
+<pre class="r"><code>dataset_disease_counts %&gt;%
+# TCGA and CHOP P30 Panel data are not currently being used, so filter out
+  filter(!(cohort %in% c(&#39;CHOP P30 Panel&#39;, &#39;TCGA&#39;))) %&gt;%
+# change column names to be in line with the language on the Pediatric 
+# Molecular Targets website and retain desired columns
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
-        `Tumor Stage` = stage, `Number of Biospecimens` = n) %&gt;%
-  arrange(Dataset, `Sequencing Type`, `Tumor Stage`) %&gt;%
-# TCGA relapse biospecimens are not currently being used, so filter out
-  filter(!(Dataset == &#39;TCGA&#39; &amp; `Tumor Stage` == &#39;relapse&#39;))-&gt; counts
+        `Tumor Stage` = stage, Disease = cancer_group, 
+        `Number of Biospecimens` = n) %&gt;%
+  arrange(Dataset, Disease, `Sequencing Type`, 
+          `Tumor Stage`) -&gt; dataset_disease_counts_filtered
 
 # save as a plain text table
-write_csv(counts, &#39;biospecimen_counts.csv&#39;)
+write_csv(dataset_disease_counts_filtered, 
+          &#39;biospecimen_dataset_disease_counts.csv&#39;)</code></pre>
+</div>
+<div id="per-dataset-counts" class="section level4">
+<h4>Per Dataset Counts</h4>
+<p>Save the the per dataset counts, both as a CSV and, primarily, as an
+image to display in the repository README. Troubleshooting: If you get a
+Google Chrome timeout error, please knit the document again and it
+should be resolved.</p>
+<pre class="r"><code>dataset_disease_counts %&gt;%
+  group_by(cohort, stage, sequencing_type, experimental_strategy) %&gt;%
+  summarize(biospecimen_count = sum(n)) %&gt;%
+  ungroup() %&gt;%
+# change column names to be in line with the language on the Pediatric 
+# Molecular Targets website and retain desired columns
+  select(Dataset = cohort, `Sequencing Type` = sequencing_type,
+        `Tumor Stage` = stage, `Number of Biospecimens` = biospecimen_count) %&gt;%
+  arrange(Dataset, `Sequencing Type`, `Tumor Stage`) %&gt;%
+# TCGA and CHOP P30 Panel data are not currently being used, so filter out
+  filter(!(Dataset %in% c(&#39;TCGA&#39;, &#39;CHOP P30 Panel&#39;)) ) -&gt; dataset_counts</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;cohort&#39;, &#39;stage&#39;, &#39;sequencing_type&#39;. You
+## can override using the `.groups` argument.</code></pre>
+<pre class="r"><code># save as a plain text table
+write_csv(dataset_counts, &#39;biospecimen_dataset_counts.csv&#39;)
 
 # save a pretty formatted table as an image so it can be automatically plugged 
 # into the main repository README
-counts %&gt;%
+dataset_counts %&gt;%
   gt(rowname_col = F) %&gt;% 
   opt_row_striping() %&gt;%
-  gtsave(&#39;../figures/biospecimen_counts.png&#39;)</code></pre>
+  gtsave(&#39;../figures/biospecimen_dataset_counts.png&#39;)</code></pre>
 <p><br><br></p>
 </div>
 </div>

@@ -1,0 +1,12 @@
+Dataset,Sequencing Type,Tumor Stage,Number of Biospecimens
+GMKF,DNA,primary,336
+GMKF,RNA,primary,207
+PBTA,DNA,primary,691
+PBTA,DNA,relapse,140
+PBTA,RNA,primary,746
+PBTA,RNA,relapse,177
+TARGET,DNA,primary,1057
+TARGET,DNA,relapse,37
+TARGET,RNA,primary,1143
+TARGET,RNA,relapse,130
+TARGET Panel,DNA,primary,497

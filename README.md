@@ -52,7 +52,7 @@ Over the past few years larger pediatric consortia, both disease-specific and pa
 The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. 
 As the project is ongoing, more data will continue to be added, but this current release includes **XXX** pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
 
-![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_counts.png)
+![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_dataset_counts.png)
 
 For expanded descriptions of the datasets, please see the Pediatric Cancer Data Sources on the About page on the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/about>.
 
