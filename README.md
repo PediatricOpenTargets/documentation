@@ -1,3 +1,4 @@
+
 # Molecular Targets Platform Dev Documentation 
 
 **WARNING:** This is the documentation for the **development** version of the Open Pediatric Cancer and Molecular Target Projects. 
@@ -14,8 +15,7 @@ Under Development:
 
 ---
 
-The Open Pediatric Cancer (OpenPedCan) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. 
-This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself see <https://moleculartargets.ccdi.cancer.gov/about>.
+The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself, see <https://moleculartargets.ccdi.cancer.gov/about>. Please note that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents.
 
 ---
 
@@ -24,11 +24,26 @@ For documentation on previous versions of the Molecular Targets Platform, please
 ---
 
 #### Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [Datasets](#datasets)
-- [DNA Sequencing](#DNA_Sequencing)
-- [RNA Sequencing](#RNA_Sequencing)
-- [Methylation](#Methylation)
-- [Data Availability](#Data_Availability)
+- [DNA Sequencing](#dna-sequencing)
+  - [Data Processing](#data-processing)
+    - [DNA-seq Alignment and Haplotype Calling Workflow](#dna-seq-alignment-and-haplotype-calling-workflow)
+    - [Somatic Variant Calling](#somatic-variant-calling)
+  - [Somatic Alteration Data](#somatic-alteration-data)
+    - [Small Variants](#small-variants)
+    - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
+- [RNA Sequencing](#rna-sequencing)
+  - [Data Processing](#data-processing-1)
+  - [RNA Sequencing Data](#rna-sequencing-data)
+    - [Fusions](#fusions)
+    - [Gene Expression](#gene-expression)
+    - [OpenPedCan Gene Expression Boxplot](#openpedcan-gene-expression-boxplot)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Datasets
 
@@ -37,25 +52,19 @@ Over the past few years larger pediatric consortia, both disease-specific and pa
 The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. 
 As the project is ongoing, more data will continue to be added, but this current release includes **XXX** pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
 
-| Dataset | Number of Samples |
-| --- | --- |
-| PBTA | 4,164 |
-| TARGET | 5,252 |
-| GMKF | 881 |
-| DGD (CHOP P30 panel) | 1,799 |
-| GTEx | 17,382 |
-| TCGA | 10,414 |
+![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_counts.png)
 
-For expanded descriptions of the datasets, please see the About page on the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/about>.
+For expanded descriptions of the datasets, please see the Pediatric Cancer Data Sources on the About page on the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/about>.
 
 ---
 
-## DNA_Sequencing
+## DNA Sequencing
 
 ### Data Processing
 
 #### DNA-seq Alignment and Haplotype Calling Workflow
 
+<<<<<<< HEAD
 For both whole genome, whole exome, and targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
 The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. 
 Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. 
@@ -80,6 +89,7 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 #### Small Variants
 
+<<<<<<< HEAD
 Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. Using custom R scripts, a consensus SNV file was constructed, consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java. 
 See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. 
 Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details. 
@@ -97,6 +107,10 @@ Last, some patients or samples are included in multiple cohorts and may be count
 See [SNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts and see [see the hotspot detection documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/hotspots-detection) for how SNV hotspots were called. 
 Summarized tables are returned in response to queries on the Molecular Targets Platform (as described below). 
 If you follow the links to Pediatric cBioPortal, sample-level data is available to view in the OncoPrint and Mutation tabs there as well as to download.
+
+<br>
+
+The following table gives the a description of the fields and corresponding values for SNV data both at the gene and variant level within MTP.
 
 <br>
 
@@ -149,6 +163,10 @@ Note that the frequencies and counts may not tally as expected for several reaso
 First, the total
  columns use unique patients, while the primary/relapse tumor columns use unique samples. Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. 
 Last, some patients or samples are included in multiple cohorts and may be counted multiple times. See [the CNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/cnv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts.
+
+<br>
+
+The following table gives the a description of the fields and corresponding values for CNV data within MTP.
 
 <br>
 
@@ -208,6 +226,7 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 #### Fusions
 
+<<<<<<< HEAD
 Gene fusions are called solely from RNA sequencing using the programs above. 
 Fusions are filtered using custom R scripts. 
 Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. 
@@ -235,7 +254,7 @@ The following table gives the a description of the fields and corresponding valu
 | Gene1B Annotation | A limited set of simplified annotations for the most 3’ gene in the fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
 | Gene2A Annotation | A limited set of simplified annotations for the second gene on the 5’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations applyy |
 | Gene2B Annotation | A limited set of simplified annotations for the second gene on the 3’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
-| Gene Ensembl ID | Official gene ID from Ensembl  |  |
+| Gene Ensembl ID | Official gene ID from Ensembl  | |
 | Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma, **CHOP P30 panel** |
 | Disease | Cancer type | See [disease table](https://github.com/PediatricOpenTargets/documentation/blob/dev/disease_subject_counts.tsv) |
 | Total alterations / Subjects in Dataset | Total number of samples with the given fusions over the total number of disease samples in the given Dataset |  |
@@ -249,7 +268,8 @@ The following table gives the a description of the fields and corresponding valu
 | OncoKB Cancer Gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
 | OncoKB Oncogene\|TSB | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
-### Gene Expression
+
+#### Gene Expression
 
 TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. 
 Please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6) for more details. 
@@ -265,7 +285,7 @@ The x-axis label of each box lists the corresponding cancer or normal tissue typ
 The y-axis value corresponds to gene expression level in the unit of transcript per million (TPM). 
 The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the "Linear" (default) or "Log10" tab on the top left side of the boxplot.
 
-![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](gene_expression_boxplot.png)
+![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](figures/gene_expression_boxplot.png)
 
 **Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.
 
