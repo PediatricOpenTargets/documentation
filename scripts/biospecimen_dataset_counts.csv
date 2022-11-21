@@ -1,4 +1,6 @@
 Dataset,Sequencing Type,Tumor Stage,Number of Biospecimens
+CHOP P30 Panel,RNA,primary,531
+CHOP P30 Panel,RNA,relapse,201
 GMKF,DNA,primary,336
 GMKF,RNA,primary,207
 PBTA,DNA,primary,691

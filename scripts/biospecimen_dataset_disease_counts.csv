@@ -1,4 +1,55 @@
 Dataset,Sequencing Type,Tumor Stage,Disease,Number of Biospecimens
+CHOP P30 Panel,RNA,primary,Acute Lymphoblastic Leukemia,6
+CHOP P30 Panel,RNA,relapse,Acute Lymphoblastic Leukemia,6
+CHOP P30 Panel,RNA,primary,Acute Myeloid Leukemia,12
+CHOP P30 Panel,RNA,relapse,Acute Myeloid Leukemia,14
+CHOP P30 Panel,RNA,primary,Atypical Teratoid Rhabdoid Tumor,10
+CHOP P30 Panel,RNA,relapse,Atypical Teratoid Rhabdoid Tumor,6
+CHOP P30 Panel,RNA,primary,B Acute Lymphoblastic Leukemia/Lymphoma,47
+CHOP P30 Panel,RNA,relapse,B Acute Lymphoblastic Leukemia/Lymphoma,35
+CHOP P30 Panel,RNA,primary,Choroid plexus carcinoma,3
+CHOP P30 Panel,RNA,primary,Diffuse intrinsic pontine glioma,7
+CHOP P30 Panel,RNA,primary,Dysembryoplastic neuroepithelial tumor,13
+CHOP P30 Panel,RNA,relapse,Dysembryoplastic neuroepithelial tumor,3
+CHOP P30 Panel,RNA,primary,Ependymoma,25
+CHOP P30 Panel,RNA,relapse,Ependymoma,12
+CHOP P30 Panel,RNA,primary,Ewing sarcoma,7
+CHOP P30 Panel,RNA,relapse,Ewing sarcoma,3
+CHOP P30 Panel,RNA,primary,Ganglioglioma,22
+CHOP P30 Panel,RNA,relapse,Ganglioglioma,4
+CHOP P30 Panel,RNA,primary,Glial-neuronal tumor NOS,7
+CHOP P30 Panel,RNA,relapse,Glial-neuronal tumor NOS,3
+CHOP P30 Panel,RNA,primary,Hemangioblastoma,4
+CHOP P30 Panel,RNA,primary,Hepatoblastoma,4
+CHOP P30 Panel,RNA,primary,High-grade glioma/astrocytoma,42
+CHOP P30 Panel,RNA,relapse,High-grade glioma/astrocytoma,15
+CHOP P30 Panel,RNA,primary,Histiocytic tumor,5
+CHOP P30 Panel,RNA,primary,Inflammatory Myofibroblastic Tumor,4
+CHOP P30 Panel,RNA,primary,Langerhans Cell histiocytosis,9
+CHOP P30 Panel,RNA,primary,Low-grade glioma/astrocytoma,123
+CHOP P30 Panel,RNA,relapse,Low-grade glioma/astrocytoma,62
+CHOP P30 Panel,RNA,primary,Medulloblastoma,34
+CHOP P30 Panel,RNA,relapse,Medulloblastoma,3
+CHOP P30 Panel,RNA,primary,Meningioma,5
+CHOP P30 Panel,RNA,relapse,Meningioma,3
+CHOP P30 Panel,RNA,primary,Metastatic secondary tumors,3
+CHOP P30 Panel,RNA,primary,Neuroblastoma,21
+CHOP P30 Panel,RNA,relapse,Neuroblastoma,8
+CHOP P30 Panel,RNA,relapse,Neurofibroma/Plexiform,3
+CHOP P30 Panel,RNA,primary,Osteosarcoma,6
+CHOP P30 Panel,RNA,relapse,Osteosarcoma,3
+CHOP P30 Panel,RNA,primary,Pineoblastoma,4
+CHOP P30 Panel,RNA,primary,Rhabdomyosarcoma,17
+CHOP P30 Panel,RNA,relapse,Rhabdomyosarcoma,5
+CHOP P30 Panel,RNA,primary,Sarcoma,6
+CHOP P30 Panel,RNA,primary,Schwannoma,7
+CHOP P30 Panel,RNA,primary,T Acute Lymphoblastic Leukemia/Lymphoma,8
+CHOP P30 Panel,RNA,primary,Teratoma,3
+CHOP P30 Panel,RNA,primary,Thyroid Gland Papillary Carcinoma,20
+CHOP P30 Panel,RNA,relapse,Thyroid Gland Papillary Carcinoma,4
+CHOP P30 Panel,RNA,primary,Wilms tumor,6
+CHOP P30 Panel,RNA,primary,NA,41
+CHOP P30 Panel,RNA,relapse,NA,9
 GMKF,DNA,primary,Ganglioneuroblastoma,36
 GMKF,RNA,primary,Ganglioneuroblastoma,25
 GMKF,DNA,primary,Ganglioneuroma,3
