@@ -67,7 +67,6 @@ For more detailed alignment and variant calling methods, please refer to the [Op
 To run the CAVATICA apps yourself, see the [OpenPBTA workflows repository](https://github.com/d3b-center/OpenPBTA-workflows/tree/master/cwl) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
-#### Somatic Variant Calling
 
 Small variants are called using multiple tools: Strelka2 for single nucleotide variants (SNVs) and small insertions/deletions (INDELs), GATK Mutect2 for SNVs, multinucleotide variants greater than 1bp in length (MNVs) and INDELs, Lancet for SNVs, MNVs, and INDELs, and VarDict Java which calls SNVs, MNVs, INDELs and more. 
 #### Somatic CNV Calling
