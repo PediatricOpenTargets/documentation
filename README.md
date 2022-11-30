@@ -69,7 +69,9 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 #### Somatic Variant Calling
 
 Small variants are called using multiple tools: Strelka2 for single nucleotide variants (SNVs) and small insertions/deletions (INDELs), GATK Mutect2 for SNVs, multinucleotide variants greater than 1bp in length (MNVs) and INDELs, Lancet for SNVs, MNVs, and INDELs, and VarDict Java which calls SNVs, MNVs, INDELs and more. 
-Larger copy number variants are also called using multiple tools as well: ControlFreeC, CNVkit and GATK CNV. 
+#### Somatic CNV Calling
+
+Copy number variants are called using multiple tools: ControlFreeC, CNVkit, and GATK CNV. 
 CNVkit calls are adjusted for purity estimations using THeTa2. 
 Manta is also used to determine structural variants (SVs) and INDELs. 
 All calls are made using GRCh38 references and variants are then annotated using gnomAD and for cancer hot spots. 
