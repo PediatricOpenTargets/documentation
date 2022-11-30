@@ -48,8 +48,6 @@ CHOP P30 Panel,RNA,primary,Teratoma,3
 CHOP P30 Panel,RNA,primary,Thyroid Gland Papillary Carcinoma,20
 CHOP P30 Panel,RNA,relapse,Thyroid Gland Papillary Carcinoma,4
 CHOP P30 Panel,RNA,primary,Wilms tumor,6
-CHOP P30 Panel,RNA,primary,NA,41
-CHOP P30 Panel,RNA,relapse,NA,9
 GMKF,DNA,primary,Ganglioneuroblastoma,36
 GMKF,RNA,primary,Ganglioneuroblastoma,25
 GMKF,DNA,primary,Ganglioneuroma,3
@@ -144,10 +142,6 @@ PBTA,RNA,primary,Subependymal Giant Cell Astrocytoma,10
 PBTA,DNA,primary,Teratoma,4
 PBTA,DNA,relapse,Teratoma,3
 PBTA,RNA,primary,Teratoma,4
-PBTA,DNA,primary,NA,49
-PBTA,DNA,relapse,NA,6
-PBTA,RNA,primary,NA,46
-PBTA,RNA,relapse,NA,6
 TARGET,DNA,primary,Acute Lymphoblastic Leukemia,712
 TARGET,DNA,relapse,Acute Lymphoblastic Leukemia,17
 TARGET,RNA,primary,Acute Lymphoblastic Leukemia,538

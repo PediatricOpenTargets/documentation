@@ -563,7 +563,7 @@ RNA count table.</p>
 <h4>Per Dataset and Disease Counts</h4>
 <pre class="r"><code>dataset_disease_counts %&gt;%
 # TCGA and CHOP P30 DNA Panel data are not currently being used, so filter out
-  filter(cohort != &#39;TCGA&#39;, 
+  filter(cohort != &#39;TCGA&#39;, !is.na(cancer_group),
          !(cohort == &#39;CHOP P30 Panel&#39; &amp; sequencing_type == &#39;DNA&#39;)) %&gt;%
 # change column names to be in line with the language on the Pediatric 
 # Molecular Targets website and retain desired columns

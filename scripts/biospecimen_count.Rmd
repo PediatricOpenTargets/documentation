@@ -187,7 +187,7 @@ rbind(dna_counts, rna_counts) %>%
 ```{r}
 dataset_disease_counts %>%
 # TCGA and CHOP P30 DNA Panel data are not currently being used, so filter out
-  filter(cohort != 'TCGA', 
+  filter(cohort != 'TCGA', !is.na(cancer_group),
          !(cohort == 'CHOP P30 Panel' & sequencing_type == 'DNA')) %>%
 # change column names to be in line with the language on the Pediatric 
 # Molecular Targets website and retain desired columns
