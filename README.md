@@ -73,7 +73,7 @@ Small variants are called using multiple tools: Strelka2 for single nucleotide v
 
 Copy number variants are called using multiple tools: ControlFreeC, CNVkit, and GATK CNV. 
 CNVkit calls are adjusted for purity estimations using THeTa2. 
-Manta is also used to determine structural variants (SVs) and INDELs. 
+Manta is used to call structural variants (SVs). 
 All calls are made using GRCh38 references and variants are then annotated using gnomAD and for cancer hot spots. 
 Publicly available files are further subjected to “germline masking,” which removes low frequency variants that could be used to identify the sample donor. 
 For more details see the GitHub release at [Kid's First Somatic Variant Workflow](https://github.com/kids-first/kf-somatic-workflow) or to run the pipeline see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-somatic-variant-workflow). 
