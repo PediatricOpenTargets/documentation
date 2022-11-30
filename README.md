@@ -68,7 +68,6 @@ To run the CAVATICA apps yourself, see the [OpenPBTA workflows repository](https
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
 
-Small variants are called using multiple tools: Strelka2 for single nucleotide variants (SNVs) and small insertions/deletions (INDELs), GATK Mutect2 for SNVs, multinucleotide variants greater than 1bp in length (MNVs) and INDELs, Lancet for SNVs, MNVs, and INDELs, and VarDict Java which calls SNVs, MNVs, INDELs and more. 
 #### Somatic CNV Calling
 
 Copy number variants are called using multiple tools: ControlFreeC, CNVkit, and GATK CNV. 
