@@ -63,7 +63,8 @@ The majority of Pediatric Molecular Target data is paired-end, but single end me
 Sequencing quality is checked using FastQC and NGSCheckMate is used to confirm tumor/normal DNA and normal DNA/ tumor RNA pairs come from the same individual. 
 For more details on sample identity confirmation please see the [NGS Checkmate Workflow](https://github.com/d3b-center/OpenPBTA-workflows/blob/master/cwl/ngs_checkmate_wf.cwl). 
 Somatic variants are called using Mutect2, Strelka2, Lancet, and VarDict, followed by a 2/4 consensus and hotspot scavenging.
-For more details on the alignment or to run the CAVATICA app yourself, see the GitHub release at [Kid's First Alignment and Haplotype Calling Workflow](https://github.com/kids-first/kf-alignment-workflow) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
+For more detailed alignment and variant calling methods, please refer to the [OpenPBTA manuscript](https://www.biorxiv.org/content/10.1101/2022.09.13.507832v1). 
+To run the CAVATICA apps yourself, see the [OpenPBTA workflows repository](https://github.com/d3b-center/OpenPBTA-workflows/tree/master/cwl) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
 #### Somatic Variant Calling
