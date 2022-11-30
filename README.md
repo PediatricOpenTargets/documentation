@@ -56,7 +56,7 @@ For expanded descriptions of the datasets, please see the Pediatric Cancer Data 
 
 ### Data Processing
 
-#### DNA-seq Alignment and Haplotype Calling Workflow
+#### DNA-seq Alignment and Variant Calling Workflow
 
 For both whole genome, whole exome, and targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
 The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. 
