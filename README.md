@@ -43,7 +43,7 @@ For documentation on previous versions of the Molecular Targets Platform, please
 
 While adult pan-cancer repositories have existed and accelerated cancer research for a decade, pediatrics cancers have been excluded, despite having different genetic and molecular etiologies than adult cancers. 
 Over the past few years larger pediatric consortia, both disease-specific and pan-cancer, have tried to address this disparity. 
-The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. 
+OpenPedCan is harmonizing the data from across these different consortia and presenting summarized data in one unified location in the pediatric MTP where it can be queried for associations between putative targets and pediatric cancers. 
 As the project is ongoing, more data will continue to be added, but this current release includes four pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
 
 ![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_dataset_counts.png)
