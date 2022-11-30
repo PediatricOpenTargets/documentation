@@ -71,7 +71,7 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 #### Somatic CNV Calling
 
 Copy number variants are called using multiple tools: ControlFreeC, CNVkit, and GATK CNV. 
-CNVkit calls are adjusted for purity estimations using THeTa2. 
+CNVkit calls are adjusted for sex using a pre-calculated germline sex estimate. 
 Manta is used to call structural variants (SVs). 
 All calls are made using GRCh38 references and variants are then annotated with gnomAD frequencies.
 Publicly available files are further subjected to “germline masking,” which removes low frequency variants that could be used to identify the sample donor. 
