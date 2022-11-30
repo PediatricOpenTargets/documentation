@@ -6,7 +6,7 @@ Children’s Hospital of Philadelphia, in partnership with the National Cancer I
 
 ---
 
-**Please note** that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents.
+**Please note** that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents. While CHOP P30 DNA panel data is available through OpenPedCan, it is not available on the MTP site for this release.
 
 ---
 
@@ -27,12 +27,14 @@ For documentation on previous versions of the Molecular Targets Platform, please
   - [Somatic Alteration Data](#somatic-alteration-data)
     - [Small Variants](#small-variants)
     - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
-- [RNA Sequencing](#rna-sequencing)
+- [RNA_Sequencing](#rna_sequencing)
   - [Data Processing](#data-processing-1)
   - [RNA Sequencing Data](#rna-sequencing-data)
     - [Fusions](#fusions)
     - [Gene Expression](#gene-expression)
     - [OpenPedCan Gene Expression Boxplot](#openpedcan-gene-expression-boxplot)
+- [Data_Availability](#data_availability)
+- [Citing the Molecular Targets Platform](#citing-the-molecular-targets-platform)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -179,20 +181,6 @@ The following table gives the a description of the fields and corresponding valu
 | OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
 | OncoKB Oncogene\|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
-#### Tumor Mutation Burden
-
-Paragraph on how it's calculated/analyzed
-
-![Example figure goes here]()
-**Figure 1.** OpenPedCan tumor mutation burden plot
-
-Descrtiption of figure.
-
-Description of table available for download with figure. See RNA-seq expression boxplots near end of document for example.
-
-| Column name | Column description |
-| --- | --- |
-
 ---
 
 ## RNA_Sequencing
@@ -303,30 +291,17 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 
 ---
 
-### Data_Availability
+## Data_Availability
 
-#### Harmonized Data Download
-
-For publically available harmonized data, please see the instructions for data download at the OpenPedCan-analysis repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data>
-
-#### Raw Data Access
-
-Have to apply for access through GDC?
+If you would like to obtain larger datasets than those available for download through the MTP site, please see the instructions to download harmonized data through the OpenPedCan-analysis repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data>
 
 ---
 
-### Citing the Molecular Targets Platform
+## Citing the Molecular Targets Platform
 
-If you used the pediatric molecular targets platform or the OpenPedCan-analysis repository data or code, please cite us!
+If you used the Pediatric Molecular Targets Platform or the OpenPedCan-analysis repository data or code, please cite us!
 
-For the Pediatric Molecular Targets Platform, please cite both Open Targets, following their latest guidelines at https://platform-docs.opentargets.org/citation, and the MTP website
-
-- Ochoa, D. et al. (2023). [The next-generation Open Targets Platform: reimagined, redesigned, rebuilt.](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkac1046/68332370) *Nucleic Acids Research*
-- The Molecular Targets Platform. 2022. NCI. https://moleculartargets.ccdi.cancer.gov
-
-For use of either OpenPedCan-analysis data files or code, please cite:
-
-- ???
-
+- The Molecular Targets Platform (2022). NCI. https://moleculartargets.ccdi.cancer.gov
+- PediatricOpenTargets (2022). OpenPedCan-analysis (Version 1.1). https://doi.org/10.5281/zenodo.7383318
 
 <br><br>
