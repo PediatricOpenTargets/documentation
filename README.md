@@ -62,7 +62,7 @@ For expanded descriptions of the datasets, please see the Pediatric Cancer Data 
 
 #### DNA-seq Alignment and Variant Calling Workflow
 
-For both whole genome, whole exome, and targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
+For both whole genome and whole exome DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
 The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. 
 Sequencing quality is checked using FastQC and NGSCheckMate is used to confirm tumor/normal DNA and normal DNA/ tumor RNA pairs come from the same individual. 
 For more details on sample identity confirmation please see the [NGS Checkmate Workflow](https://github.com/d3b-center/OpenPBTA-workflows/blob/master/cwl/ngs_checkmate_wf.cwl). 
@@ -71,6 +71,7 @@ For more detailed alignment and variant calling methods, please refer to the [Op
 To run the CAVATICA apps yourself, see the [OpenPBTA workflows repository](https://github.com/d3b-center/OpenPBTA-workflows/tree/master/cwl) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
+Targeted sequencing panel data was processed using the GRCh37 reference with CHOP's Division of Genomic Diagnostics published pipeline and then coordinates were lifted over to GRCh38. For more details on the panel design and variant calling pipeline, please see the methods in the [Genome Medicine paper](https://doi.org/10.1186/s13073-019-0644-8).
 
 #### Somatic CNV Calling
 
@@ -81,7 +82,6 @@ All calls are made using GRCh38 references and variants are then annotated with 
 Publicly available files are further subjected to “germline masking,” which removes low frequency variants that could be used to identify the sample donor. 
 For more details see the GitHub release at [Kid's First Somatic Variant Workflow](https://github.com/kids-first/kf-somatic-workflow) or to run the pipeline see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-somatic-variant-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
-Panel data was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.
 
 ### Somatic Alteration Data
 
@@ -207,13 +207,12 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 #### Fusions
 
-Gene fusions are called either from NGS RNA sequencing using the methods described above or for the CHOP P30 panel data, using CHOP's Division of Genome Diagnostic's (DGD) Fusion Gene Panel. 
+Gene fusions are called either from NGS RNA sequencing using the methods described above or for the CHOP P30 panel data, using CHOP's Division of Genome Diagnostic's (DGD) pipeline (as described in the DNA-seq Alignment and Variant Calling Workflow section). 
 No whole genome or whole exome NGS DNA sequencing is used to call fusions currently.
 We use annoFuse to filter out artifactual fusions, those with both gene partners having expression < 1 TPM, or fusions present in normal tissues. 
 We annotate genes as transcription factor, tumor suppressor, oncogene, and/or kinase and for kinase genes, identify whether or not the kinase domain is retained in the fusion.
 Fusions present in more than 4 broad histologies are also flagged and filtered out, as they may be non-specific.
 This final file of putative oncogenic fusions is the data utilized for the fusion frequency tables.
-Fusion panels were not reprocessed and were merged with our harmonized fusion calls.
 Summary frequencies are calculated using R. 
 See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
 
