@@ -83,7 +83,9 @@ Panel data was not reprocessed and the variant files provided by the submitters 
 
 #### Small Variants
 
-Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. Using custom R scripts, a consensus SNV file was constructed, consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java. 
+Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. 
+A consensus SNV file consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java was created.
+[Hotspot mutations](https://www.cancerhotspots.org/#/home) were annotated and recovered if called by only 1/4 algorithms above.
 See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. 
 Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details.
 
