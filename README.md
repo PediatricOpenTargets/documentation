@@ -48,6 +48,10 @@ As the project is ongoing, more data will continue to be added, but this current
 
 ![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_dataset_counts.png)
 
+Primary tumors follow the standard definition of the original tumor in the body. 
+However, for analysis purposes, MTP combines progressive, progressive post-mortem, and relapse tumors into our relapse tumor stage.
+If needed, more detailed sample information is available in the histology data provided through the [OpenPedCan-analysis GitHub repository](https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data).
+
 For expanded descriptions of the datasets, please see the Pediatric Cancer Data Sources on the About page on the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/about>.
 
 ---

@@ -17,7 +17,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Count Biospecimens 
 
-In the Pediatric Molecular Open Targets high-level documentation <https://github.com/PediatricOpenTargets/documentation>, we have a table with the number of samples per cohort for the Datasets section so that people are aware of the general number of samples they can access. Data can be accessed through the `OpenPedCan-analysis` repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis>, although for privacy reasons not all data, especially raw data is accessible publically. This script calculates and outputs the table.
+In the Pediatric Molecular Open Targets high-level documentation <https://github.com/PediatricOpenTargets/documentation>, we have a table with the number of samples per cohort for the Datasets section so that people are aware of the general number of samples they can access. 
+Data can be accessed through the `OpenPedCan-analysis` repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis>, although for privacy reasons not all data, especially raw data is accessible publically. 
+This script calculates and outputs the table.
 
 <br>
 
