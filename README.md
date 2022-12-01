@@ -212,7 +212,6 @@ We annotate genes as transcription factor, tumor suppressor, oncogene, and/or ki
 Fusions present in more than 4 broad histologies are also flagged and filtered out, as they may be non-specific.
 This final file of putative oncogenic fusions is the data utilized for the fusion frequency tables.
 Fusion panels were not reprocessed and were merged with our harmonized fusion calls.
-Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. 
 Summary frequencies are calculated using R. 
 See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
 
