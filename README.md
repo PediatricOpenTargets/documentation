@@ -299,7 +299,7 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 
 ## Data_Availability
 
-If you would like to obtain larger datasets than those available for download through the MTP site, please see the instructions to download harmonized data through the OpenPedCan-analysis repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data>
+If you would like to obtain larger datasets than those available for download through the MTP site, please see the instructions to download harmonized data through the [OpenPedCan-analysis repository](https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data) or download directly from [CAVATICA](https://cavatica.sbgenomics.com/u/cavatica/opentarget).
 
 ---
 
