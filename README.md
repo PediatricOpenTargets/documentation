@@ -193,7 +193,7 @@ The following table gives the a description of the fields and corresponding valu
 The RNA-seq Alignment Workflow begins by trimming adapters, only if adapters are provided, using Cutadapt. 
 Reads were then aligned using STAR in two-pass mode to reference genome GRCh38. 
 While all MTP data is paired-end, methods are provided for single-end alignment if you are interested in processing your data in the same manner. 
-Transcripts are quantified using RSEM at both the gene and isoform level  with the GENCODE v27 annotation, except for the GTEx samples which were not re-processed and are annotated using GENCODE v26. 
+Transcripts are quantified using RSEM at both the gene and isoform level  with the GENCODE v27 annotation, except for the GTEx v8 samples which were not re-processed and are annotated using GENCODE v26. 
 Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. 
 QC metrics for the alignment are summarized using RNA-seQC. 
 If you would like to view the code in more detail, please see the GitHub release [Kids First RNA-seq Workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
