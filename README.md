@@ -191,7 +191,6 @@ The following table gives the a description of the fields and corresponding valu
 ### Data Processing
 
 The RNA-seq Alignment Workflow begins by trimming adapters, only if adapters are provided, using Cutadapt. 
-Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. 
 For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). 
 Reads were then aligned using STAR in two-pass mode to reference genome GRCh38. While all MTP data is paired-end, methods are provided for single-end alignment if you are interested in processing your data in the same manner. 
 Transcripts are quantified using RSEM at both the gene and isoform level  with the GENCODE v27 annotation, except for the GTEx samples which were not re-processed and are annotated using GENCODE v26. 
