@@ -62,7 +62,7 @@ For expanded descriptions of the datasets, please see the Pediatric Cancer Data 
 
 #### DNA-seq Alignment and Variant Calling Workflow
 
-For both whole genome and whole exome DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
+For both whole genome, whole exome, and TARGET targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
 The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. 
 Sequencing quality is checked using FastQC and NGSCheckMate is used to confirm tumor/normal DNA and normal DNA/ tumor RNA pairs come from the same individual. 
 For more details on sample identity confirmation please see the [NGS Checkmate Workflow](https://github.com/d3b-center/OpenPBTA-workflows/blob/master/cwl/ngs_checkmate_wf.cwl). 
@@ -71,7 +71,7 @@ For more detailed alignment and variant calling methods, please refer to the [Op
 To run the CAVATICA apps yourself, see the [OpenPBTA workflows repository](https://github.com/d3b-center/OpenPBTA-workflows/tree/master/cwl) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
-Targeted sequencing panel data was processed using the GRCh37 reference with CHOP's Division of Genomic Diagnostics published pipeline and then coordinates were lifted over to GRCh38. For more details on the panel design and variant calling pipeline, please see the methods in the [Genome Medicine paper](https://doi.org/10.1186/s13073-019-0644-8).
+CHOP P30 targeted sequencing panel data was processed using the GRCh37 reference with CHOP's Division of Genomic Diagnostics published pipeline and then coordinates were lifted over to GRCh38. For more details on the panel design and variant calling pipeline, please see the methods in the [Genome Medicine paper](https://doi.org/10.1186/s13073-019-0644-8).
 
 #### Somatic CNV Calling
 
