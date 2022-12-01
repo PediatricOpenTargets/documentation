@@ -203,8 +203,9 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 #### Fusions
 
-Gene fusions are called solely from RNA sequencing using the programs above. 
-Fusions are filtered using custom R scripts. 
+Gene fusions are called either from NGS RNA sequencing using the methods described above or for the CHOP P30 panel data, using CHOP's Division of Genome Diagnostic's (DGD) Fusion Gene Panel. 
+No whole genome or whole exome NGS DNA sequencing is used to call fusions currently.
+Fusions are filtered using the OpenPedCan-analysis [fusion-filtering module](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dd42a3dc2d2b530a11ec51334a65445ae359baff/analyses/fusion_filtering). 
 We use annoFuse to filter out artifactual fusions, those with both gene partners having expression < 1 TPM, or fusions present in normal tissues. 
 We annotate genes as transcription factor, tumor suppressor, oncogene, and/or kinase and for kinase genes, identify whether or not the kinase domain is retained in the fusion.
 Fusions present in more than 4 broad histologies are also flagged and filtered out, as they may be non-specific.
