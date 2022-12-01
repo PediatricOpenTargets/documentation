@@ -207,7 +207,10 @@ Once in the Cavatica workflow page, please click on the "Read All" link to open 
 
 Gene fusions are called solely from RNA sequencing using the programs above. 
 Fusions are filtered using custom R scripts. 
-Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. 
+We use annoFuse to filter out artifactual fusions, those with both gene partners having expression < 1 TPM, or fusions present in normal tissues. 
+We annotate genes as transcription factor, tumor suppressor, oncogene, and/or kinase and for kinase genes, identify whether or not the kinase domain is retained in the fusion.
+Fusions present in more than 4 broad histologies are also flagged and filtered out, as they may be non-specific.
+This final file of putative oncogenic fusions is the data utilized for the fusion frequency tables.
 Fusion panels were not reprocessed and were merged with our harmonized fusion calls.
 Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. 
 Summary frequencies are calculated using R. 
