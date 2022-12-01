@@ -196,7 +196,7 @@ While all MTP data is paired-end, methods are provided for single-end alignment 
 Transcripts are quantified using RSEM at both the gene and isoform level  with the GENCODE v27 annotation, except for the GTEx v8 samples which were not re-processed and are annotated using GENCODE v26. 
 Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. 
 QC metrics for the alignment are summarized using RNA-seQC. 
-If you would like to view the code in more detail, please see the GitHub release [Kids First RNA-seq Workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
+If you would like to view the code in more detail, please see the GitHub release [OpenPBTA RNA-seq Workflow](https://github.com/d3b-center/OpenPBTA-workflows/blob/master/cwl/kfdrc_RNAseq_workflow.cwl) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
 
 ### RNA Sequencing Data
