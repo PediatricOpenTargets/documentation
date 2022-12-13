@@ -12,7 +12,7 @@ Author: Kelsey Keith ([@kelseykeith]())
 
 ### Purpose
 
-In the Pediatric Molecular Open Targets high-level documentation, the main README of this repository, we have a table with the number of samples per cohort for the Datasets section so that people are aware of the general number of samples they can access. The script `biospecimen_count.Rmd` calculates and outputs the table.
+In the Pediatric Molecular Open Targets high-level documentation, the main README of this repository, we have a table with the number of samples per cohort for the Datasets section so that people are aware of the general number of samples they can access. The script `biospecimen_count.Rmd` calculates and outputs this table and well as a table giving the sample counts per disease and dataset for reference.
 
 Data can be accessed through the `OpenPedCan-analysis` repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis>, although for privacy reasons not all data, especially raw data is accessible publically.
 
@@ -40,9 +40,10 @@ Rscript -e "rmarkdown::render('biospecimen_count.Rmd', clean = TRUE)"
 
 ### Results
 
-The script outputs two files:
+The script outputs three files:
 
-- `./biospecimen_counts.csv`: a plain text version of the table
-- `../figures/biospecimen_counts.png`: a nicely formated image of the table that can be easily inserted in the main README
+- `./biospecimen_dataset_counts.csv`: a plain text version of the table pictured in the main repository README giving a count of the DNA and RNA biospecimens in each Dataset
+- `../figures/biospecimen_dataset_counts.png`: a nicely formated image of the table that is inserted in the main README giving a count of the DNA and RNA biospecimens in each Dataset
+`./biospecimen_dataset_disease_counts.csv`: a plain text table giving a count of the DNA and RNA biospecimens in each Disease in each Dataset for reference
 
 <br><br>
