@@ -23,8 +23,8 @@ For documentation on previous versions of the Molecular Targets Platform, please
 - [Datasets](#datasets)
 - [DNA Sequencing](#dna-sequencing)
   - [Data Processing](#data-processing)
-    - [DNA-seq Alignment and Haplotype Calling Workflow](#dna-seq-alignment-and-haplotype-calling-workflow)
-    - [Somatic Variant Calling](#somatic-variant-calling)
+    - [DNA-seq Alignment and Variant Calling Workflow](#dna-seq-alignment-and-variant-calling-workflow)
+    - [Somatic CNV Calling](#somatic-cnv-calling)
   - [Somatic Alteration Data](#somatic-alteration-data)
     - [Small Variants](#small-variants)
     - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
@@ -149,7 +149,7 @@ The following table gives the a description of the fields and corresponding valu
 
 Multiple callers were used to determine copy number variants (CNVs). 
 A consensus CNV file was constructed, consisting of CNVs that were called by 2 or more copy number callers: ControlFreeC, CNVkit, and Manta SV. 
-See the [copy_number_consensus_call GitHub module] (https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/29c344bc237eb5dd73f65cb7c1a04ae0c37414df/analyses/copy_number_consensus_call) for more detail on how the calls were combined. 
+See the [copy_number_consensus_call GitHub module](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/29c344bc237eb5dd73f65cb7c1a04ae0c37414df/analyses/copy_number_consensus_call) for more detail on how the calls were combined. 
 The various nomenclatures used by the different callers are harmonized to standard descriptions of CNVs: deep deletion for when copy number equals zero, loss for when copy number is less than ploidy, neutral if copy number is the same as the genome copy number (cancer genomes may have a ploidy other than two), gain for up to two times ploidy, and amplification for a gain of more than two times ploidy. 
 Copy number variants were retained only if they overlapped by at least 1 base pair with a gene’s exon. 
 Further annotations, including alternative gene and protein IDs and cancer references, were also added.
