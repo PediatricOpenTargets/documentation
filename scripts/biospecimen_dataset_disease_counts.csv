@@ -1,4 +1,4 @@
-Dataset,Sequencing Type,Tumor Stage,Disease,Number of Biospecimens
+Dataset,Sequencing Type,Tumor Stage,Disease,Number of Tumors
 CHOP P30 Panel,RNA,primary,Acute Lymphoblastic Leukemia,6
 CHOP P30 Panel,RNA,relapse,Acute Lymphoblastic Leukemia,6
 CHOP P30 Panel,RNA,primary,Acute Myeloid Leukemia,12

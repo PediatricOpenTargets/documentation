@@ -11,6 +11,7 @@ library(magrittr)
 library(dplyr)
 library(readr)
 library(gt)
+library(DT)
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -28,7 +29,7 @@ This script calculates and outputs the table.
 If you don't have all the packages listed below, please uncomment `install.packages()` in the chunk below and install them.
 
 ```{r}
-# install.packages(c('magrittr', 'dplyr', 'readr', 'gt', 'webshot2'))
+# install.packages(c('magrittr', 'dplyr', 'readr', 'gt', 'webshot2', 'DT'))
 ```
 
 <br>
@@ -72,13 +73,13 @@ Read in tables. The file `histologies.tsv` contains the cancer assignment for ea
 
 ```{r}
 ### sample metadata file, including the cancer_group
-read_tsv('../OpenPedCan-analysis/data/histologies.tsv') -> histologies
+histologies <- read_tsv('../OpenPedCan-analysis/data/histologies.tsv')
 
 ### independent specimen lists
-read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.primary.eachcohort.tsv') -> rna_primary
-read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.relapse.eachcohort.tsv') -> rna_relapse
-read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.primary.eachcohort.prefer.wxs.tsv') -> dna_primary
-read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wxs.tsv') -> dna_relapse
+rna_primary <- read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.primary.eachcohort.tsv') 
+rna_relapse <- read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.relapse.eachcohort.tsv')
+dna_primary <- read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.primary.eachcohort.prefer.wxs.tsv')
+dna_relapse <- read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wxs.tsv')
 ```
 
 <br>
@@ -89,7 +90,7 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 
 ```{r}
 ### Count DNA samples
-histologies %>% 
+dna_counts <- histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
   distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
@@ -110,7 +111,7 @@ histologies %>%
                                         'WGS/WXS', experimental_strategy)) %>% 
   count(cohort, stage, sequencing_type, 
         experimental_strategy, cancer_group) %>%
-  filter(n >= 3) -> dna_counts
+  filter(n >= 3)
 ```
 
 Check that there is no missing information (`NA`) in the DNA count table.
@@ -133,7 +134,7 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 
 ```{r}
 ### Count DNA samples
-histologies %>% 
+rna_counts <- histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
   distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
@@ -152,7 +153,7 @@ histologies %>%
          sequencing_type = 'RNA') %>% 
   count(cohort, stage, sequencing_type, 
         experimental_strategy, cancer_group) %>%
-  filter(n >= 3) -> rna_counts
+  filter(n >= 3)
 ```
 
 Check that there is no missing information (`NA`) in the RNA count table.
@@ -174,20 +175,22 @@ if ( any(is.na(rna_counts$stage)) ) {
 Combine the count tables, organize them for display, and save.
 
 ```{r}
-rbind(dna_counts, rna_counts) %>%
+dataset_disease_counts <- rbind(dna_counts, rna_counts) %>%
 # change cohort names to be in line with the language on the Pediatric 
 # Molecular Targets website
   mutate(cohort = case_when(cohort == 'DGD' ~ 'CHOP P30 Panel',
                             cohort == 'TARGET' & 
                               experimental_strategy == 'Targeted Sequencing' ~ 
                               'TARGET Panel',
-                            TRUE ~ cohort)) -> dataset_disease_counts
+                            TRUE ~ cohort))
 ```
 
 #### Per Dataset and Disease Counts
 
+Filter table for data sets, data types, etc. not included in the current release.
+
 ```{r}
-dataset_disease_counts %>%
+dataset_disease_counts_filtered <- dataset_disease_counts %>%
 # TCGA and CHOP P30 DNA Panel data are not currently being used, so filter out
   filter(cohort != 'TCGA', !is.na(cancer_group),
          !(cohort == 'CHOP P30 Panel' & sequencing_type == 'DNA')) %>%
@@ -195,13 +198,28 @@ dataset_disease_counts %>%
 # Molecular Targets website and retain desired columns
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
         `Tumor Stage` = stage, Disease = cancer_group, 
-        `Number of Biospecimens` = n) %>%
+        `Number of Tumors` = n) %>%
   arrange(Dataset, Disease, `Sequencing Type`, 
-          `Tumor Stage`) -> dataset_disease_counts_filtered
+          `Tumor Stage`) 
+```
 
+Save
+
+```{r}
 # save as a plain text table
 write_csv(dataset_disease_counts_filtered, 
           'biospecimen_dataset_disease_counts.csv')
+```
+
+Explorable table. You can use the search bar to filter any of the fields in the table, ex: searching "Rhabdomyosarcoma" will return all rows of the table with that disease. You can also copy the table or download it in CSV or Excel format by clicking the respective button.
+
+```{r}
+datatable(dataset_disease_counts_filtered, 
+              extensions = 'Buttons',
+              options = list(dom = 'Blfrtip',
+                             buttons = c('copy', 'csv', 'excel'),
+                             lengthMenu = list(c(10, 25, 50, -1),
+                                               c(10, 25, 50, "All"))))
 ```
 
 #### Per Dataset Counts 
@@ -209,19 +227,23 @@ write_csv(dataset_disease_counts_filtered,
 Save the the per dataset counts, both as a CSV and, primarily, as an image to display in the repository README. Troubleshooting: If you get a Google Chrome timeout error, please knit the document again and it should be resolved.
 
 ```{r}
-dataset_disease_counts %>%
+dataset_counts <- dataset_disease_counts %>%
   group_by(cohort, stage, sequencing_type, experimental_strategy) %>%
   summarize(biospecimen_count = sum(n)) %>%
   ungroup() %>%
 # change column names to be in line with the language on the Pediatric 
 # Molecular Targets website and retain desired columns
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
-        `Tumor Stage` = stage, `Number of Biospecimens` = biospecimen_count) %>%
+        `Tumor Stage` = stage, `Number of Tumors` = biospecimen_count) %>%
   arrange(Dataset, `Sequencing Type`, `Tumor Stage`) %>%
 # TCGA and CHOP P30 Panel data are not currently being used, so filter out
   filter(Dataset != 'TCGA', 
-         !(Dataset == 'CHOP P30 Panel' & `Sequencing Type` == 'DNA')) -> dataset_counts
+         !(Dataset == 'CHOP P30 Panel' & `Sequencing Type` == 'DNA'))
+```
 
+Save as both a plain text downloadable table and as an image for insertion into the main repository README.
+
+```{r}
 # save as a plain text table
 write_csv(dataset_counts, 'biospecimen_dataset_counts.csv')
 
@@ -231,6 +253,17 @@ dataset_counts %>%
   gt(rowname_col = F) %>% 
   opt_row_striping() %>%
   gtsave('../figures/biospecimen_dataset_counts.png')
+```
+
+Explorable table. You can use the search bar to filter any of the fields in the table, ex: searching "Rhabdomyosarcoma" will return all rows of the table with that disease. You can also copy the table or download it in CSV or Excel format by clicking the respective button.
+
+```{r}
+datatable(dataset_counts, 
+              extensions = 'Buttons',
+              options = list(dom = 'Blfrtip',
+                             buttons = c('copy', 'csv', 'excel'),
+                             lengthMenu = list(c(10, 25, 50, -1),
+                                               c(10, 25, 50, "All"))))
 ```
 
 <br><br>
