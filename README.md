@@ -114,7 +114,7 @@ The frequency in the overall dataset, for each unique variant and gene, is the p
 The frequency in primary or relapse tumors, for each unique variant and gene, is the percentage of samples that have that variant or gene in the given cohort out of all samples in that cohort. 
 
 ```math
-frequency = frac{1}{(number of samples with variant) / (all samples in group)} * 100
+frequency = frac{(number of samples with variant) / (all samples in group)} * 100
 ```
 
 Note that the frequencies and counts may not tally as expected for several reasons. 
