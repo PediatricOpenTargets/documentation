@@ -113,9 +113,7 @@ Then several variant frequencies were calculated for each of those IDs within ea
 The frequency in the overall dataset, for each unique variant and gene, is the percentage of patients that have that variant or gene in the given cohort out of all patients in that cohort. 
 The frequency in primary or relapse tumors, for each unique variant and gene, is the percentage of samples that have that variant or gene in the given cohort out of all samples in that cohort. 
 
-```math
-frequency = frac{(number of samples with variant) / (all samples in group)} * 100
-```
+$$ frequency = \left( \frac{n_{variant}} {n_{total}} \right) * 100 $$
 
 Note that the frequencies and counts may not tally as expected for several reasons. 
 First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. 
