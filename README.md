@@ -1,5 +1,19 @@
 
-# Molecular Targets Platform Documentation 
+# Molecular Targets Platform Dev Documentation 
+
+**WARNING:** This is the documentation for the **development** version of the Open Pediatric Cancer and Molecular Target Projects. 
+Not everything discussed in this document may be currently or ever available to the public and there is no guarantee of release for anything under development. 
+To see the documentation for the most current public release, please see <https://github.com/PediatricOpenTargets/documentation>.
+
+Under Development:
+
+- Methylation
+- Tumor Mutation Burden located in the [DNA Sequencing](#DNA_Sequencing)
+- Incorporating RNA isoform level data in addition to gene-level data
+- CHOP DGD/P30 panel data for SNVs and fusions
+- TCGA RNA-seq
+
+---
 
 The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the 
 Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the [pediatric Molecular Targets Platform (MTP)](https://moleculartargets.ccdi.cancer.gov/) in order to accelerate pediatric cancer target identification and drug development. 
@@ -11,7 +25,7 @@ This is high-level overview of the MTP data processing and analysis. For more in
 
 ---
 
-For documentation on previous versions of the Molecular Targets Platform, please see [v1](past_versions/v1.md).
+For documentation on previous versions of the Molecular Targets Platform, please see either [the most recent previous version](past_versions/v1.md) or, for older versions, please see [the archive](past_versions/).
 
 ---
 
@@ -92,6 +106,7 @@ A consensus SNV file consisting only of SNVs that were called by 2 or more varia
 [Hotspot mutations](https://www.cancerhotspots.org/#/home) were annotated and recovered if called by only 1/4 algorithms above.
 See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. 
 Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details.
++**Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
 
 A unique variant id consisting of the hg38 coordinates and the reference and alternative alleles was created for consistency. 
 Then several variant frequencies were calculated for each of those IDs within each cancer group and cohort. 
@@ -188,6 +203,26 @@ The following table gives the a description of the fields and corresponding valu
 | OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
 | OncoKB Oncogene\|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
+#### Tumor Mutation Burden
+
+Paragraph on how it's calculated/analyzed
+
+<br>
+
+![Example figure goes here]()
+**Figure 1.** OpenPedCan tumor mutation burden plot
+
+Descrtiption of figure.
+
+<br>
+
+Description of table available for download with figure. See RNA-seq expression boxplots near end of document for example.
+
+<br>
+
+| Column name | Column description |
+| --- | --- |
+
 ---
 
 ## RNA_Sequencing
@@ -201,7 +236,8 @@ Transcripts are quantified using RSEM at both the gene and isoform level  with t
 Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. 
 QC metrics for the alignment are summarized using RNA-seQC. 
 If you would like to view the code in more detail, please see the GitHub release [OpenPBTA RNA-seq Workflow](https://github.com/d3b-center/OpenPBTA-workflows/blob/master/cwl/kfdrc_RNAseq_workflow.cwl) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
-Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
+Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
+**Data from The Cancer Genome Atlas (TCGA) was imported from the platform and not reprocessed.**
 
 ### RNA Sequencing Data
 
@@ -295,6 +331,23 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 | tpmMedian | Median of TPM values. |
 | tpm75thPercentile | 75th percentile of TPM values. |
 | tpmMax | Maximum TPM value. |
+
+---
+
+## Methylation
+
+### Data Processing
+
+#### Methylation Arrays
+
+Methylation arrays are aggregated from multiple independent projects, so samples have been measured using either 27K, 450K, or 850K Illumina Infinium HumanMethylation BeadChips or Roche Nimblegen HELP microarrays. 
+All Illumina arrays were reprocessed by cancer group from signal intensities to methylation values in R using the minfi Bioconductor package with default arguments. Only probes with gene annotations from Illumina were retained. 
+The TARGET Acute Lymphoblastic Leukemia (ALL) samples were measured using a different platform, the Roche Nimblegen HELP array, so they were not reprocessed. 
+Please see the [OpenPedCan-analysis methylation preprocessing documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-preprocessing) for more details.
+
+### Methylation Data
+
+
 
 ---
 
