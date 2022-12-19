@@ -17,11 +17,13 @@ Under Development:
 
 The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the 
 Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the [pediatric Molecular Targets Platform (MTP)](https://moleculartargets.ccdi.cancer.gov/) in order to accelerate pediatric cancer target identification and drug development. 
-This is high-level overview of the MTP data processing and analysis. For more information on the MTP itself, see the [about page](https://moleculartargets.ccdi.cancer.gov/about). 
+This is high-level overview of the MTP data processing and analysis. 
+For more information on the MTP itself, see the [about page](https://moleculartargets.ccdi.cancer.gov/about). 
 
 ---
 
-**Please note** that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents. While CHOP P30 DNA panel data is available through OpenPedCan, it is not available on the MTP site for this release.
+**Please note** that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents. 
+While CHOP P30 DNA panel data is available through OpenPedCan, it is not available on the MTP site for this release.
 
 ---
 
@@ -85,7 +87,8 @@ For more detailed alignment and variant calling methods, please refer to the [Op
 To run the CAVATICA apps yourself, see the [OpenPBTA workflows repository](https://github.com/d3b-center/OpenPBTA-workflows/tree/master/cwl) and the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-alignment-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation.
 
-CHOP P30 targeted sequencing panel data was processed using the GRCh37 reference with CHOP's Division of Genomic Diagnostics published pipeline and then coordinates were lifted over to GRCh38. For more details on the panel design and variant calling pipeline, please see the methods in the [Genome Medicine paper](https://doi.org/10.1186/s13073-019-0644-8).
+CHOP P30 targeted sequencing panel data was processed using the GRCh37 reference with CHOP's Division of Genomic Diagnostics published pipeline and then coordinates were lifted over to GRCh38. 
+For more details on the panel design and variant calling pipeline, please see the methods in the [Genome Medicine paper](https://doi.org/10.1186/s13073-019-0644-8).
 
 #### Somatic CNV Calling
 
@@ -106,7 +109,8 @@ A consensus SNV file consisting only of SNVs that were called by 2 or more varia
 [Hotspot mutations](https://www.cancerhotspots.org/#/home) were annotated and recovered if called by only 1/4 algorithms above.
 See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. 
 Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details.
-+**Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
++**Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. 
+Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
 
 A unique variant id consisting of the hg38 coordinates and the reference and alternative alleles was created for consistency. 
 Then several variant frequencies were calculated for each of those IDs within each cancer group and cohort. 
@@ -179,8 +183,10 @@ The frequency in primary or relapse tumors is the percentage of samples that tha
 $$ frequency = \left( \frac{n_{variant}} {n_{total}} \right) * 100 $$
 
 Note that the frequencies and counts may not tally as expected for several reasons. 
-First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. 
-Last, some patients or samples are included in multiple cohorts and may be counted multiple times. See [the CNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/cnv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts.
+First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. 
+Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. 
+Last, some patients or samples are included in multiple cohorts and may be counted multiple times. 
+See [the CNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/cnv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts.
 
 <br>
 
@@ -311,7 +317,9 @@ The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected b
 
 **Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.
 
-The OpenPedCan gene expression boxplot widget on Molecular Targets Platform (MTP) “Evidence” and “Gene symbol” pages plots different sets of cancer and normal tissue types. On an MTP “Evidence” page, the widget plots all cancer types that have the same Experimental Factor Ontology (EFO) ID as the page and all normal tissue types. On an MTP “Gene symbol” page, the widget plots all cancer types.
+The OpenPedCan gene expression boxplot widget on Molecular Targets Platform (MTP) “Evidence” and “Gene symbol” pages plots different sets of cancer and normal tissue types. 
+On an MTP “Evidence” page, the widget plots all cancer types that have the same Experimental Factor Ontology (EFO) ID as the page and all normal tissue types. 
+On an MTP “Gene symbol” page, the widget plots all cancer types.
 
 The gene expression levels in each boxplot are also summarized in a table that can be downloaded in different formats for further analysis, by clicking the "JSON", "CSV", or "TSV" button on the top right side of the boxplot. 
 In the summary table, each box in the boxplot is summarized in a row with the following columns:
@@ -347,7 +355,8 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 #### Methylation Arrays
 
 Methylation arrays are aggregated from multiple independent projects, so samples have been measured using either 27K, 450K, or 850K Illumina Infinium HumanMethylation BeadChips or Roche Nimblegen HELP microarrays. 
-All Illumina arrays were reprocessed by cancer group from signal intensities to methylation values in R using the minfi Bioconductor package with default arguments. Only probes with gene annotations from Illumina were retained. 
+All Illumina arrays were reprocessed by cancer group from signal intensities to methylation values in R using the minfi Bioconductor package with default arguments. 
+Only probes with gene annotations from Illumina were retained. 
 The TARGET Acute Lymphoblastic Leukemia (ALL) samples were measured using a different platform, the Roche Nimblegen HELP array, so they were not reprocessed. 
 Please see the [OpenPedCan-analysis methylation preprocessing documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-preprocessing) for more details.
 
