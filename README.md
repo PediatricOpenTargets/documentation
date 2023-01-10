@@ -12,6 +12,7 @@ Under Development:
 - Incorporating RNA isoform level data in addition to gene-level data
 - CHOP DGD/P30 panel data for SNVs and fusions
 - TCGA RNA-seq
+- Do we need to add language about the toolkit??
 
 ---
 
