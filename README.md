@@ -1,18 +1,8 @@
 
 # Molecular Targets Platform Dev Documentation 
 
-**WARNING:** This is the documentation for the **development** version of the Open Pediatric Cancer and Molecular Target Projects. 
-Not everything discussed in this document may be currently or ever available to the public and there is no guarantee of release for anything under development. 
-To see the documentation for the most current public release, please see <https://github.com/PediatricOpenTargets/documentation>.
-
-Under Development:
-
 - Methylation
-- Tumor Mutation Burden located in the [DNA Sequencing](#DNA_Sequencing)
-- Incorporating RNA isoform level data in addition to gene-level data
-- CHOP DGD/P30 panel data for SNVs and fusions
 - TCGA RNA-seq
-- Do we need to add language about the toolkit??
 
 ---
 
@@ -65,7 +55,6 @@ For expanded descriptions of the datasets, please see the Pediatric Cancer Data 
 
 #### DNA-seq Alignment and Haplotype Calling Workflow
 
-<<<<<<< HEAD
 For both whole genome, whole exome, and targeted panel DNA sequencing, the workflow begins by flagging duplicates and aligning fastq files, or re-aligning previously aligned BAMs, to the reference genome GRCh38 using bwa mem. 
 The majority of Pediatric Molecular Target data is paired-end, but single end methods are provided if you want to apply the pipeline to your own data. 
 Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. 

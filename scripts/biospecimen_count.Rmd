@@ -186,9 +186,8 @@ rbind(dna_counts, rna_counts) %>%
 
 ```{r}
 dataset_disease_counts %>%
-# TCGA and CHOP P30 DNA Panel data are not currently being used, so filter out
-  filter(cohort != 'TCGA', 
-         !(cohort == 'CHOP P30 Panel' & sequencing_type == 'DNA')) %>%
+# DGD/CHOP P30 DNA Panel data are not currently being used, so filter out
+  filter(cohort != 'CHOP P30 Panel') %>%
 # change column names to be in line with the language on the Pediatric 
 # Molecular Targets website and retain desired columns
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
@@ -216,9 +215,8 @@ dataset_disease_counts %>%
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
         `Tumor Stage` = stage, `Number of Biospecimens` = biospecimen_count) %>%
   arrange(Dataset, `Sequencing Type`, `Tumor Stage`) %>%
-# TCGA and CHOP P30 Panel data are not currently being used, so filter out
-  filter(Dataset != 'TCGA', 
-         !(Dataset == 'CHOP P30 Panel' & `Sequencing Type` == 'DNA')) -> dataset_counts
+# DGD/CHOP P30 Panel data are not currently being used, so filter out
+  filter(Dataset != 'CHOP P30 Panel') -> dataset_counts
 
 # save as a plain text table
 write_csv(dataset_counts, 'biospecimen_dataset_counts.csv')
