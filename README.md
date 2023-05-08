@@ -1,9 +1,5 @@
 
 # Molecular Targets Platform Dev Documentation 
-
-- Methylation
-- TCGA RNA-seq
-
 ---
 
 The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets/OpenPedCan-analysis) project at the Children’s Hospital of Philadelphia, in partnership with the National Cancer Institute, is combining and harmonizing pediatric cancer datasets and integrating them into the Molecular Targets Platform <https://moleculartargets.ccdi.cancer.gov/> in order to accelerate pediatric cancer target identification and drug development. This is high-level overview of the Molecular Targets Platform data processing and analysis. For more information on the Molecular Targets Platform itself, see <https://moleculartargets.ccdi.cancer.gov/about>. Please note that OpenPedCan is in continuous development and the GitHub repository main branch contents may not be identical to the Molecular Targets Platform site contents.
@@ -190,6 +186,7 @@ Sequencing quality is checked using FastQC and tumor/normal pairs are double-che
 For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). 
 Reads were then aligned using STAR in two-pass mode to reference genome GRCh38. While all MTP data is paired-end, methods are provided for single-end alignment if you are interested in processing your data in the same manner. 
 Transcripts are quantified using RSEM at both the gene and isoform level with the GENCODE v39 annotation, except for external consortia data from GTEx and TCGA which were not re-processed and are annotated using GENCODE v26 and v36 respectively. 
+For data that was not reprocessed, gene symbols were lifted over to the GENCODE v39 gene symbols to align with the rest of the data.
 Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. 
 QC metrics for the alignment are summarized using RNA-seQC. 
 If you would like to view the code in more detail, please see the GitHub release [Kids First RNA-seq Workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
@@ -304,16 +301,9 @@ Please see the [OpenPedCan-analysis methylation preprocessing documentation](htt
 
 ### Methylation Data
 
-Methylation values were summarized by taking the median probe value for all samples per cancer group per annotated gene for subjects that have both RNA-seq and methylation data. **Then more description of plots/tables deployed to MTP site here.**
-
-Gene fusions are called solely from RNA sequencing using the programs above. 
-Fusions are filtered using custom R scripts. 
-Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. 
-Fusions panels were not reprocessed and were merged with our harmonized fusion calls.
-Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. 
-Summary frequencies are calculated using R. 
-See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
-Panel data was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.
+Methylation values were summarized only for samples that have both RNA-seq expression data and methylation array data.
+Quantiles and correlation with RNA-seq TPMs for each annotated methylation array probe. were calculated using custom R scripts
+Please see the [OpenPedCan-analysis methylation-summary module](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-summary) for more details.
 
 <br>
 
@@ -331,11 +321,11 @@ The following table gives the a description of the fields and corresponding valu
 | Probe ID | Methylation array probe ID | |
 | Chromosome | Chromosomal location of the probe | |
 | Location | Location in bases of the probe on the chromosome in the previous column | |
-**| Beta_Q1 |** Minimum value for all samples at the given probe | |
-**| Beta_Q2 |** Quartile 1/25th percentile value for all samples at the given probe | |
-**| Beta_Median |** Median/50th percentile value for all samples at the given probe | |
-**| Beta_Q4 |** Quartile 3/75th percentile value for all samples at the given probe | |
-**| Beta_Q5 |** Maximum value for all samples at the given probe | |
+| Beta_Q1 | Minimum value for all samples at the given probe | |
+| Beta_Q2 | Quartile 1/25th percentile value for all samples at the given probe | |
+| Beta_Median | Median/50th percentile value for all samples at the given probe | |
+| Beta_Q4 | Quartile 3/75th percentile value for all samples at the given probe | |
+| Beta_Q5 | Maximum value for all samples at the given probe | |
 
 ---
 
