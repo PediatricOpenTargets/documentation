@@ -10,7 +10,7 @@ The [Open Pediatric Cancer (OpenPedCan)](https://github.com/PediatricOpenTargets
 
 ---
 
-For documentation on previous versions of the Molecular Targets Platform, please see [v10](past_versions/v10.md).
+For documentation on previous versions of the Molecular Targets Platform, please see the previous version [v1.1](past_versions/v1.1.md) or [here](past_versions/) for older versions.
 
 ---
 
@@ -41,7 +41,7 @@ For documentation on previous versions of the Molecular Targets Platform, please
 While adult pan-cancer repositories have existed and accelerated cancer research for a decade, pediatrics cancers have been excluded, despite having different genetic and molecular etiologies than adult cancers. 
 Over the past few years larger pediatric consortia, both disease-specific and pan-cancer, have tried to address this disparity. 
 The Molecular Targets Platform is harmonizing the data from across these different consortia in one unified location where it can be queried for associations between putative targets and pediatric cancers. 
-As the project is ongoing, more data will continue to be added, but this current release includes **XXX** pediatric consortia datasets as well as GTEx data for comparisons to normal tissue expression:
+As the project is ongoing, more data will continue to be added, but this current release includes harmonized pediatric consortia datasets as well as external consortia GTEx and TCGA data for comparisons to normal and cancer tissue expression respectively:
 
 ![Image of a table giving the count of biospecimens for each sequencing type (DNA or RNA) for each tumor stage (primary or relapse) for each Dataset](figures/biospecimen_dataset_counts.png)
 
@@ -73,17 +73,15 @@ All calls are made using GRCh38 references and variants are then annotated using
 Publicly available files are further subjected to “germline masking,” which removes low frequency variants that could be used to identify the sample donor. 
 For more details see the GitHub release at [Kid's First Somatic Variant Workflow](https://github.com/kids-first/kf-somatic-workflow) or to run the pipeline see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-somatic-variant-workflow). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
-**Panel data was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.**
+Panel data was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.
 
 ### Somatic Alteration Data
 
 #### Small Variants
 
-<<<<<<< HEAD
 Multiple callers were used to determine single nucleotide variants (SNVs) since the literature suggests this reduces false positives. Using custom R scripts, a consensus SNV file was constructed, consisting only of SNVs that were called by 2 or more variant callers: GATK Mutect2, Strelka2, Lancet, and VarDict Java. 
 See [the consensus calling documentation](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc-consensus-calling.md) for more detail on how the calls were combined. 
 Annotations, including alternative gene and protein IDs and cancer references, were also added, see [the annotation calling workflow](https://github.com/kids-first/kf-somatic-workflow/blob/master/docs/kfdrc_annotation_subworkflow.md) for more details. 
-**Also, the tumor mutation burden (TMB) was calculated for each sample as the number of variants divided by the size of the genome surveyed. Please see the [TMB documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-callers#tumor-mutation-burden-calculation) for more details WILL NEED TO ADD MORE AND A PLOT DESCRIPTION LOWER IN THIS SECTION ONCE LIVE**
 
 A unique variant id consisting of the hg38 coordinates and the reference and alternative alleles was created for consistency. 
 Then several variant frequencies were calculated for each of those IDs within each cancer group and cohort. 
@@ -92,7 +90,7 @@ The frequency in primary or relapse tumors, for each unique variant and gene, is
 Note that the frequencies and counts may not tally as expected for several reasons. 
 First, the total columns use unique patients, while the primary/relapse tumor columns use unique samples. 
 Second, some submitters did not include information about the primary/relapse status of the samples, so those samples are omitted from the primary/relapse counts. 
-**Third, panel sample data is not included in the all cohorts calculation.** 
+Third, panel sample data is not included in the all cohorts calculation.
 Last, some patients or samples are included in multiple cohorts and may be counted multiple times. 
 See [SNV frequencies documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/snv-frequencies) for details of how the unique variant ID, variant frequencies, and annotations were done using custom R scripts and see [see the hotspot detection documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/hotspots-detection) for how SNV hotspots were called. 
 Summarized tables are returned in response to queries on the Molecular Targets Platform (as described below). 
@@ -112,7 +110,7 @@ The following table gives the a description of the fields and corresponding valu
 | Variant ID hg38 | Specific name for the variant in human genome hg38 coordinates; for example chr12_94581668_T_C means that base 94581668 on chromosome 12 is not the reference thymine (T) but mutated to a cytosine (C) |  |
 | Protein change | Amino acid change if mutation causes one; for example p.R317G means that the 317th amino acid is changed from arginine (R) to glycine (G) |  |
 | PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
-| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma, **CHOP P30 panel** |
+| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma|
 | Disease | Cancer type | See [disease table](https://github.com/PediatricOpenTargets/documentation/blob/dev/disease_subject_counts.tsv) |
 | dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ if one exists | dbSNP ID starting with “**rs**” if it exists, **blank** if the variant is not in dbSNP but is in other variant databases, and **novel** if the variant is not in any database used |
 | VEP impact | Predicted mutation impact from Ensembl Variant Effect Predictor; only mutations predicted to have some impact are reported | **high** = predicted to cause complete or nearly complete loss of function, **moderate** = predicted to reduce protein effectiveness, **modifier** = affects a non-coding region where predictions are difficult or there is no evidence of impact |
@@ -181,20 +179,6 @@ The following table gives the a description of the fields and corresponding valu
 | OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
 | OncoKB Oncogene\|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
-#### Tumor Mutation Burden
-
-Paragraph on how it's calculated/analyzed
-
-![Example figure goes here]()
-**Figure 1.** OpenPedCan tumor mutation burden plot
-
-Descrtiption of figure.
-
-Description of table available for download with figure. See RNA-seq expression boxplots near end of document for example.
-
-| Column name | Column description |
-| --- | --- |
-
 ---
 
 ## RNA_Sequencing
@@ -205,25 +189,24 @@ The RNA-seq Alignment Workflow begins by trimming adapters, only if adapters are
 Sequencing quality is checked using FastQC and tumor/normal pairs are double-checked to confirm they are from the same individual using NGSCheckMate. 
 For more details on sample identity confirmation please see the [Kid's First NGS Checkmate Workflow](https://github.com/kids-first/ngs_checkmate_wf). 
 Reads were then aligned using STAR in two-pass mode to reference genome GRCh38. While all MTP data is paired-end, methods are provided for single-end alignment if you are interested in processing your data in the same manner. 
-Transcripts are quantified using RSEM **at both the gene and isoform level WILL NEED TO ADD TINY BIT OF QUALIFYING DETAIL IN DATA SECTION IF WE START RETURNING ISOFORMS ON THE WEBSITE** with the GENCODE v27 annotation, except for the GTEx samples which were not re-processed and are annotated using GENCODE v26. 
+Transcripts are quantified using RSEM at both the gene and isoform level with the GENCODE v39 annotation, except for external consortia data from GTEx and TCGA which were not re-processed and are annotated using GENCODE v26 and v36 respectively. 
 Fusion calling is done using both Arriba and STAR-Fusion and then filtered for high confidence fusion calls using annoFuse. 
 QC metrics for the alignment are summarized using RNA-seQC. 
 If you would like to view the code in more detail, please see the GitHub release [Kids First RNA-seq Workflow](https://github.com/kids-first/kf-rnaseq-workflow) and if you would like to run the pipeline, please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6). 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
-**Data from The Cancer Genome Atlas (TCGA) was imported from the platform and not reprocessed.**
 
 ### RNA Sequencing Data
 
 #### Fusions
 
-<<<<<<< HEAD
 Gene fusions are called solely from RNA sequencing using the programs above. 
 Fusions are filtered using custom R scripts. 
 Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. 
-**Fusions panels were not reprocessed and were merged with our harmonized fusion calls.** 
+Fusions panels were not reprocessed and were merged with our harmonized fusion calls.
 Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. 
 Summary frequencies are calculated using R. 
 See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
+Panel data was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.
 
 <br>
 
@@ -245,7 +228,7 @@ The following table gives the a description of the fields and corresponding valu
 | Gene2A Annotation | A limited set of simplified annotations for the second gene on the 5’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations applyy |
 | Gene2B Annotation | A limited set of simplified annotations for the second gene on the 3’ side of an intergenic fusion | **CosmicCensus** = fusion is in COSMIC, **Kinase** = one of the fusion genes is a kinase, **Oncogene** = one gene is an known oncogene, **TranscriptionFactor** = one of the fusion genes is a transcription factor, **TumorSuppressorGene** = one gene is a known tumor suppressor, left **blank** if no annotations apply |
 | Gene Ensembl ID | Official gene ID from Ensembl  | |
-| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma, **CHOP P30 panel** |
+| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma, **CHOP P30 Panel** = CHOP diagnostic fusion panel|
 | Disease | Cancer type | See [disease table](https://github.com/PediatricOpenTargets/documentation/blob/dev/disease_subject_counts.tsv) |
 | Total alterations / Subjects in Dataset | Total number of samples with the given fusions over the total number of disease samples in the given Dataset |  |
 | Frequency in overall dataset | Fraction of the samples for the given disease in the given dataset that have the fusion |  |
@@ -264,7 +247,7 @@ The following table gives the a description of the fields and corresponding valu
 TPMs (transcripts per million reads) were calculated using RSEM and plotted using R. 
 Please see the [CAVATICA App](https://cavatica.sbgenomics.com/public/apps/cavatica/apps-publisher/kfdrc-rnaseq-workflow/6) for more details. 
 Once in the Cavatica workflow page, please click on the "Read All" link to open up the full documentation. 
-**TPMs from The Cancer Genome Atlas (TCGA) were pulled directly from that platform and were not recalculated.**
+TPMs from The Cancer Genome Atlas (TCGA) were pulled directly from that platform and were not recalculated.
 
 #### OpenPedCan Gene Expression Boxplot
 
@@ -314,7 +297,7 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 
 #### Methylation Arrays
 
-Methylation arrays are aggregated from multiple independent projects, so samples have been measured using either 27K, 450K, or 850K Illumina Infinium HumanMethylation BeadChips or Roche Nimblegen HELP microarrays. 
+Methylation arrays are aggregated from multiple independent projects, so samples have been measured using either 27K, 450K, or EPIC (850K) Illumina Infinium HumanMethylation BeadChips or Roche Nimblegen HELP microarrays. 
 All Illumina arrays were reprocessed by cancer group from signal intensities to methylation values in R using the minfi Bioconductor package with default arguments. Only probes with gene annotations from Illumina were retained. 
 The TARGET Acute Lymphoblastic Leukemia (ALL) samples were measured using a different platform, the Roche Nimblegen HELP array, so they were not reprocessed. 
 Please see the [OpenPedCan-analysis methylation preprocessing documentation](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-preprocessing) for more details.
@@ -330,9 +313,5 @@ Methylation values were summarized by taking the median probe value for all samp
 #### Harmonized Data Download
 
 For publically available harmonized data, please see the instructions for data download at the OpenPedCan-analysis repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data>
-
-#### Raw Data Access
-
-Have to apply for access through GDC?
 
 <br><br>
