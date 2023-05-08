@@ -23,12 +23,18 @@ For documentation on previous versions of the Molecular Targets Platform, please
   - [Somatic Alteration Data](#somatic-alteration-data)
     - [Small Variants](#small-variants)
     - [Copy Number Variants (CNVs)](#copy-number-variants-cnvs)
-- [RNA Sequencing](#rna-sequencing)
+- [RNA_Sequencing](#rna_sequencing)
   - [Data Processing](#data-processing-1)
   - [RNA Sequencing Data](#rna-sequencing-data)
     - [Fusions](#fusions)
     - [Gene Expression](#gene-expression)
     - [OpenPedCan Gene Expression Boxplot](#openpedcan-gene-expression-boxplot)
+- [Methylation](#methylation)
+  - [Data Processing](#data-processing-2)
+    - [Methylation Arrays](#methylation-arrays)
+  - [Methylation Data](#methylation-data)
+- [Data_Availability](#data_availability)
+  - [Harmonized Data Download](#harmonized-data-download)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -329,9 +335,9 @@ The following table gives the a description of the fields and corresponding valu
 
 ---
 
-### Data_Availability
+## Data_Availability
 
-#### Harmonized Data Download
+### Harmonized Data Download
 
 For publically available harmonized data, please see the instructions for data download at the OpenPedCan-analysis repository <https://github.com/PediatricOpenTargets/OpenPedCan-analysis#how-to-obtain-openpedcan-data>
 
