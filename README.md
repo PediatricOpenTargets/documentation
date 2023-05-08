@@ -304,7 +304,38 @@ Please see the [OpenPedCan-analysis methylation preprocessing documentation](htt
 
 ### Methylation Data
 
-Methylation values were summarized by taking the median probe value for all samples per cancer group. **Then more description of plots/tables deployed to MTP site here.**
+Methylation values were summarized by taking the median probe value for all samples per cancer group per annotated gene for subjects that have both RNA-seq and methylation data. **Then more description of plots/tables deployed to MTP site here.**
+
+Gene fusions are called solely from RNA sequencing using the programs above. 
+Fusions are filtered using custom R scripts. 
+Fusion calls are retained if they are called by both STAR-Fusion and Arriba and if the fusion was specific and present in 3 or more samples in a single disease. 
+Fusions panels were not reprocessed and were merged with our harmonized fusion calls.
+Fusions were then annotated with gene and fusion specific information as well as whether they are known cancer genes from OncoKB, TCGA, and COSMIC. 
+Summary frequencies are calculated using R. 
+See [the fusion filtering documentation](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/fusion_filtering) for specific code and further details. 
+Panel data was not reprocessed and the variant files provided by the submitters were merged with our harmonized data files.
+
+<br>
+
+The following table gives the a description of the fields and corresponding values for the gene fusion data both at the gene and variant level within MTP. 
+
+| Column Name | Description | Values |
+| --- | --- | --- |
+| Gene symbol | HGNC symbol for the given gene |  |
+| Gene Ensembl ID | Ensembl ID for gene |  |
+| Gene Feature | Description of the relative location of a probe near or within the gene body | **five_prime_UTR** = 5' untranslated region upstream of the gene, **promoter** = gene promoter region, **exon** = in an exon within the gene, **intron** = in an intron within the gene, **three_prime_UTR** = 3' untranslated region upstream of the gene, **intergenic** = not within an annotated gene|
+| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **PBTA** = Pediatric Brain Tumor Atlas |
+| Disease | Cancer type | See [disease table](https://github.com/PediatricOpenTargets/documentation/blob/dev/disease_subject_counts.tsv) |
+| Median TPM | Median transcripts per million (TPM) from the RNA-seq for the given gene | |
+| RNA Correlation | Correlation with RNA-seq for the given gene | |
+| Probe ID | Methylation array probe ID | |
+| Chromosome | Chromosomal location of the probe | |
+| Location | Location in bases of the probe on the chromosome in the previous column | |
+**| Beta_Q1 |** Minimum value for all samples at the given probe | |
+**| Beta_Q2 |** Quartile 1/25th percentile value for all samples at the given probe | |
+**| Beta_Median |** Median/50th percentile value for all samples at the given probe | |
+**| Beta_Q4 |** Quartile 3/75th percentile value for all samples at the given probe | |
+**| Beta_Q5 |** Maximum value for all samples at the given probe | |
 
 ---
 
