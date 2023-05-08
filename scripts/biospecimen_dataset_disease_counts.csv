@@ -1,173 +1,303 @@
-Dataset,Sequencing Type,Tumor Stage,Disease,Number of Biospecimens
-CHOP P30 Panel,RNA,primary,Acute Lymphoblastic Leukemia,6
-CHOP P30 Panel,RNA,relapse,Acute Lymphoblastic Leukemia,6
-CHOP P30 Panel,RNA,primary,Acute Myeloid Leukemia,12
-CHOP P30 Panel,RNA,relapse,Acute Myeloid Leukemia,14
-CHOP P30 Panel,RNA,primary,Atypical Teratoid Rhabdoid Tumor,10
-CHOP P30 Panel,RNA,relapse,Atypical Teratoid Rhabdoid Tumor,6
-CHOP P30 Panel,RNA,primary,B Acute Lymphoblastic Leukemia/Lymphoma,47
-CHOP P30 Panel,RNA,relapse,B Acute Lymphoblastic Leukemia/Lymphoma,35
-CHOP P30 Panel,RNA,primary,Choroid plexus carcinoma,3
-CHOP P30 Panel,RNA,primary,Diffuse intrinsic pontine glioma,7
-CHOP P30 Panel,RNA,primary,Dysembryoplastic neuroepithelial tumor,13
-CHOP P30 Panel,RNA,relapse,Dysembryoplastic neuroepithelial tumor,3
-CHOP P30 Panel,RNA,primary,Ependymoma,25
-CHOP P30 Panel,RNA,relapse,Ependymoma,12
-CHOP P30 Panel,RNA,primary,Ewing sarcoma,7
-CHOP P30 Panel,RNA,relapse,Ewing sarcoma,3
-CHOP P30 Panel,RNA,primary,Ganglioglioma,22
-CHOP P30 Panel,RNA,relapse,Ganglioglioma,4
-CHOP P30 Panel,RNA,primary,Glial-neuronal tumor NOS,7
-CHOP P30 Panel,RNA,relapse,Glial-neuronal tumor NOS,3
-CHOP P30 Panel,RNA,primary,Hemangioblastoma,4
-CHOP P30 Panel,RNA,primary,Hepatoblastoma,4
-CHOP P30 Panel,RNA,primary,High-grade glioma/astrocytoma,42
-CHOP P30 Panel,RNA,relapse,High-grade glioma/astrocytoma,15
-CHOP P30 Panel,RNA,primary,Histiocytic tumor,5
-CHOP P30 Panel,RNA,primary,Inflammatory Myofibroblastic Tumor,4
-CHOP P30 Panel,RNA,primary,Langerhans Cell histiocytosis,9
-CHOP P30 Panel,RNA,primary,Low-grade glioma/astrocytoma,123
-CHOP P30 Panel,RNA,relapse,Low-grade glioma/astrocytoma,62
-CHOP P30 Panel,RNA,primary,Medulloblastoma,34
-CHOP P30 Panel,RNA,relapse,Medulloblastoma,3
-CHOP P30 Panel,RNA,primary,Meningioma,5
-CHOP P30 Panel,RNA,relapse,Meningioma,3
-CHOP P30 Panel,RNA,primary,Metastatic secondary tumors,3
-CHOP P30 Panel,RNA,primary,Neuroblastoma,21
-CHOP P30 Panel,RNA,relapse,Neuroblastoma,8
-CHOP P30 Panel,RNA,relapse,Neurofibroma/Plexiform,3
-CHOP P30 Panel,RNA,primary,Osteosarcoma,6
-CHOP P30 Panel,RNA,relapse,Osteosarcoma,3
-CHOP P30 Panel,RNA,primary,Pineoblastoma,4
-CHOP P30 Panel,RNA,primary,Rhabdomyosarcoma,17
-CHOP P30 Panel,RNA,relapse,Rhabdomyosarcoma,5
-CHOP P30 Panel,RNA,primary,Sarcoma,6
-CHOP P30 Panel,RNA,primary,Schwannoma,7
-CHOP P30 Panel,RNA,primary,T Acute Lymphoblastic Leukemia/Lymphoma,8
-CHOP P30 Panel,RNA,primary,Teratoma,3
-CHOP P30 Panel,RNA,primary,Thyroid Gland Papillary Carcinoma,20
-CHOP P30 Panel,RNA,relapse,Thyroid Gland Papillary Carcinoma,4
-CHOP P30 Panel,RNA,primary,Wilms tumor,6
-CHOP P30 Panel,RNA,primary,NA,41
-CHOP P30 Panel,RNA,relapse,NA,9
-GMKF,DNA,primary,Ganglioneuroblastoma,36
-GMKF,RNA,primary,Ganglioneuroblastoma,25
-GMKF,DNA,primary,Ganglioneuroma,3
-GMKF,DNA,primary,Neuroblastoma,297
-GMKF,RNA,primary,Neuroblastoma,182
-PBTA,DNA,primary,Adamantinomatous Craniopharyngioma,18
-PBTA,DNA,relapse,Adamantinomatous Craniopharyngioma,5
-PBTA,RNA,primary,Adamantinomatous Craniopharyngioma,16
-PBTA,RNA,relapse,Adamantinomatous Craniopharyngioma,4
-PBTA,DNA,primary,Atypical Teratoid Rhabdoid Tumor,24
-PBTA,DNA,relapse,Atypical Teratoid Rhabdoid Tumor,6
-PBTA,RNA,primary,Atypical Teratoid Rhabdoid Tumor,24
-PBTA,RNA,relapse,Atypical Teratoid Rhabdoid Tumor,6
-PBTA,DNA,primary,Chordoma,3
-PBTA,RNA,primary,Chordoma,3
-PBTA,DNA,primary,Choroid plexus carcinoma,3
-PBTA,RNA,primary,Choroid plexus carcinoma,4
-PBTA,DNA,primary,CNS Embryonal tumor,6
-PBTA,DNA,relapse,CNS Embryonal tumor,3
-PBTA,RNA,primary,CNS Embryonal tumor,8
-PBTA,RNA,relapse,CNS Embryonal tumor,4
-PBTA,DNA,primary,Craniopharyngioma,8
-PBTA,DNA,relapse,Craniopharyngioma,3
-PBTA,RNA,primary,Craniopharyngioma,8
-PBTA,RNA,relapse,Craniopharyngioma,3
-PBTA,DNA,primary,Diffuse fibrillary astrocytoma,3
-PBTA,RNA,primary,Diffuse fibrillary astrocytoma,5
-PBTA,RNA,relapse,Diffuse intrinsic pontine glioma,7
-PBTA,DNA,primary,Diffuse midline glioma,51
-PBTA,DNA,relapse,Diffuse midline glioma,11
-PBTA,RNA,primary,Diffuse midline glioma,49
-PBTA,RNA,relapse,Diffuse midline glioma,9
-PBTA,DNA,primary,Dysembryoplastic neuroepithelial tumor,17
-PBTA,DNA,relapse,Dysembryoplastic neuroepithelial tumor,5
-PBTA,RNA,primary,Dysembryoplastic neuroepithelial tumor,18
-PBTA,RNA,relapse,Dysembryoplastic neuroepithelial tumor,5
-PBTA,RNA,primary,Embryonal tumor with multilayer rosettes,3
-PBTA,RNA,relapse,Embryonal tumor with multilayer rosettes,3
-PBTA,DNA,primary,Ependymoma,60
-PBTA,DNA,relapse,Ependymoma,17
-PBTA,RNA,primary,Ependymoma,69
-PBTA,RNA,relapse,Ependymoma,19
-PBTA,DNA,primary,Ewing sarcoma,6
-PBTA,RNA,primary,Ewing sarcoma,7
-PBTA,DNA,primary,Ganglioglioma,35
-PBTA,DNA,relapse,Ganglioglioma,11
-PBTA,RNA,primary,Ganglioglioma,36
-PBTA,RNA,relapse,Ganglioglioma,9
-PBTA,DNA,primary,Germinoma,4
-PBTA,RNA,primary,Germinoma,4
-PBTA,DNA,primary,Glial-neuronal tumor NOS,4
-PBTA,RNA,primary,Glial-neuronal tumor NOS,6
-PBTA,DNA,primary,High-grade glioma/astrocytoma,67
-PBTA,DNA,relapse,High-grade glioma/astrocytoma,20
-PBTA,RNA,primary,High-grade glioma/astrocytoma,87
-PBTA,RNA,relapse,High-grade glioma/astrocytoma,33
-PBTA,DNA,primary,Langerhans Cell histiocytosis,4
-PBTA,RNA,primary,Langerhans Cell histiocytosis,4
-PBTA,DNA,primary,Low-grade glioma/astrocytoma,60
-PBTA,DNA,relapse,Low-grade glioma/astrocytoma,18
-PBTA,RNA,primary,Low-grade glioma/astrocytoma,64
-PBTA,RNA,relapse,Low-grade glioma/astrocytoma,19
-PBTA,DNA,primary,Medulloblastoma,97
-PBTA,DNA,relapse,Medulloblastoma,5
-PBTA,RNA,primary,Medulloblastoma,105
-PBTA,RNA,relapse,Medulloblastoma,13
-PBTA,DNA,primary,Meningioma,17
-PBTA,DNA,relapse,Meningioma,6
-PBTA,RNA,primary,Meningioma,14
-PBTA,RNA,relapse,Meningioma,7
-PBTA,DNA,primary,Metastatic secondary tumors,3
-PBTA,RNA,primary,Metastatic secondary tumors,3
-PBTA,RNA,relapse,Neuroblastoma,4
-PBTA,DNA,primary,Neurofibroma/Plexiform,7
-PBTA,DNA,relapse,Neurofibroma/Plexiform,5
-PBTA,RNA,primary,Neurofibroma/Plexiform,10
-PBTA,RNA,relapse,Neurofibroma/Plexiform,6
-PBTA,DNA,primary,Pilocytic astrocytoma,104
-PBTA,DNA,relapse,Pilocytic astrocytoma,16
-PBTA,RNA,primary,Pilocytic astrocytoma,108
-PBTA,RNA,relapse,Pilocytic astrocytoma,20
-PBTA,DNA,primary,Pineoblastoma,4
-PBTA,RNA,primary,Pineoblastoma,4
-PBTA,DNA,primary,Pleomorphic xanthoastrocytoma,9
-PBTA,RNA,primary,Pleomorphic xanthoastrocytoma,10
-PBTA,DNA,primary,Sarcoma,3
-PBTA,RNA,primary,Sarcoma,3
-PBTA,DNA,primary,Schwannoma,12
-PBTA,RNA,primary,Schwannoma,14
-PBTA,DNA,primary,Subependymal Giant Cell Astrocytoma,9
-PBTA,RNA,primary,Subependymal Giant Cell Astrocytoma,10
-PBTA,DNA,primary,Teratoma,4
-PBTA,DNA,relapse,Teratoma,3
-PBTA,RNA,primary,Teratoma,4
-PBTA,DNA,primary,NA,49
-PBTA,DNA,relapse,NA,6
-PBTA,RNA,primary,NA,46
-PBTA,RNA,relapse,NA,6
-TARGET,DNA,primary,Acute Lymphoblastic Leukemia,712
-TARGET,DNA,relapse,Acute Lymphoblastic Leukemia,17
-TARGET,RNA,primary,Acute Lymphoblastic Leukemia,538
-TARGET,RNA,relapse,Acute Lymphoblastic Leukemia,75
-TARGET,DNA,primary,Acute Myeloid Leukemia,16
-TARGET,DNA,relapse,Acute Myeloid Leukemia,15
-TARGET,RNA,primary,Acute Myeloid Leukemia,168
-TARGET,RNA,relapse,Acute Myeloid Leukemia,42
-TARGET,RNA,primary,Clear cell sarcoma of the kidney,13
-TARGET,DNA,primary,Ganglioneuroblastoma,34
-TARGET,RNA,primary,Ganglioneuroblastoma,20
-TARGET,DNA,primary,Neuroblastoma,186
-TARGET,RNA,primary,Neuroblastoma,129
-TARGET,RNA,relapse,Neuroblastoma,8
-TARGET,DNA,primary,Osteosarcoma,73
-TARGET,RNA,primary,Osteosarcoma,87
-TARGET,RNA,primary,Rhabdoid tumor of the kidney,64
-TARGET,DNA,primary,Wilms tumor,36
-TARGET,DNA,relapse,Wilms tumor,5
-TARGET,RNA,primary,Wilms tumor,124
-TARGET,RNA,relapse,Wilms tumor,5
-TARGET Panel,DNA,primary,Ganglioneuroblastoma,47
-TARGET Panel,DNA,primary,Neuroblastoma,450
+Dataset,Sequencing Type,Experimental Strategy,Tumor Stage,Disease,Number of Biospecimens
+CHOP P30 Panel,RNA,Fusion Panel,primary,Acute Lymphoblastic Leukemia,6
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Acute Lymphoblastic Leukemia,6
+CHOP P30 Panel,RNA,Fusion Panel,primary,Acute Myeloid Leukemia,12
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Acute Myeloid Leukemia,14
+CHOP P30 Panel,RNA,Fusion Panel,primary,Adamantinomatous Craniopharyngioma,7
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Adamantinomatous Craniopharyngioma,4
+CHOP P30 Panel,RNA,Fusion Panel,primary,Atypical Teratoid Rhabdoid Tumor,10
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Atypical Teratoid Rhabdoid Tumor,6
+CHOP P30 Panel,RNA,Fusion Panel,primary,B Acute Lymphoblastic Leukemia/Lymphoma,47
+CHOP P30 Panel,RNA,Fusion Panel,relapse,B Acute Lymphoblastic Leukemia/Lymphoma,35
+CHOP P30 Panel,RNA,Fusion Panel,primary,CNS Embryonal tumor,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Choroid plexus carcinoma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Choroid plexus papilloma,8
+CHOP P30 Panel,RNA,Fusion Panel,primary,Diffuse intrinsic pontine glioma,8
+CHOP P30 Panel,RNA,Fusion Panel,primary,Dysembryoplastic neuroepithelial tumor,13
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Dysembryoplastic neuroepithelial tumor,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Ependymoma,25
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Ependymoma,13
+CHOP P30 Panel,RNA,Fusion Panel,primary,Ewing sarcoma,7
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Ewing sarcoma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Ganglioglioma,21
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Ganglioglioma,4
+CHOP P30 Panel,RNA,Fusion Panel,primary,Glial-neuronal tumor,8
+CHOP P30 Panel,RNA,Fusion Panel,primary,Hemangioblastoma,4
+CHOP P30 Panel,RNA,Fusion Panel,primary,Hepatoblastoma,4
+CHOP P30 Panel,RNA,Fusion Panel,primary,High-grade glioma,40
+CHOP P30 Panel,RNA,Fusion Panel,relapse,High-grade glioma,16
+CHOP P30 Panel,RNA,Fusion Panel,primary,Histiocytic tumor,5
+CHOP P30 Panel,RNA,Fusion Panel,primary,Inflammatory Myofibroblastic Tumor,5
+CHOP P30 Panel,RNA,Fusion Panel,primary,Langerhans Cell histiocytosis,9
+CHOP P30 Panel,RNA,Fusion Panel,primary,Low-grade glioma,93
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Low-grade glioma,47
+CHOP P30 Panel,RNA,Fusion Panel,primary,Medulloblastoma,34
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Medulloblastoma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Meningioma,7
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Meningioma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Neuroblastoma,21
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Neuroblastoma,8
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Neurofibroma/Plexiform,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Osteosarcoma,6
+CHOP P30 Panel,RNA,Fusion Panel,primary,Pilocytic astrocytoma,26
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Pilocytic astrocytoma,15
+CHOP P30 Panel,RNA,Fusion Panel,primary,Pineoblastoma,4
+CHOP P30 Panel,RNA,Fusion Panel,primary,Pleomorphic xanthoastrocytoma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Rhabdomyosarcoma,17
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Rhabdomyosarcoma,5
+CHOP P30 Panel,RNA,Fusion Panel,primary,Sarcoma,6
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Sarcoma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Schwannoma,7
+CHOP P30 Panel,RNA,Fusion Panel,primary,T Acute Lymphoblastic Leukemia/Lymphoma,8
+CHOP P30 Panel,RNA,Fusion Panel,primary,Teratoma,3
+CHOP P30 Panel,RNA,Fusion Panel,primary,Thyroid Gland Papillary Carcinoma,20
+CHOP P30 Panel,RNA,Fusion Panel,relapse,Thyroid Gland Papillary Carcinoma,4
+CHOP P30 Panel,RNA,Fusion Panel,primary,Wilms tumor,6
+GMKF,DNA,WGS/WXS,primary,Ganglioneuroblastoma,36
+GMKF,RNA,RNA-Seq,primary,Ganglioneuroblastoma,25
+GMKF,DNA,WGS/WXS,primary,Ganglioneuroma,3
+GMKF,DNA,WGS/WXS,primary,Neuroblastoma,297
+GMKF,RNA,RNA-Seq,primary,Neuroblastoma,183
+PBTA,DNA,WGS/WXS,primary,Adamantinomatous Craniopharyngioma,51
+PBTA,DNA,WGS/WXS,relapse,Adamantinomatous Craniopharyngioma,23
+PBTA,Methylation Array,Methylation,primary,Adamantinomatous Craniopharyngioma,49
+PBTA,Methylation Array,Methylation,relapse,Adamantinomatous Craniopharyngioma,22
+PBTA,RNA,RNA-Seq,primary,Adamantinomatous Craniopharyngioma,43
+PBTA,RNA,RNA-Seq,relapse,Adamantinomatous Craniopharyngioma,15
+PBTA,DNA,WGS/WXS,primary,Atypical Teratoid Rhabdoid Tumor,49
+PBTA,DNA,WGS/WXS,relapse,Atypical Teratoid Rhabdoid Tumor,16
+PBTA,Methylation Array,Methylation,primary,Atypical Teratoid Rhabdoid Tumor,48
+PBTA,Methylation Array,Methylation,relapse,Atypical Teratoid Rhabdoid Tumor,16
+PBTA,RNA,RNA-Seq,primary,Atypical Teratoid Rhabdoid Tumor,45
+PBTA,RNA,RNA-Seq,relapse,Atypical Teratoid Rhabdoid Tumor,14
+PBTA,Methylation Array,Methylation,primary,Atypical choroid plexus papilloma,3
+PBTA,DNA,WGS/WXS,primary,CNS Embryonal tumor,13
+PBTA,DNA,WGS/WXS,relapse,CNS Embryonal tumor,7
+PBTA,Methylation Array,Methylation,primary,CNS Embryonal tumor,10
+PBTA,Methylation Array,Methylation,relapse,CNS Embryonal tumor,6
+PBTA,RNA,RNA-Seq,primary,CNS Embryonal tumor,12
+PBTA,RNA,RNA-Seq,relapse,CNS Embryonal tumor,8
+PBTA,DNA,WGS/WXS,primary,Cavernoma,6
+PBTA,DNA,WGS/WXS,primary,Chordoma,7
+PBTA,RNA,RNA-Seq,primary,Chordoma,5
+PBTA,RNA,RNA-Seq,relapse,Chordoma,3
+PBTA,DNA,WGS/WXS,primary,Choroid plexus carcinoma,8
+PBTA,DNA,WGS/WXS,relapse,Choroid plexus carcinoma,5
+PBTA,Methylation Array,Methylation,primary,Choroid plexus carcinoma,11
+PBTA,Methylation Array,Methylation,relapse,Choroid plexus carcinoma,4
+PBTA,RNA,RNA-Seq,primary,Choroid plexus carcinoma,10
+PBTA,RNA,RNA-Seq,relapse,Choroid plexus carcinoma,5
+PBTA,DNA,WGS/WXS,primary,Choroid plexus papilloma,27
+PBTA,Methylation Array,Methylation,primary,Choroid plexus papilloma,29
+PBTA,RNA,RNA-Seq,primary,Choroid plexus papilloma,23
+PBTA,DNA,WGS/WXS,primary,Craniopharyngioma,16
+PBTA,DNA,WGS/WXS,relapse,Craniopharyngioma,3
+PBTA,Methylation Array,Methylation,primary,Craniopharyngioma,16
+PBTA,Methylation Array,Methylation,relapse,Craniopharyngioma,4
+PBTA,RNA,RNA-Seq,primary,Craniopharyngioma,13
+PBTA,RNA,RNA-Seq,relapse,Craniopharyngioma,3
+PBTA,DNA,WGS/WXS,primary,Diffuse hemispheric glioma,18
+PBTA,DNA,WGS/WXS,relapse,Diffuse hemispheric glioma,3
+PBTA,Methylation Array,Methylation,primary,Diffuse hemispheric glioma,10
+PBTA,Methylation Array,Methylation,relapse,Diffuse hemispheric glioma,6
+PBTA,RNA,RNA-Seq,primary,Diffuse hemispheric glioma,22
+PBTA,RNA,RNA-Seq,relapse,Diffuse hemispheric glioma,6
+PBTA,RNA,RNA-Seq,primary,Diffuse intrinsic pontine glioma,4
+PBTA,RNA,RNA-Seq,relapse,Diffuse intrinsic pontine glioma,6
+PBTA,DNA,WGS/WXS,primary,Diffuse midline glioma,123
+PBTA,DNA,WGS/WXS,relapse,Diffuse midline glioma,54
+PBTA,Methylation Array,Methylation,primary,Diffuse midline glioma,61
+PBTA,Methylation Array,Methylation,relapse,Diffuse midline glioma,49
+PBTA,RNA,RNA-Seq,primary,Diffuse midline glioma,116
+PBTA,RNA,RNA-Seq,relapse,Diffuse midline glioma,48
+PBTA,DNA,WGS/WXS,primary,Dysembryoplastic neuroepithelial tumor,37
+PBTA,DNA,WGS/WXS,relapse,Dysembryoplastic neuroepithelial tumor,10
+PBTA,Methylation Array,Methylation,primary,Dysembryoplastic neuroepithelial tumor,39
+PBTA,Methylation Array,Methylation,relapse,Dysembryoplastic neuroepithelial tumor,9
+PBTA,RNA,RNA-Seq,primary,Dysembryoplastic neuroepithelial tumor,31
+PBTA,RNA,RNA-Seq,relapse,Dysembryoplastic neuroepithelial tumor,8
+PBTA,Methylation Array,Methylation,primary,Embryonal tumor with multilayer rosettes,3
+PBTA,RNA,RNA-Seq,primary,Embryonal tumor with multilayer rosettes,3
+PBTA,DNA,WGS/WXS,primary,Ependymoma,120
+PBTA,DNA,WGS/WXS,relapse,Ependymoma,44
+PBTA,Methylation Array,Methylation,primary,Ependymoma,173
+PBTA,Methylation Array,Methylation,relapse,Ependymoma,69
+PBTA,RNA,RNA-Seq,primary,Ependymoma,116
+PBTA,RNA,RNA-Seq,relapse,Ependymoma,47
+PBTA,DNA,WGS/WXS,primary,Ewing sarcoma,12
+PBTA,DNA,WGS/WXS,relapse,Ewing sarcoma,4
+PBTA,Methylation Array,Methylation,primary,Ewing sarcoma,12
+PBTA,Methylation Array,Methylation,relapse,Ewing sarcoma,4
+PBTA,RNA,RNA-Seq,primary,Ewing sarcoma,10
+PBTA,RNA,RNA-Seq,relapse,Ewing sarcoma,3
+PBTA,DNA,WGS/WXS,primary,Ganglioglioma,72
+PBTA,DNA,WGS/WXS,relapse,Ganglioglioma,18
+PBTA,Methylation Array,Methylation,primary,Ganglioglioma,37
+PBTA,Methylation Array,Methylation,relapse,Ganglioglioma,10
+PBTA,RNA,RNA-Seq,primary,Ganglioglioma,64
+PBTA,RNA,RNA-Seq,relapse,Ganglioglioma,16
+PBTA,DNA,WGS/WXS,relapse,Ganglioneuroblastoma,3
+PBTA,DNA,WGS/WXS,primary,Germinoma,6
+PBTA,Methylation Array,Methylation,primary,Germinoma,4
+PBTA,RNA,RNA-Seq,primary,Germinoma,8
+PBTA,DNA,WGS/WXS,primary,Glial-neuronal tumor,20
+PBTA,DNA,WGS/WXS,relapse,Glial-neuronal tumor,8
+PBTA,Methylation Array,Methylation,primary,Glial-neuronal tumor,21
+PBTA,Methylation Array,Methylation,relapse,Glial-neuronal tumor,6
+PBTA,RNA,RNA-Seq,primary,Glial-neuronal tumor,17
+PBTA,RNA,RNA-Seq,relapse,Glial-neuronal tumor,7
+PBTA,RNA,RNA-Seq,primary,Glioblastoma,3
+PBTA,DNA,WGS/WXS,primary,Hemangioblastoma,7
+PBTA,Methylation Array,Methylation,primary,Hemangioblastoma,3
+PBTA,RNA,RNA-Seq,primary,Hemangioblastoma,4
+PBTA,DNA,WGS/WXS,primary,High-grade glioma,101
+PBTA,DNA,WGS/WXS,relapse,High-grade glioma,48
+PBTA,Methylation Array,Methylation,primary,High-grade glioma,71
+PBTA,Methylation Array,Methylation,relapse,High-grade glioma,56
+PBTA,RNA,RNA-Seq,primary,High-grade glioma,125
+PBTA,RNA,RNA-Seq,relapse,High-grade glioma,50
+PBTA,DNA,WGS/WXS,primary,Infant-type hemispheric glioma,6
+PBTA,Methylation Array,Methylation,primary,Infant-type hemispheric glioma,6
+PBTA,Methylation Array,Methylation,relapse,Infant-type hemispheric glioma,4
+PBTA,RNA,RNA-Seq,primary,Infant-type hemispheric glioma,6
+PBTA,RNA,RNA-Seq,relapse,Infant-type hemispheric glioma,4
+PBTA,DNA,WGS/WXS,primary,Langerhans Cell histiocytosis,9
+PBTA,Methylation Array,Methylation,primary,Langerhans Cell histiocytosis,4
+PBTA,RNA,RNA-Seq,primary,Langerhans Cell histiocytosis,5
+PBTA,DNA,WGS/WXS,primary,Low-grade glioma,346
+PBTA,DNA,WGS/WXS,relapse,Low-grade glioma,84
+PBTA,Methylation Array,Methylation,primary,Low-grade glioma,195
+PBTA,Methylation Array,Methylation,relapse,Low-grade glioma,39
+PBTA,RNA,RNA-Seq,primary,Low-grade glioma,334
+PBTA,RNA,RNA-Seq,relapse,Low-grade glioma,78
+PBTA,DNA,WGS/WXS,primary,Malignant peripheral nerve sheath tumor,4
+PBTA,Methylation Array,Methylation,relapse,Malignant peripheral nerve sheath tumor,3
+PBTA,RNA,RNA-Seq,relapse,Malignant peripheral nerve sheath tumor,4
+PBTA,DNA,WGS/WXS,primary,Medulloblastoma,219
+PBTA,DNA,WGS/WXS,relapse,Medulloblastoma,20
+PBTA,Methylation Array,Methylation,primary,Medulloblastoma,225
+PBTA,Methylation Array,Methylation,relapse,Medulloblastoma,29
+PBTA,RNA,RNA-Seq,primary,Medulloblastoma,206
+PBTA,RNA,RNA-Seq,relapse,Medulloblastoma,31
+PBTA,DNA,WGS/WXS,primary,Meningioma,45
+PBTA,DNA,WGS/WXS,relapse,Meningioma,8
+PBTA,Methylation Array,Methylation,primary,Meningioma,38
+PBTA,Methylation Array,Methylation,relapse,Meningioma,12
+PBTA,RNA,RNA-Seq,primary,Meningioma,31
+PBTA,RNA,RNA-Seq,relapse,Meningioma,11
+PBTA,DNA,WGS/WXS,relapse,Mixed germ cell tumor,3
+PBTA,DNA,WGS/WXS,primary,Neuroblastoma,4
+PBTA,DNA,WGS/WXS,relapse,Neuroblastoma,5
+PBTA,Methylation Array,Methylation,primary,Neuroblastoma,3
+PBTA,Methylation Array,Methylation,relapse,Neuroblastoma,7
+PBTA,RNA,RNA-Seq,relapse,Neuroblastoma,6
+PBTA,DNA,WGS/WXS,primary,Neurofibroma/Plexiform,11
+PBTA,DNA,WGS/WXS,relapse,Neurofibroma/Plexiform,9
+PBTA,Methylation Array,Methylation,primary,Neurofibroma/Plexiform,10
+PBTA,Methylation Array,Methylation,relapse,Neurofibroma/Plexiform,6
+PBTA,RNA,RNA-Seq,primary,Neurofibroma/Plexiform,13
+PBTA,RNA,RNA-Seq,relapse,Neurofibroma/Plexiform,7
+PBTA,DNA,WGS/WXS,primary,Non-germinomatous germ cell tumor,3
+PBTA,RNA,RNA-Seq,primary,Non-germinomatous germ cell tumor,4
+PBTA,DNA,WGS/WXS,relapse,Oligodendroglioma,3
+PBTA,RNA,RNA-Seq,primary,Oligodendroglioma,36
+PBTA,RNA,RNA-Seq,relapse,Oligodendroglioma,26
+PBTA,DNA,WGS/WXS,primary,Pilocytic astrocytoma,51
+PBTA,DNA,WGS/WXS,relapse,Pilocytic astrocytoma,7
+PBTA,RNA,RNA-Seq,primary,Pilocytic astrocytoma,7
+PBTA,RNA,RNA-Seq,relapse,Pilocytic astrocytoma,3
+PBTA,DNA,WGS/WXS,primary,Pineoblastoma,16
+PBTA,Methylation Array,Methylation,primary,Pineoblastoma,14
+PBTA,Methylation Array,Methylation,relapse,Pineoblastoma,4
+PBTA,RNA,RNA-Seq,primary,Pineoblastoma,10
+PBTA,RNA,RNA-Seq,relapse,Pineoblastoma,4
+PBTA,Methylation Array,Methylation,primary,Pleomorphic xanthoastrocytoma,3
+PBTA,RNA,RNA-Seq,primary,Pleomorphic xanthoastrocytoma,3
+PBTA,DNA,WGS/WXS,primary,Sarcoma,8
+PBTA,DNA,WGS/WXS,relapse,Sarcoma,7
+PBTA,Methylation Array,Methylation,primary,Sarcoma,9
+PBTA,Methylation Array,Methylation,relapse,Sarcoma,7
+PBTA,RNA,RNA-Seq,primary,Sarcoma,7
+PBTA,RNA,RNA-Seq,relapse,Sarcoma,9
+PBTA,DNA,WGS/WXS,primary,Schwannoma,34
+PBTA,DNA,WGS/WXS,relapse,Schwannoma,5
+PBTA,Methylation Array,Methylation,primary,Schwannoma,16
+PBTA,RNA,RNA-Seq,primary,Schwannoma,23
+PBTA,RNA,RNA-Seq,relapse,Schwannoma,4
+PBTA,DNA,WGS/WXS,primary,Subependymal Giant Cell Astrocytoma,12
+PBTA,Methylation Array,Methylation,primary,Subependymal Giant Cell Astrocytoma,8
+PBTA,RNA,RNA-Seq,primary,Subependymal Giant Cell Astrocytoma,13
+PBTA,DNA,WGS/WXS,primary,Teratoma,9
+PBTA,DNA,WGS/WXS,relapse,Teratoma,5
+PBTA,Methylation Array,Methylation,primary,Teratoma,4
+PBTA,RNA,RNA-Seq,primary,Teratoma,6
+PBTA,RNA,RNA-Seq,relapse,Teratoma,3
+TARGET,DNA,WGS/WXS,primary,Acute Lymphoblastic Leukemia,712
+TARGET,DNA,WGS/WXS,relapse,Acute Lymphoblastic Leukemia,17
+TARGET,RNA,RNA-Seq,primary,Acute Lymphoblastic Leukemia,538
+TARGET,RNA,RNA-Seq,relapse,Acute Lymphoblastic Leukemia,75
+TARGET,DNA,WGS/WXS,primary,Acute Myeloid Leukemia,16
+TARGET,DNA,WGS/WXS,relapse,Acute Myeloid Leukemia,15
+TARGET,Methylation Array,Methylation,primary,Acute Myeloid Leukemia,113
+TARGET,Methylation Array,Methylation,relapse,Acute Myeloid Leukemia,64
+TARGET,RNA,RNA-Seq,primary,Acute Myeloid Leukemia,168
+TARGET,RNA,RNA-Seq,relapse,Acute Myeloid Leukemia,42
+TARGET,Methylation Array,Methylation,primary,Clear cell sarcoma of the kidney,11
+TARGET,RNA,RNA-Seq,primary,Clear cell sarcoma of the kidney,13
+TARGET,DNA,SNV Panel,primary,Ganglioneuroblastoma,47
+TARGET,DNA,WGS/WXS,primary,Ganglioneuroblastoma,34
+TARGET,Methylation Array,Methylation,primary,Ganglioneuroblastoma,17
+TARGET,RNA,RNA-Seq,primary,Ganglioneuroblastoma,20
+TARGET,DNA,SNV Panel,primary,Neuroblastoma,450
+TARGET,DNA,WGS/WXS,primary,Neuroblastoma,186
+TARGET,Methylation Array,Methylation,primary,Neuroblastoma,195
+TARGET,Methylation Array,Methylation,relapse,Neuroblastoma,9
+TARGET,RNA,RNA-Seq,primary,Neuroblastoma,129
+TARGET,RNA,RNA-Seq,relapse,Neuroblastoma,8
+TARGET,DNA,WGS/WXS,primary,Osteosarcoma,73
+TARGET,Methylation Array,Methylation,primary,Osteosarcoma,86
+TARGET,RNA,RNA-Seq,primary,Osteosarcoma,87
+TARGET,RNA,RNA-Seq,primary,Rhabdoid tumor of the kidney,64
+TARGET,DNA,WGS/WXS,primary,Wilms tumor,36
+TARGET,DNA,WGS/WXS,relapse,Wilms tumor,5
+TARGET,Methylation Array,Methylation,primary,Wilms tumor,125
+TARGET,Methylation Array,Methylation,relapse,Wilms tumor,5
+TARGET,RNA,RNA-Seq,primary,Wilms tumor,124
+TARGET,RNA,RNA-Seq,relapse,Wilms tumor,5
+TCGA,RNA,RNA-Seq,primary,Acute Myeloid Leukemia,147
+TCGA,RNA,RNA-Seq,primary,Adrenocortical Carcinoma,77
+TCGA,RNA,RNA-Seq,primary,Bladder Urothelial Carcinoma,405
+TCGA,RNA,RNA-Seq,primary,Breast Invasive Carcinoma,1088
+TCGA,RNA,RNA-Seq,primary,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,304
+TCGA,RNA,RNA-Seq,primary,Cholangiocarcinoma,35
+TCGA,RNA,RNA-Seq,primary,Chromophobe renal cell carcinoma,65
+TCGA,RNA,RNA-Seq,primary,Colon Adenocarcinoma,288
+TCGA,RNA,RNA-Seq,primary,Cutaneous Melanoma,102
+TCGA,RNA,RNA-Seq,primary,Esophageal Carcinoma,158
+TCGA,RNA,RNA-Seq,primary,Glioblastoma Multiforme,152
+TCGA,RNA,RNA-Seq,relapse,Glioblastoma Multiforme,13
+TCGA,RNA,RNA-Seq,primary,Head and Neck Squamous Cell Carcinoma,498
+TCGA,RNA,RNA-Seq,primary,Hepatocellular Carcinoma,369
+TCGA,RNA,RNA-Seq,primary,Low-grade glioma,507
+TCGA,RNA,RNA-Seq,relapse,Low-grade glioma,14
+TCGA,RNA,RNA-Seq,primary,Lung Adenocarcinoma,510
+TCGA,RNA,RNA-Seq,primary,Lung Squamous Cell Carcinoma,498
+TCGA,RNA,RNA-Seq,primary,Lymphoid Neoplasm Diffuse Large B-cell Lymphoma,47
+TCGA,RNA,RNA-Seq,primary,Mesothelioma,86
+TCGA,RNA,RNA-Seq,primary,Ovarian Serous Cystadenocarcinoma,373
+TCGA,RNA,RNA-Seq,relapse,Ovarian Serous Cystadenocarcinoma,5
+TCGA,RNA,RNA-Seq,primary,Pancreatic Adenocarcinoma,177
+TCGA,RNA,RNA-Seq,primary,Pheochromocytoma and Paraganglioma,177
+TCGA,RNA,RNA-Seq,primary,Prostate Adenocarcinoma,494
+TCGA,RNA,RNA-Seq,primary,Rectum Adenocarcinoma,92
+TCGA,RNA,RNA-Seq,primary,Renal Clear Cell Carcinoma,527
+TCGA,RNA,RNA-Seq,primary,Renal Papillary Cell Carcinoma,286
+TCGA,RNA,RNA-Seq,primary,Sarcoma,258
+TCGA,RNA,RNA-Seq,relapse,Sarcoma,3
+TCGA,RNA,RNA-Seq,primary,Stomach Adenocarcinoma,373
+TCGA,RNA,RNA-Seq,primary,Testicular Germ Cell Tumor,148
+TCGA,RNA,RNA-Seq,primary,Thymoma,118
+TCGA,RNA,RNA-Seq,primary,Thyroid Carcinoma,501
+TCGA,RNA,RNA-Seq,primary,Uterine Carcinosarcoma,56
+TCGA,RNA,RNA-Seq,primary,Uterine Corpus Endometrial Carcinoma,178
+TCGA,RNA,RNA-Seq,primary,Uveal Melanoma,79

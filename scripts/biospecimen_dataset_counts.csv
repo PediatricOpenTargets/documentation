@@ -1,14 +1,20 @@
-Dataset,Sequencing Type,Tumor Stage,Number of Biospecimens
-CHOP P30 Panel,RNA,primary,531
-CHOP P30 Panel,RNA,relapse,201
-GMKF,DNA,primary,336
-GMKF,RNA,primary,207
-PBTA,DNA,primary,691
-PBTA,DNA,relapse,140
-PBTA,RNA,primary,746
-PBTA,RNA,relapse,177
-TARGET,DNA,primary,1057
-TARGET,DNA,relapse,37
-TARGET,RNA,primary,1143
-TARGET,RNA,relapse,130
-TARGET Panel,DNA,primary,497
+Dataset,Sequencing Type,Experimental Strategy,Tumor Stage,Number of Biospecimens
+CHOP P30 Panel,RNA,Fusion Panel,primary,506
+CHOP P30 Panel,RNA,Fusion Panel,relapse,195
+GMKF,DNA,WGS/WXS,primary,336
+GMKF,RNA,RNA-Seq,primary,208
+PBTA,DNA,WGS/WXS,primary,1470
+PBTA,DNA,WGS/WXS,relapse,402
+PBTA,Methylation Array,Methylation,primary,1135
+PBTA,Methylation Array,Methylation,relapse,372
+PBTA,RNA,RNA-Seq,primary,1378
+PBTA,RNA,RNA-Seq,relapse,429
+TARGET,DNA,SNV Panel,primary,497
+TARGET,DNA,WGS/WXS,primary,1057
+TARGET,DNA,WGS/WXS,relapse,37
+TARGET,Methylation Array,Methylation,primary,547
+TARGET,Methylation Array,Methylation,relapse,78
+TARGET,RNA,RNA-Seq,primary,1143
+TARGET,RNA,RNA-Seq,relapse,130
+TCGA,RNA,RNA-Seq,primary,9173
+TCGA,RNA,RNA-Seq,relapse,35
