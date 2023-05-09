@@ -58,6 +58,7 @@ GMKF,RNA,RNA-Seq,primary,Ganglioneuroblastoma,25
 GMKF,DNA,WGS/WXS,primary,Ganglioneuroma,3
 GMKF,DNA,WGS/WXS,primary,Neuroblastoma,297
 GMKF,RNA,RNA-Seq,primary,Neuroblastoma,183
+GTEx,RNA,RNA-Seq,normal,NA,17382
 PBTA,DNA,WGS/WXS,primary,Adamantinomatous Craniopharyngioma,51
 PBTA,DNA,WGS/WXS,relapse,Adamantinomatous Craniopharyngioma,23
 PBTA,Methylation Array,Methylation,primary,Adamantinomatous Craniopharyngioma,49

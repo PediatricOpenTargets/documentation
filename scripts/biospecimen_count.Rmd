@@ -95,15 +95,16 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
   inner_join(bind_rows(dna_primary, dna_relapse)) %>% 
   filter(!is.na(cohort), !is.na(cancer_group)) %>%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == 'Normal' ~ 'normal',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ 'primary',
-                           tumor_descriptor %in% 
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ 'relapse',
                            TRUE ~ NA_character_),
 # Don't distinguish different sequencing methods on the Pediatric Molecular 
@@ -145,15 +146,18 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
-  inner_join(rbind(rna_primary, rna_relapse)) %>% 
-  filter(!is.na(cohort), !is.na(cancer_group)) %>%
+  filter(Kids_First_Biospecimen_ID %in% rna_primary$Kids_First_Biospecimen_ID | 
+           Kids_First_Biospecimen_ID %in% rna_relapse$Kids_First_Biospecimen_ID |
+           cohort == 'GTEx') %>% 
+  filter(!is.na(cohort), !is.na(cancer_group) | sample_type == 'Normal') %>%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == 'Normal' ~ 'normal',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ 'primary',
-                           tumor_descriptor %in% 
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ 'relapse',
                            TRUE ~ NA_character_),
 # Don't distinguish different sequencing methods on the Pediatric Molecular 
@@ -163,7 +167,7 @@ histologies %>%
          experimental_strategy = case_when(experimental_strategy == 
                                              'Targeted Sequencing' ~ 
                                              'Fusion Panel',
-                                           TRUE ~ experimental_strategy)) %>% 
+                                           TRUE ~ experimental_strategy)) %>%
   count(cohort, stage, sequencing_type, 
         experimental_strategy, cancer_group) %>%
   filter(n >= 3) -> rna_counts
@@ -194,15 +198,16 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
   inner_join(rbind(methyl_primary, methyl_relapse)) %>% 
   filter(!is.na(cohort), !is.na(cancer_group)) %>%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == 'Normal' ~ 'normal',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ 'primary',
-                           tumor_descriptor %in% 
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ 'relapse',
                            TRUE ~ NA_character_),
 # Don't distinguish different sequencing methods on the Pediatric Molecular 
@@ -243,8 +248,6 @@ rbind(dna_counts, rna_counts, methyl_counts) %>%
                               experimental_strategy == 'Targeted Sequencing' ~ 
                               'TARGET Panel',
                             TRUE ~ cohort)) -> dataset_disease_counts
-
-dataset_disease_counts %>% distinct(experimental_strategy)
 ```
 
 #### Per Dataset and Disease Counts

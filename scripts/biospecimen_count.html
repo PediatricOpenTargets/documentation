@@ -494,15 +494,16 @@ experimental strategy) per cohort</p>
 histologies %&gt;% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %&gt;%
   inner_join(bind_rows(dna_primary, dna_relapse)) %&gt;% 
   filter(!is.na(cohort), !is.na(cancer_group)) %&gt;%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == &#39;Normal&#39; ~ &#39;normal&#39;,
+                           sample_type == &#39;Tumor&#39; &amp; tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ &#39;primary&#39;,
-                           tumor_descriptor %in% 
+                           sample_type == &#39;Tumor&#39; &amp; tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ &#39;relapse&#39;,
                            TRUE ~ NA_character_),
 # Don&#39;t distinguish different sequencing methods on the Pediatric Molecular 
@@ -541,15 +542,18 @@ experimental strategy) per cohort</p>
 histologies %&gt;% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %&gt;%
-  inner_join(rbind(rna_primary, rna_relapse)) %&gt;% 
-  filter(!is.na(cohort), !is.na(cancer_group)) %&gt;%
+  filter(Kids_First_Biospecimen_ID %in% rna_primary$Kids_First_Biospecimen_ID | 
+           Kids_First_Biospecimen_ID %in% rna_relapse$Kids_First_Biospecimen_ID |
+           cohort == &#39;GTEx&#39;) %&gt;% 
+  filter(!is.na(cohort), !is.na(cancer_group) | sample_type == &#39;Normal&#39;) %&gt;%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == &#39;Normal&#39; ~ &#39;normal&#39;,
+                           sample_type == &#39;Tumor&#39; &amp; tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ &#39;primary&#39;,
-                           tumor_descriptor %in% 
+                           sample_type == &#39;Tumor&#39; &amp; tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ &#39;relapse&#39;,
                            TRUE ~ NA_character_),
 # Don&#39;t distinguish different sequencing methods on the Pediatric Molecular 
@@ -559,13 +563,10 @@ histologies %&gt;%
          experimental_strategy = case_when(experimental_strategy == 
                                              &#39;Targeted Sequencing&#39; ~ 
                                              &#39;Fusion Panel&#39;,
-                                           TRUE ~ experimental_strategy)) %&gt;% 
+                                           TRUE ~ experimental_strategy)) %&gt;%
   count(cohort, stage, sequencing_type, 
         experimental_strategy, cancer_group) %&gt;%
   filter(n &gt;= 3) -&gt; rna_counts</code></pre>
-<pre><code>## Joining with `by = join_by(Kids_First_Participant_ID,
-## Kids_First_Biospecimen_ID, cohort, cancer_group, experimental_strategy,
-## tumor_descriptor)`</code></pre>
 <p>Check that there is no missing information (<code>NA</code>) in the
 RNA count table.</p>
 <pre class="r"><code>if ( any(is.na(rna_counts$stage)) ) {
@@ -577,6 +578,8 @@ RNA count table.</p>
 } else if ( any(is.na(rna_counts$cancer_group)) ) {
   warning(&#39;Missing cancer_group count information, is.na(rna_counts$cancer_group) is true.&#39;)
 } </code></pre>
+<pre><code>## Warning: Missing cancer_group count information, is.na(rna_counts$cancer_group)
+## is true.</code></pre>
 <p><br></p>
 </div>
 <div id="count-methylation-biospecimens" class="section level4">
@@ -587,15 +590,16 @@ experimental strategy) per cohort</p>
 histologies %&gt;% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %&gt;%
   inner_join(rbind(methyl_primary, methyl_relapse)) %&gt;% 
   filter(!is.na(cohort), !is.na(cancer_group)) %&gt;%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == &#39;Normal&#39; ~ &#39;normal&#39;,
+                           sample_type == &#39;Tumor&#39; &amp; tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ &#39;primary&#39;,
-                           tumor_descriptor %in% 
+                           sample_type == &#39;Tumor&#39; &amp; tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ &#39;relapse&#39;,
                            TRUE ~ NA_character_),
 # Don&#39;t distinguish different sequencing methods on the Pediatric Molecular 
@@ -632,17 +636,7 @@ methylation count table.</p>
                             cohort == &#39;TARGET&#39; &amp; 
                               experimental_strategy == &#39;Targeted Sequencing&#39; ~ 
                               &#39;TARGET Panel&#39;,
-                            TRUE ~ cohort)) -&gt; dataset_disease_counts
-
-dataset_disease_counts %&gt;% distinct(experimental_strategy)</code></pre>
-<pre><code>## # A tibble: 5 × 1
-##   experimental_strategy
-##   &lt;chr&gt;                
-## 1 WGS/WXS              
-## 2 SNV Panel            
-## 3 Fusion Panel         
-## 4 RNA-Seq              
-## 5 Methylation</code></pre>
+                            TRUE ~ cohort)) -&gt; dataset_disease_counts</code></pre>
 <div id="per-dataset-and-disease-counts" class="section level4">
 <h4>Per Dataset and Disease Counts</h4>
 <pre class="r"><code>dataset_disease_counts %&gt;% 

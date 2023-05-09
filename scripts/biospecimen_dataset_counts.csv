@@ -3,6 +3,7 @@ CHOP P30 Panel,RNA,Fusion Panel,primary,506
 CHOP P30 Panel,RNA,Fusion Panel,relapse,195
 GMKF,DNA,WGS/WXS,primary,336
 GMKF,RNA,RNA-Seq,primary,208
+GTEx,RNA,RNA-Seq,normal,17382
 PBTA,DNA,WGS/WXS,primary,1470
 PBTA,DNA,WGS/WXS,relapse,402
 PBTA,Methylation Array,Methylation,primary,1135
