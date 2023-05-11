@@ -259,7 +259,8 @@ The plotted gene expression levels are obtained from the bulk-tissue RNA-seq dat
 In an OpenPedCan gene expression boxplot, each box summarizes the expression levels of a cancer or normal tissue type. 
 The x-axis label of each box lists the corresponding cancer or normal tissue type, dataset, biospecimen type, and total number of samples. 
 The y-axis value corresponds to gene expression level in the unit of transcript per million (TPM). 
-The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the "Linear" (default) or "Log10" tab on the top left side of the boxplot.
+The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the appropriate tab on the top left side of the boxplot.
+In addition to selecting the y-axis scale in the tabs, the user can also select, in addition to the data scaling and depending on the view, whether they want to view pediatric data alone ("OpenPedCan Linear", "OpenPedCan Log10), with normal adult tissue expression from GTEx ("GTEx Linear", "GTEx Log10"), or with adult cancer expression from TCGA ("TCGA Linear", "TCGA").
 
 ![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](figures/gene_expression_boxplot.png)
 
