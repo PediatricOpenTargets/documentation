@@ -96,7 +96,7 @@ histologies %>%
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
   distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
-           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
+           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>% 
   inner_join(bind_rows(dna_primary, dna_relapse)) %>% 
   filter(!is.na(cohort), !is.na(cancer_group)) %>%
 # add stage column to specify whether the tumor is primary or relapse in keeping
@@ -215,8 +215,7 @@ histologies %>%
 # samples as DNA
          sequencing_type = 'Methylation Array') %>% 
   count(cohort, stage, sequencing_type, 
-        experimental_strategy, cancer_group) %>%
-  filter(n >= 3) -> methyl_counts
+        experimental_strategy, cancer_group) -> methyl_counts
 ```
 
 Check that there is no missing information (`NA`) in the methylation count table.

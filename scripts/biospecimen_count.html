@@ -495,7 +495,7 @@ histologies %&gt;%
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
   distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
-           cohort, cancer_group, experimental_strategy, tumor_descriptor) %&gt;%
+           cohort, cancer_group, experimental_strategy, tumor_descriptor) %&gt;% 
   inner_join(bind_rows(dna_primary, dna_relapse)) %&gt;% 
   filter(!is.na(cohort), !is.na(cancer_group)) %&gt;%
 # add stage column to specify whether the tumor is primary or relapse in keeping
@@ -607,8 +607,7 @@ histologies %&gt;%
 # samples as DNA
          sequencing_type = &#39;Methylation Array&#39;) %&gt;% 
   count(cohort, stage, sequencing_type, 
-        experimental_strategy, cancer_group) %&gt;%
-  filter(n &gt;= 3) -&gt; methyl_counts</code></pre>
+        experimental_strategy, cancer_group) -&gt; methyl_counts</code></pre>
 <pre><code>## Joining with `by = join_by(Kids_First_Participant_ID,
 ## Kids_First_Biospecimen_ID, cohort, cancer_group, experimental_strategy,
 ## tumor_descriptor)`</code></pre>

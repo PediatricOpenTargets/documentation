@@ -6,8 +6,8 @@ GMKF,RNA,RNA-Seq,primary,208
 GTEx,RNA,RNA-Seq,normal,17382
 PBTA,DNA,WGS/WXS,primary,1470
 PBTA,DNA,WGS/WXS,relapse,402
-PBTA,Methylation Array,Methylation,primary,1135
-PBTA,Methylation Array,Methylation,relapse,372
+PBTA,Methylation Array,Methylation,primary,1163
+PBTA,Methylation Array,Methylation,relapse,398
 PBTA,RNA,RNA-Seq,primary,1378
 PBTA,RNA,RNA-Seq,relapse,429
 TARGET,DNA,SNV Panel,primary,497

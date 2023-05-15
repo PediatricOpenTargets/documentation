@@ -309,7 +309,7 @@ Please see the [OpenPedCan-analysis methylation preprocessing documentation](htt
 ### Methylation Data
 
 Methylation values were summarized only for samples that have both RNA-seq expression data and methylation array data.
-Quantiles and correlation with RNA-seq TPMs for each annotated methylation array probe. were calculated using custom R scripts
+Quantiles and correlation with RNA-seq TPMs were calculated for each annotated methylation array probe. were calculated using custom R scripts
 Please see the [OpenPedCan-analysis methylation-summary module](https://github.com/PediatricOpenTargets/OpenPedCan-analysis/tree/dev/analyses/methylation-summary) for more details.
 
 <br>
