@@ -102,17 +102,13 @@ If you follow the links to Pediatric cBioPortal, sample-level data is available 
 
 The following table gives the a description of the fields and corresponding values for SNV data both at the gene and variant level within MTP.
 
-<br>
-
-The following table gives the a description of the fields and corresponding values for SNV data both at the gene and variant level within MTP.
-
 | Column Name | Description | Values |
 | --- | --- | --- |
 | Gene symbol | HGNC symbol for the given gene |  |
 | Variant ID hg38 | Specific name for the variant in human genome hg38 coordinates; for example chr12_94581668_T_C means that base 94581668 on chromosome 12 is not the reference thymine (T) but mutated to a cytosine (C) |  |
 | Protein change | Amino acid change if mutation causes one; for example p.R317G means that the 317th amino acid is changed from arginine (R) to glycine (G) |  |
 | PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
-| Dataset | See the Dataset section in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma|
+| Dataset | See the [Dataset section](#Datasets) in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMFK** = Gabriella Miller Kids First Neuroblastoma|
 | Disease | Cancer type | See [disease table](https://github.com/PediatricOpenTargets/documentation/blob/dev/disease_subject_counts.tsv) |
 | dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ if one exists | dbSNP ID starting with “**rs**” if it exists, **blank** if the variant is not in dbSNP but is in other variant databases, and **novel** if the variant is not in any database used |
 | VEP impact | Predicted mutation impact from Ensembl Variant Effect Predictor; only mutations predicted to have some impact are reported | **high** = predicted to cause complete or nearly complete loss of function, **moderate** = predicted to reduce protein effectiveness, **modifier** = affects a non-coding region where predictions are difficult or there is no evidence of impact |
