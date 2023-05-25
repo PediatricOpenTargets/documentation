@@ -107,7 +107,6 @@ The following table gives the a description of the fields and corresponding valu
 | Gene symbol | HGNC symbol for the given gene |  |
 | Variant ID hg38 | Specific name for the variant in human genome hg38 coordinates; for example chr12_94581668_T_C means that base 94581668 on chromosome 12 is not the reference thymine (T) but mutated to a cytosine (C) |  |
 | Protein change | Amino acid change if mutation causes one; for example p.R317G means that the 317th amino acid is changed from arginine (R) to glycine (G) |  |
-| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
 | Dataset | See the [Dataset section](#datasets) in this document for more details | **All Cohorts** = all datasets combined except for panel data, **TARGET** = Therapeutically Applicable Research to Generate Effective Treatments, **TARGET panel** = same as TARGET but the cohort sequencing panel data only, **PBTA** = Pediatric Brain Tumor Atlas, **GMKF** = Gabriella Miller Kids First Neuroblastoma|
 | Disease | Cancer type | See [disease table](https://github.com/PediatricOpenTargets/documentation/blob/dev/disease_subject_counts.tsv) |
 | dbSNP ID | ID for variant in NCBI’s dbSNP database https://www.ncbi.nlm.nih.gov/snp/ if one exists | dbSNP ID starting with “**rs**” if it exists, **blank** if the variant is not in dbSNP but is in other variant databases, and **novel** if the variant is not in any database used |
@@ -173,7 +172,6 @@ The following table gives the a description of the fields and corresponding valu
 | Total relapse tumors altered / Relapse tumors in dataset | Same as Total alterations, but for relapse tumors only |  |
 | Frequency in relapse tumors | Same as Frequency in overall, but for relapse tumors only |  |
 | Gene full name | Full name of gene from HGNC |  |
-| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left **blank** if no data |
 | OncoKB cancer gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
 | OncoKB Oncogene\|TSG | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
@@ -236,7 +234,6 @@ The following table gives the a description of the fields and corresponding valu
 | Total relapse tumors altered / Relapse tumors in dataset | Same as Total alterations, but for relapse tumors only |  |
 | Frequency in relapse tumors | Same as Total alterations, but for relapse tumors only |  |
 | Gene full name | Full name of the gene from HGNC |  |
-| PMTL | Whether the gene is a relevant target on the PMTL (Pediatric Molecular Target List) | Binary; either an **R** for relevant target or **NR** for non-relevant target and left blank if no data |
 | OncoKB Cancer Gene | Whether the gene is a annotated cancer gene listed in OncoKB <https://www.oncokb.org/> | binary; Y, N |
 | OncoKB Oncogene\|TSB | Whether the gene is annoated as an oncogene or tumor suppressor (TSG) in OncoKB <https://www.oncokb.org/> | **oncogene** = contributes to cancer development, **TSG** = tumor suppressor gene that suppresses cancer development, **oncogene,TSG** = if gene can be both, **blank** if neither |
 
@@ -274,7 +271,6 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 | boxSampleCount | Number of samples. |
 | geneEnsemblId | Ensembl ID of the plotted gene. |
 | geneSymbol | Symbol of the plotted gene. |
-| pmtl | US Food & Drug Administration Pediatric Molecular Target Lists designation of the plotted gene. |
 | dataset | Dataset that contains the samples. |
 | disease | Cancer type. |
 | gtexTissueSubgroup | Normal tissue type. |
