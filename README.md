@@ -255,9 +255,19 @@ The y-axis value corresponds to gene expression level in the unit of transcript 
 The scale of y-axis can either be TPM or log10(TPM + 1), which can be selected by clicking the appropriate tab on the top left side of the boxplot.
 In addition to selecting the y-axis scale in the tabs, the user can also select, in addition to the data scaling and depending on the view, whether they want to view pediatric data alone ("OpenPedCan Linear", "OpenPedCan Log10), with normal adult tissue expression from GTEx ("GTEx Linear", "GTEx Log10"), or with adult cancer expression from TCGA ("TCGA Linear", "TCGA").
 
-![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.](figures/gene_expression_boxplot.png)
+<br>
 
-**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of NBPF1 gene in pediatric neuroblastoma and normal adult tissues.
+![**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of the MYCN gene in pediatric acute myeloid leukemia with normal adult tissue expression from GTEx.](figures/gene_expression_boxplot_gtex.png)
+
+**Figure 1.** OpenPedCan gene expression boxplot that summarizes the expression of the MYCN gene in pediatric acute myeloid leukemia with normal adult tissue expression from GTEx
+
+<br>
+
+![**Figure 2.** OpenPedCan gene expression boxplot that summarizes the expression of MYCN gene in pediatric acute myeloid leukemia with adult cancer expression from TCGA.](figures/gene_expression_boxplot_tcga.png)
+
+**Figure 2.** OpenPedCan gene expression boxplot that summarizes the expression of the MYCN gene in pediatric acute myeloid leukemia with adult cancer expression from TCGA.
+
+<br>
 
 The OpenPedCan gene expression boxplot widget on Molecular Targets Platform (MTP) “Evidence” and “Gene symbol” pages plots different sets of cancer and normal tissue types. On an MTP “Evidence” page, the widget plots all cancer types that have the same Experimental Factor Ontology (EFO) ID as the page and all normal tissue types. On an MTP “Gene symbol” page, the widget plots all cancer types.
 
@@ -271,6 +281,7 @@ In the summary table, each box in the boxplot is summarized in a row with the fo
 | boxSampleCount | Number of samples. |
 | geneEnsemblId | Ensembl ID of the plotted gene. |
 | geneSymbol | Symbol of the plotted gene. |
+| pmtl | US Food & Drug Administration Pediatric Molecular Target Lists designation of the plotted gene. |
 | dataset | Dataset that contains the samples. |
 | disease | Cancer type. |
 | gtexTissueSubgroup | Normal tissue type. |
