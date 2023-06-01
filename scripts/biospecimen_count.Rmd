@@ -265,6 +265,8 @@ dataset_disease_counts %>%
 # save as a plain text table
 write_csv(dataset_disease_counts_filtered, 
           'biospecimen_dataset_disease_counts.csv')
+write_csv(dataset_disease_counts_filtered, 
+          '../disease_subject_counts.tsv')
 ```
 
 #### Per Dataset Counts 
