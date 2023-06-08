@@ -75,10 +75,15 @@ Read in tables. The file `histologies.tsv` contains the cancer assignment for ea
 read_tsv('../OpenPedCan-analysis/data/histologies.tsv') -> histologies
 
 ### independent specimen lists
+# RNA-seq
 read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.primary.eachcohort.tsv') -> rna_primary
 read_tsv('../OpenPedCan-analysis/data/independent-specimens.rnaseqpanel.relapse.eachcohort.tsv') -> rna_relapse
-read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.primary.eachcohort.prefer.wxs.tsv') -> dna_primary
-read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wxs.tsv') -> dna_relapse
+# DNA
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.primary.eachcohort.prefer.wgs.tsv') -> dna_primary
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wgs.tsv') -> dna_relapse
+# methylation
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.methyl.primary.eachcohort.tsv') -> methyl_primary
+read_tsv('../OpenPedCan-analysis/data/independent-specimens.methyl.relapse.eachcohort.tsv') -> methyl_relapse
 ```
 
 <br>
@@ -92,22 +97,27 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
-           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
-  inner_join(bind_rows(dna_primary, dna_relapse)) %>%
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
+           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>% 
+  inner_join(bind_rows(dna_primary, dna_relapse)) %>% 
+  filter(!is.na(cohort), !is.na(cancer_group)) %>%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == 'Normal' ~ 'normal',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ 'primary',
-                           tumor_descriptor %in% 
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ 'relapse',
                            TRUE ~ NA_character_),
 # Don't distinguish different sequencing methods on the Pediatric Molecular 
 # Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
 # samples as DNA
          sequencing_type = 'DNA',
-         experimental_strategy = ifelse(experimental_strategy %in% c('WGS', 'WXS'),
-                                        'WGS/WXS', experimental_strategy)) %>% 
+         experimental_strategy = case_when(experimental_strategy %in% 
+                                            c('WGS', 'WXS') ~ 'WGS/WXS', 
+                                          experimental_strategy == 
+                                            'Targeted Sequencing' ~ 'SNV Panel',
+                                          TRUE ~ experimental_strategy)) %>% 
   count(cohort, stage, sequencing_type, 
         experimental_strategy, cancer_group) %>%
   filter(n >= 3) -> dna_counts
@@ -122,6 +132,8 @@ if ( any(is.na(dna_counts$stage)) ) {
   warning('Missing sequencing type information, is.na(dna_counts$sequencing_type) is true.')
 } else if ( any(is.na(dna_counts$n)) ) {
   warning('Missing biospecimen count information, is.na(dna_counts$n) is true.')
+} else if ( any(is.na(dna_counts$cancer_group)) ) {
+  warning('Missing cancer_group count information, is.na(dna_counts$cancer_group) is true.')
 } 
 ```
 
@@ -136,20 +148,28 @@ Count the number of biospecimens per diease per sequencing type (aka experimenta
 histologies %>% 
 # get unique combinations of patients, cohorts, diseases (cancer_group), 
 # types of data (experimental_strategy), and tumor descriptions
-  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, 
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
            cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
-  inner_join(rbind(rna_primary, rna_relapse)) %>% 
+  filter(Kids_First_Biospecimen_ID %in% rna_primary$Kids_First_Biospecimen_ID | 
+           Kids_First_Biospecimen_ID %in% rna_relapse$Kids_First_Biospecimen_ID |
+           cohort == 'GTEx') %>% 
+  filter(!is.na(cohort), !is.na(cancer_group) | sample_type == 'Normal') %>%
 # add stage column to specify whether the tumor is primary or relapse in keeping
 # with the language on the Pediatric Molecular Targets site
-  mutate(stage = case_when(tumor_descriptor %in% 
+  mutate(stage = case_when(sample_type == 'Normal' ~ 'normal',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_primary$tumor_descriptor) ~ 'primary',
-                           tumor_descriptor %in% 
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
                              unique(dna_relapse$tumor_descriptor) ~ 'relapse',
                            TRUE ~ NA_character_),
 # Don't distinguish different sequencing methods on the Pediatric Molecular 
 # Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
 # samples as DNA
-         sequencing_type = 'RNA') %>% 
+         sequencing_type = 'RNA',
+         experimental_strategy = case_when(experimental_strategy == 
+                                             'Targeted Sequencing' ~ 
+                                             'Fusion Panel',
+                                           TRUE ~ experimental_strategy)) %>%
   count(cohort, stage, sequencing_type, 
         experimental_strategy, cancer_group) %>%
   filter(n >= 3) -> rna_counts
@@ -164,6 +184,53 @@ if ( any(is.na(rna_counts$stage)) ) {
   warning('Missing sequencing type information, is.na(rna_counts$sequencing_type) is true.')
 } else if ( any(is.na(rna_counts$n)) ) {
   warning('Missing biospecimen count information, is.na(rna_counts$n) is true.')
+} else if ( any(is.na(rna_counts$cancer_group)) ) {
+  warning('Missing cancer_group count information, is.na(rna_counts$cancer_group) is true.')
+} 
+```
+
+<br>
+
+#### Count Methylation Biospecimens
+
+Count the number of biospecimens per diease per sequencing type (aka experimental strategy) per cohort
+
+```{r}
+### Count DNA samples
+histologies %>% 
+# get unique combinations of patients, cohorts, diseases (cancer_group), 
+# types of data (experimental_strategy), and tumor descriptions
+  distinct(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, sample_type,
+           cohort, cancer_group, experimental_strategy, tumor_descriptor) %>%
+  inner_join(rbind(methyl_primary, methyl_relapse)) %>% 
+  filter(!is.na(cohort), !is.na(cancer_group)) %>%
+# add stage column to specify whether the tumor is primary or relapse in keeping
+# with the language on the Pediatric Molecular Targets site
+  mutate(stage = case_when(sample_type == 'Normal' ~ 'normal',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
+                             unique(dna_primary$tumor_descriptor) ~ 'primary',
+                           sample_type == 'Tumor' & tumor_descriptor %in% 
+                             unique(dna_relapse$tumor_descriptor) ~ 'relapse',
+                           TRUE ~ NA_character_),
+# Don't distinguish different sequencing methods on the Pediatric Molecular 
+# Targets site, just the thing measured, SNV, CNV, Fusion, so just labeling all
+# samples as DNA
+         sequencing_type = 'Methylation Array') %>% 
+  count(cohort, stage, sequencing_type, 
+        experimental_strategy, cancer_group) -> methyl_counts
+```
+
+Check that there is no missing information (`NA`) in the methylation count table.
+
+```{r}
+if ( any(is.na(methyl_counts$stage)) ) {
+  warning('Missing stage information, is.na(methyl_counts$stage) is true.')
+} else if ( any(is.na(methyl_counts$sequencing_type)) ) {
+  warning('Missing sequencing type information, is.na(methyl_counts$sequencing_type) is true.')
+} else if ( any(is.na(methyl_counts$n)) ) {
+  warning('Missing biospecimen count information, is.na(methyl_counts$n) is true.')
+} else if ( any(is.na(methyl_counts$cancer_group)) ) {
+  warning('Missing cancer_group count information, is.na(methyl_counts$cancer_group) is true.')
 } 
 ```
 
@@ -174,7 +241,7 @@ if ( any(is.na(rna_counts$stage)) ) {
 Combine the count tables, organize them for display, and save.
 
 ```{r}
-rbind(dna_counts, rna_counts) %>%
+rbind(dna_counts, rna_counts, methyl_counts) %>%
 # change cohort names to be in line with the language on the Pediatric 
 # Molecular Targets website
   mutate(cohort = case_when(cohort == 'DGD' ~ 'CHOP P30 Panel',
@@ -187,21 +254,21 @@ rbind(dna_counts, rna_counts) %>%
 #### Per Dataset and Disease Counts
 
 ```{r}
-dataset_disease_counts %>%
-# TCGA and CHOP P30 DNA Panel data are not currently being used, so filter out
-  filter(cohort != 'TCGA', !is.na(cancer_group),
-         !(cohort == 'CHOP P30 Panel' & sequencing_type == 'DNA')) %>%
+dataset_disease_counts %>% 
 # change column names to be in line with the language on the Pediatric 
 # Molecular Targets website and retain desired columns
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
+         `Experimental Strategy` = experimental_strategy,
         `Tumor Stage` = stage, Disease = cancer_group, 
         `Number of Biospecimens` = n) %>%
-  arrange(Dataset, Disease, `Sequencing Type`, 
+  arrange(Dataset, Disease, `Sequencing Type`, `Experimental Strategy`,
           `Tumor Stage`) -> dataset_disease_counts_filtered
 
 # save as a plain text table
 write_csv(dataset_disease_counts_filtered, 
           'biospecimen_dataset_disease_counts.csv')
+write_csv(dataset_disease_counts_filtered, 
+          '../disease_subject_counts.tsv')
 ```
 
 #### Per Dataset Counts 
@@ -216,11 +283,9 @@ dataset_disease_counts %>%
 # change column names to be in line with the language on the Pediatric 
 # Molecular Targets website and retain desired columns
   select(Dataset = cohort, `Sequencing Type` = sequencing_type,
-        `Tumor Stage` = stage, `Number of Biospecimens` = biospecimen_count) %>%
-  arrange(Dataset, `Sequencing Type`, `Tumor Stage`) %>%
-# TCGA and CHOP P30 Panel data are not currently being used, so filter out
-  filter(Dataset != 'TCGA', 
-         !(Dataset == 'CHOP P30 Panel' & `Sequencing Type` == 'DNA')) -> dataset_counts
+         `Experimental Strategy` = experimental_strategy,
+          `Tumor Stage` = stage, `Number of Biospecimens` = biospecimen_count) %>%
+  arrange(Dataset, `Sequencing Type`, `Tumor Stage`)  -> dataset_counts
 
 # save as a plain text table
 write_csv(dataset_counts, 'biospecimen_dataset_counts.csv')
